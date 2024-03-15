@@ -20,11 +20,42 @@ class ProductManager {
         }
     }
     read(){
-        return ProductManager.#products;
+        try{
+            if(ProductManager.#products.length === 0) {
+                throw new Error("No hay productos");
+            }else{
+                return ProductManager.#products;
+            }
+        }catch(error){
+            console.log(error);
+        }
+    }
+    readOne(id){
+        try{
+            const one = ProductManager.#products.find((each) => each.id === id);
+            if(!one) {
+                throw new Error ("Producto inexistente");
+                }else{
+                    return one;
+                }
+            }catch(error){
+                console.log(error)
+        }
+    }
+    destroy(id){
+        try{
+            this.readOne(id);
+            const within = ProductManager.#products.filter((each) => each.id !== id);
+            ProductManager.#products = within;
+            console.log("Producto eliminado");
+        }catch(error){
+            console.log(error);
+        }
     }
 }
 
-const gestorDeProductos = new ProductManager()
+const gestorDeProductos = new ProductManager();
+
 gestorDeProductos.create({
     title: 'Pro Plan Adultos 7kg',
     photo: './proplanA7.jpg',
@@ -62,4 +93,6 @@ gestorDeProductos.create({
     stock: 300
 })
 
-console.log(gestorDeProductos.read())
+console.log(gestorDeProductos.read());
+console.log(gestorDeProductos.readOne(2));
+gestorDeProductos.destroy(3)
