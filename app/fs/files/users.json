@@ -1,0 +1,44 @@
+[
+    {
+      "id": "cf9e1165e3963ce3410795e7",
+      "photo": "./photo.jpg",
+      "email": "abc@abc.com",
+      "password": "abc123",
+      "rol": "customer"
+    },
+    {
+      "id": "90f5a220800ff6c2f5650b8a",
+      "photo": "./photo.jpg",
+      "email": "abc@abc.com",
+      "password": "abc123",
+      "rol": "customer"
+    },
+    {
+      "id": "116d1ef1752241fa55ed611b",
+      "photo": "./photo.jpg",
+      "email": "abc@abc.com",
+      "password": "abc123",
+      "rol": "customer"
+    },
+    {
+      "id": "c3c1184ffebc13bec91b3dee",
+      "photo": "./photo.jpg",
+      "email": "abc@abc.com",
+      "password": "abc123",
+      "rol": "customer"
+    },
+    {
+      "id": "581a07c97576049b925dae69",
+      "photo": "./photo.jpg",
+      "email": "abc@abc.com",
+      "password": "abc123",
+      "rol": "customer"
+    },
+    {
+      "id": "83f7c6bbf7934efcb815a010",
+      "photo": "./photo.jpg",
+      "email": "abc@abc.com",
+      "password": "abc123",
+      "rol": "customer"
+    }
+  ]
