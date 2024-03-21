@@ -1,0 +1,20 @@
+{
+  "name": "coderserver",
+  "version": "1.0.0",
+  "description": "Servidor creado en el curso backend de Coderhouse, por Natalia Peripolli y Ariel Endrizzi",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./server",
+    "dev": "nodemon ./server"
+  },
+  "keywords": [],
+  "author": "Natalia Peripolli y Ariel Endrizzi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
