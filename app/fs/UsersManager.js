@@ -1,5 +1,5 @@
-const fs = require("fs");
-const crypto = require("crypto");
+import fs from 'fs'
+import crypto from 'crypto'
 
 class UsersManager{
     constructor(){
@@ -41,10 +41,11 @@ class UsersManager{
             throw error;
         }
     }
-    async read(){
+    async read(rol = null){
         try{   
             let all = await fs.promises.readFile(this.path, 'utf-8');
             all = JSON.parse(all);
+            all = all.filter(each=>each.category===rol)
             if(all.length === 0){
                 throw new Error("No hay usuarios");
             }else{
@@ -90,20 +91,5 @@ class UsersManager{
     }
 }
 
-const users = new UsersManager();
-
-async function test(){
-    try{
-        const users = new UsersManager();
-        await users.create({photo: "./photo.jpg", 
-                        email:"abc@abc.com", 
-                        password:"abc123"});
-        await users.read();
-        await users.readOne('90f5a220800ff6c2f5650b8a');
-        await users.destroy('90f5a220800ff6c2f5650b8a');
-        }catch(error){
-            console.log(error);
-        }
-}
-
-test();
+const usersManager = new UsersManager();
+export default usersManager
