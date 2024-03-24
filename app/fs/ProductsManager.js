@@ -1,5 +1,5 @@
-const fs = require('fs')
-const crypto = require('crypto')
+import fs from 'fs'
+import crypto from 'crypto'
 
 class ProductsManager {
 
@@ -27,8 +27,8 @@ class ProductsManager {
         try {
 
             if(!data) {
-                const error = new Error('No se ha pasado el objeto data que la clase necesita para crear el producto.')
-                throw error
+                const error = new Error('The create method requires a data object that has not been passed as a parameter.')
+                throw error                
             }
 
             if(!data.title || !data.category || !data.price ){
@@ -52,17 +52,18 @@ class ProductsManager {
 
                 await fs.promises.writeFile(this.path, products)
 
-                console.log(`Producto creado con ID: ${product.id} at path ${this.path}`)
+                console.log(`Product created with ID: ${product.id} at path ${this.path}`)
+                return product
 
             }
         }
         catch(error) {
             console.log(`An error has ocurred at create a new product: ${error}`)
-            throw error
+            throw error            
         }
     }
 
-    async read () {
+    async read (category = null) {
 
         try {
 
@@ -70,14 +71,20 @@ class ProductsManager {
             allProducts = JSON.parse(allProducts)
 
             if(allProducts.length === 0) {
-                const error = new Error ('No hay productos registrados')
+                const error = new Error ('Product inventory is empty.')
                 throw error
             } else {
-                console.log(allProducts)
+                if(!category){
+                    return allProducts
+                } else {
+                    const filteredProducts = allProducts.filter(product => product.category === category)
+                    return filteredProducts
+                }
             }
             
         } catch (error) {
-            console.log(`Error al leer la lista de productos: ${error}`)
+            console.log(`Error while reading product inventory: ${error}`)
+            return []
         }
     }
 
@@ -86,7 +93,7 @@ class ProductsManager {
         try {
 
             if(!id) {
-                const error = new Error('No se ha pasado un id que permita identificar el producto a leer.')
+                const error = new Error('The ID parameter is required by the readOne method.')
                 throw error
             }
 
@@ -94,29 +101,30 @@ class ProductsManager {
             allProducts = JSON.parse(allProducts)
             
             if(allProducts.length === 0) {
-                const error = new Error ('No hay productos registrados')
+                const error = new Error ('No products to show. Empty inventary')
                 throw error
             } else {
 
                 const foundProduct = allProducts.find ( product => product.id === id)
 
                 if(!foundProduct) {
-                    console.log(`No se encontró producto con el ID ${id} que mostrar`)
+                    console.log(`Product ID ${id} not found.`)
+                    return null
                 } else {
-                    console.log('Producto encontrado: ', foundProduct)
+                    console.log('Found product: ', foundProduct)
                     return foundProduct
                 }
             }
             
         } catch (error) {
-            console.log(`Error al leer la lista de productos: ${error}`)
+            console.log(`An error has ocurred while reading products: ${error}`)
         }
     }
 
     async destroyOne (id) {
 
         if(!id) {
-            const error = new Error('No se ha pasado un id que permita identificar el producto a eliminar.')
+            const error = new Error('The ID parameter is required by the destroyOne method.')
             throw error
         }
 
@@ -126,182 +134,32 @@ class ProductsManager {
             allProducts = JSON.parse(allProducts)
 
             if(allProducts.length === 0) {
-                const error = new Error ('No hay productos registrados')
+                const error = new Error ('No products to show. Empty inventary')
                 throw error
             } else {
                 const foundProduct = allProducts.find ( product => product.id === id)
 
                 if(!foundProduct) {
-                    console.log(`No se encontró producto con el ID ${id} que eliminar`)
+                    console.log(`Product ID ${id} not found to delete.`)
                 } else {
 
                     let productsUpdated = allProducts.filter ( user => user.id !== id)
                     productsUpdated = JSON.stringify(productsUpdated, null, 4)
 
                     await fs.promises.writeFile(this.path, productsUpdated)
-                    console.log('Se ha eliminado el producto con ID: ', id)
+                    console.log(`Product ID ${id} has been deleted.`)
                     return foundProduct
 
                 }
             }
             
         } catch (error) {
-            console.log(`Error al leer la lista de productos: ${error}`)
+            console.log(`An error has ocurred while reading products: ${error}`)
         }
     }
+    
+    
 }
 
-async function run () {
-
-    try {
-
-        const products = new ProductsManager()
-
-        await products.create({
-            title: 'Monitor LG UltraGear 27GL850-B',
-            photo: './products/lg_ultragear_monitor.jpg',
-            category: 'monitors',
-            price: 40000,
-            stock: 15
-        })
-        
-        await products.create({
-            title: 'Graphics Card NVIDIA GeForce RTX 3080',
-            photo: './products/nvidia_rtx_3080.jpg',
-            category: 'graphics_cards',
-            price: 150000,
-            stock: 7
-        })
-        
-        await products.create({
-            title: 'Gaming Mouse Razer DeathAdder V2',
-            photo: './products/razer_deathadder_v2.jpg',
-            category: 'mice',
-            price: 8000,
-            stock: 20
-        })
-        
-        await products.create({
-            title: 'Mechanical Keyboard Corsair K95 RGB Platinum',
-            photo: './products/corsair_k95_rgb_platinum.jpg',
-            category: 'keyboards',
-            price: 12000,
-            stock: 18
-        })
-        
-        await products.create({
-            title: 'External SSD Samsung T7 Touch 1TB',
-            photo: './products/samsung_t7_touch_ssd.jpg',
-            category: 'external_storage',
-            price: 7000,
-            stock: 25
-        })
-        
-        await products.create({
-            title: 'Wi-Fi Router TP-Link Archer AX6000',
-            photo: './products/tp_link_archer_ax6000.jpg',
-            category: 'routers',
-            price: 15000,
-            stock: 14
-        })
-
-        await products.create({
-            title: 'External Hard Drive Seagate Expansion 4TB',
-            photo: './products/seagate_expansion_4tb.jpg',
-            category: 'external_storage',
-            price: 6000,
-            stock: 20
-        })
-        
-        await products.create({
-            title: 'Wireless Keyboard Logitech MX Keys',
-            photo: './products/logitech_mx_keys.jpg',
-            category: 'keyboards',
-            price: 8000,
-            stock: 15
-        })
-        
-        await products.create({
-            title: 'Webcam Logitech C920 HD Pro',
-            photo: './products/logitech_c920_webcam.jpg',
-            category: 'accessories',
-            price: 5000,
-            stock: 15
-        })
-        
-        await products.create({
-            title: 'Wireless Router ASUS RT-AX88U',
-            photo: './products/asus_rt_ax88u_router.jpg',
-            category: 'routers',
-            price: 12000,
-            stock: 10
-        })
-
-        await products.read()
-
-        await products.readOne('id_inexistente')
-
-        await products.destroyOne('id_inexistente')
-        
-    } catch (error) {
-        console.log(`An error has ocurred: ${error}`)        
-    }
-}
-
-
-async function test () {
-
-    //Creación de producto con error - Llamada al método sin parámetro data
-    try {
-        const products = new ProductsManager()
-        await products.create()        
-    } catch (error) {
-        console.log(`An error has ocurred: ${error}`)
-    }
-
-    //Creación de producto con error - Faltan propiedades requeridas
-    try {
-        const products = new ProductsManager()
-        await products.create({
-            title: '',
-            photo: './products/lg_ultragear_monitor.jpg',
-            category: 'monitors',
-            price: 40000,
-            stock: 15
-        })
-    } 
-    catch (error) {
-        console.log(`An error has ocurred: ${error}`)        
-    }
-
-    //Creación de producto con error - Llamada al método sin parámetro data
-    try {
-        const products = new ProductsManager()
-        await products.create()
-    } 
-    catch (error) {
-        console.log(`An error has ocurred: ${error}`)        
-    }
-
-    //Lectura de un producto con error - Llamada al método sin parámetro id
-    try {
-        const products = new ProductsManager()
-        await products.readOne()
-    } 
-    catch (error) {
-        console.log(`An error has ocurred: ${error}`)        
-    }
-
-    //Eliminación de un producto con error - Llamada al método sin parámetro id
-    try {
-        const products = new ProductsManager()
-        await products.destroyOne()
-    } 
-    catch (error) {
-        console.log(`An error has ocurred: ${error}`)        
-    }
-
-}
-
-test()
-// run()
+const productsManager = new ProductsManager()
+export default productsManager

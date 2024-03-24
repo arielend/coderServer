@@ -1,0 +1,162 @@
+[
+    {
+        "id": "128630aa7ed5d787fea6ae85",
+        "title": "Tarjeta Gráfica NVIDIA GeForce RTX 3080",
+        "photo": "./products/nvidia_rtx_3080.jpg",
+        "category": "graphics_cards",
+        "price": 150000,
+        "stock": 10
+    },
+    {
+        "id": "6c4c94d89576c24842908379",
+        "title": "Tarjeta Gráfica AMD Radeon RX 6800 XT",
+        "photo": "./products/amd_rx_6800_xt.jpg",
+        "category": "graphics_cards",
+        "price": 160000,
+        "stock": 8
+    },
+    {
+        "id": "7736e77b4a30f90196b1055f",
+        "title": "Motherboard ASUS ROG Strix Z590-E Gaming",
+        "photo": "./products/asus_z590_e.jpg",
+        "category": "motherboards",
+        "price": 30000,
+        "stock": 15
+    },
+    {
+        "id": "25bec2491ddeeec7132593e0",
+        "title": "Motherboard MSI MAG B550 Tomahawk",
+        "photo": "./products/msi_b550_tomahawk.jpg",
+        "category": "motherboards",
+        "price": 20000,
+        "stock": 12
+    },
+    {
+        "id": "76e352f2f7f697752967cb62",
+        "title": "Procesador Intel Core i9-12900K",
+        "photo": "./products/intel_core_i9_12900k.jpg",
+        "category": "processors",
+        "price": 350000,
+        "stock": 6
+    },
+    {
+        "id": "15fcdbb6fa80edff6bd9726c",
+        "title": "Procesador AMD Ryzen 9 5900X",
+        "photo": "./products/amd_ryzen_9_5900x.jpg",
+        "category": "processors",
+        "price": 320000,
+        "stock": 8
+    },
+    {
+        "id": "bbd387ba58548c3865817e04",
+        "title": "Memoria RAM Corsair Vengeance LPX 16GB DDR4",
+        "photo": "./products/corsair_vengeance_lpx_ram.jpg",
+        "category": "ram_memory",
+        "price": 8000,
+        "stock": 20
+    },
+    {
+        "id": "c991c221c6d7fd07c83a62f2",
+        "title": "Memoria RAM G.Skill Trident Z RGB 32GB DDR4",
+        "photo": "./products/gskill_trident_z_rgb_ram.jpg",
+        "category": "ram_memory",
+        "price": 16000,
+        "stock": 15
+    },
+    {
+        "id": "9740cfa7a793deb14862b983",
+        "title": "Disco SSD Samsung 970 EVO Plus 1TB",
+        "photo": "./products/samsung_970_evo_plus_ssd.jpg",
+        "category": "storage_drives",
+        "price": 12000,
+        "stock": 25
+    },
+    {
+        "id": "936a4c5d3775a6a0434e312d",
+        "title": "Disco HDD Seagate Barracuda 2TB",
+        "photo": "./products/seagate_barracuda_hdd.jpg",
+        "category": "storage_drives",
+        "price": 6000,
+        "stock": 30
+    },
+    {
+        "id": "9ee49363da3bea5181844f4b",
+        "title": "Tarjeta Gráfica NVIDIA GeForce RTX 3070",
+        "photo": "./products/nvidia_rtx_3070.jpg",
+        "category": "graphics_cards",
+        "price": 120000,
+        "stock": 10
+    },
+    {
+        "id": "5947106a2037a5e878ef498e",
+        "title": "Tarjeta Gráfica AMD Radeon RX 6700 XT",
+        "photo": "./products/amd_rx_6700_xt.jpg",
+        "category": "graphics_cards",
+        "price": 130000,
+        "stock": 8
+    },
+    {
+        "id": "4b48dbdefbdf15d2e0e8d444",
+        "title": "Motherboard Gigabyte B550 AORUS PRO",
+        "photo": "./products/gigabyte_b550_aorus_pro.jpg",
+        "category": "motherboards",
+        "price": 25000,
+        "stock": 15
+    },
+    {
+        "id": "78b3180660aac5d21d7ff6cc",
+        "title": "Motherboard ASRock B450M Steel Legend",
+        "photo": "./products/asrock_b450m_steel_legend.jpg",
+        "category": "motherboards",
+        "price": 18000,
+        "stock": 12
+    },
+    {
+        "id": "0161c16770a4e783bfd030e1",
+        "title": "Procesador Intel Core i5-12600K",
+        "photo": "./products/intel_core_i5_12600k.jpg",
+        "category": "processors",
+        "price": 250000,
+        "stock": 6
+    },
+    {
+        "id": "0a49a4e1dbfd9da5b35746a0",
+        "title": "Procesador AMD Ryzen 5 5600X",
+        "photo": "./products/amd_ryzen_5_5600x.jpg",
+        "category": "processors",
+        "price": 200000,
+        "stock": 8
+    },
+    {
+        "id": "201d33ac305668aeea88daac",
+        "title": "Memoria RAM Crucial Ballistix 8GB DDR4",
+        "photo": "./products/crucial_ballistix_ram.jpg",
+        "category": "ram_memory",
+        "price": 4000,
+        "stock": 20
+    },
+    {
+        "id": "d9576f9f500dbf5337b9bd73",
+        "title": "Memoria RAM Kingston HyperX Fury RGB 16GB DDR4",
+        "photo": "./products/kingston_hyperx_fury_ram.jpg",
+        "category": "ram_memory",
+        "price": 10000,
+        "stock": 15
+    },
+    {
+        "id": "7eb7f1ebd027c475bbd4cdf3",
+        "title": "Disco SSD Western Digital Blue 500GB",
+        "photo": "./products/wd_blue_ssd.jpg",
+        "category": "storage_drives",
+        "price": 8000,
+        "stock": 25
+    },
+    {
+        "id": "fe5870273e6a8e7850f619ee",
+        "title": "Disco HDD Western Digital Red 4TB",
+        "photo": "./products/wd_red_hdd.jpg",
+        "category": "storage_drives",
+        "price": 10000,
+        "stock": 30
+    }
+]
