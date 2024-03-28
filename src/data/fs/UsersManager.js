@@ -3,7 +3,7 @@ import crypto from 'crypto'
 
 class UsersManager{
     constructor(){
-        this.path = './files/users.json';
+        this.path = './src/data/fs/files/users.json';
         this.init();
     }
     init() {
@@ -45,7 +45,7 @@ class UsersManager{
         try{   
             let all = await fs.promises.readFile(this.path, 'utf-8');
             all = JSON.parse(all);
-            all = all.filter(each=>each.category===rol)
+            rol && (all = all.filter(each=>each.rol===rol))
             if(all.length === 0){
                 throw new Error("No hay usuarios");
             }else{
@@ -54,6 +54,7 @@ class UsersManager{
             }
         }catch(error){
             console.log(error)
+            return []
         }
     }
     async readOne(id){

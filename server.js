@@ -1,6 +1,6 @@
 import express from 'express'
-import productsManager from './app/fs/ProductsManager.js'
-import usersManager from './app/fs/UsersManager.js'
+import productsManager from './src/data/fs/ProductsManager.js'
+import usersManager from './src/data/fs/UsersManager.js'
 
 const server = express()
 const port = 8080
@@ -95,7 +95,7 @@ server.get('/api/users', async (req, res) => {
         const { rol } = req.query
         const allUsers = rol ? await usersManager.read(rol) : await usersManager.read()
         if (allUsers.length != 0) {
-            return response.json({
+            return res.json({
                 statusCode: 200,
                 succes: true,
                 response: allUsers
