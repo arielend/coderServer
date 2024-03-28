@@ -18,6 +18,7 @@ El método readOne() recibe un id que debe ser pasado como parámetro al llamara
 El método destroyOne() recibe un id que debe ser pasado como parámetro al llamara a la función. En caso de existir un producto con el mismo ID que el pasado por parámetro, lo elimina de la lista y muestra un mensaje de eliminación. En caso de no encontrar el producto, muestra un mensaj. Tambien contempla otros errores de ejecución que puedan sucederse al momento de leer el archivo.
 
 #### Test de la clase
+
 Al momento de ejecutar el método create() se deben mostrar mensajes de error en los siguientes casos:
 - No se pasa un objeto data requerido por el método;
 - El objeto no posee alguna de las propiedades requeridas (title, category o proce);
@@ -28,3 +29,55 @@ Al momento de ejecutar los métodos readOne() y destroyOne() se deben mostrar me
 Para que que los métodos readOne() y destroyOne() lean y eliminen un elemento, es necesario cambiar los id pasados como parametros por un id valido de los generados por crypto.
 
 Luego de la primera ejecución, comentar la función run() y ejecutar el código con la función test()
+
+### UsersManager - FileSystem
+
+
+## Sprint3
+
+En esta etapa del desarrollo se procedió a iniciar el proyecto de node, para poder utilizar los módulos nativos y de terceros que ofrece el framework.
+
+En primera instancia se procedió a la instalación de la biblioteca de Expressjs y a la instalación en modo desarrollador del módulo de Nodemon. Luego se modificaron las configuraciones del archivo package.json para que el proyecto continúe de acuerdo a las condiciones requeridas:
+- Modificación del punto de entrada a la aplicación por medio del archivo 'server.js';
+- Modificación del campo type para trabajar los métodos de importación y exportación de ECMAScript6;
+- Modificación del campo script para configurar tareas comunes como la ejecución del archivo server.js con node y con nodemon, tambien se creo un script que corre un archivo llamado create.js que es utilizado en la etapa de desarrollo para crear el archivo json de productos.
+
+### Express server
+
+Una vez instalado el módulo de express e importado desde el archivo server.js, se creo la instancia del servidor con la función express(), se creo la variable que designa el puerto a utilizar, la función ready que envía un mensaje una vez que se crea el servidor y el método listen, al que se le pasó como parámetro el puerto y la función ready.
+
+Previo a la creación de los endpoint, se configuró el primer middleware a utilizar en esta etapa del servidor, el método express.urlencoded(); este permite analizar la URL en busca de datos códificados que permitan conformar las propiedades param y query del objeto request (requerimiento).
+
+### ProductsManager refactoring
+
+Se actualizó la clase ProductsManager para que funcione con los requerimientos de los endpoint correspondientes. La instancia productsManager es importada desde server.js.
+
+### API Products Endpoints
+
+Se crearon tres endpoints con el verbo GET en las rutas '/', '/api/products' y '/api/products/:id'; el último de ellos con uso de parametros.
+
+El primero de ellos realiza una petición del tipo get a la ruta inicial '/'. En caso de ser exitosa retorna un objeto response con un código de estado 200, una propiedad succes en true y una propiedad response con un mensaje Ok. En caso de error retorna un objeto response con un código de estado 500 (default), una propiedad succes en false y una propiedad response con un mensaje de error.
+
+El segundo realiza una petición del tipo GET a la ruta '/api/products'. Este endpoint esta programado para trabajar con la propiedad request.query en caso de existir. Si la url no posee una query codificada realiza un llamado a la función read() de productsManager sin pasar parámetros; y en caso de que el parámetro category forme parte de la query, es desestrurado desde el objeto request y pasado como parámetro a read(). Para cualquiera de los dos consultas, con o sin parámetro, se han manejado errores. El endpoint, en caso de recibir del método read un listado de productos (incluso en caso de filtrado), retorna un objeto response con un código de estado 200, una propiedad succes en true y una propiedad response que contiene el array de objetos. En caso de que no haya productos, el método read devolverá un array vació, y el endpoint enviara al cliente un objeto response con un código de estado 404, una propiedad succes en false y una propiedad message con un mensaje.
+
+El tercer endpoint realiza una petición GET a la ruta '/api/products/:id', ya preparada para trabajar con un parámetro id. El endpoint llama a la función readOne() del productManager pasándole como argumento el id recibido como parámetro en la url. En caso de recibir del método readOne un producto, retorna un objeto response con un código de estado 200, una propiedad succes en true y una propiedad response que contiene el producto correspondiente al id. En caso de que no exista el producto que posea ese id, el método readOne devolverá null, y el endpoint enviara al cliente un objeto response con el código de estado 404, una propiedad succes en false y una propiedad message con un mensaje.
+
+Para todos los endpoint se configuraron en caso de error, propiedades por default para el objeto response; un código de estado 500 y un mensaje.
+
+#### Test del server
+
+Esta primera etapa del servidor fue testeada desde el navegador Google Chrome, en la ruta http://localhost:8080.
+
+#### Pasos para poder correr el servidor
+
+1 - Clonar con el comando git clone la url del sprint3;
+2 - Ejecutar el comando git init para instalar las dependencias y las configuraciones de package.json necesarias;
+3 - Ejecutar el comando npm run dev;
+4 - Acceder al link de la url mostrada en el mensaje de la consola, o desde el navegador a http://localhost:8080;
+
+Rutas de prueba:
+- Listado de productos -> http://localhost:8080/api/products
+- Listado de productos con query de categorías -> http://localhost:8080/api/products?category=ram_memory
+- Listado de productos con query de categorías (sin productos que listar) -> http://localhost:8080/api/products?category=keyboards
+- Listado de productos con param de id http://localhost:8080/api/products/15fcdbb6fa80edff6bd9726c
+- Listado de productos con param de id (inexistente) http://localhost:8080/api/products/soyUnIdInexistente

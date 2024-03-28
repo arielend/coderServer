@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./server",
-    "dev": "nodemon ./server"
+    "dev": "nodemon ./server",
+    "create": "node ./createProducts.js"
   },
   "keywords": [],
   "author": "Natalia Peripolli y Ariel Endrizzi",

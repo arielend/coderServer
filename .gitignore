@@ -2,3 +2,5 @@ node_modules/
 practice/
 
 .env
+
+createProducts.js
