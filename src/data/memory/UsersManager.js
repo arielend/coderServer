@@ -1,3 +1,5 @@
+import { response } from "express"
+
 class UsersManager {
     
     static #users = []
@@ -85,6 +87,39 @@ class UsersManager {
             
         } catch (error) {
             console.log(`An error has ocurred while calling destroyOne method: ${error}`)            
+        }
+    }
+
+    update (id, data) {
+
+        try {
+
+            if(!id) {
+                const error = new Error('The ID argument is required while calling the update method.')
+                throw error
+            } else {
+
+                if (UsersManager.#users.length === 0) {
+                    const error = new Error('Not user registered.')
+                    error.statusCode = 404
+                    throw error
+                } else {
+
+                    let userFound = UsersManager.#users.find( user => user.id === id)
+
+                    if(!userFound) {
+                        const error = new Error(`User ID ${id} not found.`)
+                        error.statusCode = 404
+                        throw error
+                    } else {
+                        userFound = Object.assign(userFound, data)
+                        return userFound
+                    }
+                }
+            }
+            
+        } catch (error) {
+            console.log(`An error has ocurred while calling update method: ${error}`)            
         }
     }
 }
