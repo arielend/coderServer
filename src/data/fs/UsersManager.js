@@ -72,6 +72,22 @@ class UsersManager{
             console.log(error);
         }
     }
+    async update(id, data){
+        try{
+            let all = await this.read()
+            let one = all.find(each=>each.id===id)
+            if (one){
+                for(let prop in data){
+                    one[prop] = data[prop]
+                }
+            }
+            all = JSON.stringify(all, null,2)
+            await fs.promises.writeFile(this.path, all)
+            return one
+        }catch(error){
+            throw error
+        }
+    }
     async destroy(id){
         try{   
             let all = await fs.promises.readFile(this.path, 'utf-8');
