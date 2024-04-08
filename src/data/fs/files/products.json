@@ -350,5 +350,37 @@
         "category": "motherboards",
         "price": 109.99,
         "stock": 70
+    },
+    {
+        "id": "7d027e3d5827c0df1b479c80",
+        "title": "Asus ROG Strix B550",
+        "photo": "https://firebasestorage.googleapis.com/v0/b/tecno-tienda-f68c1.appspot.com/o/img%2Fproducts%2Fmb_asus_rogStrix_b550f.webp?alt=media&token=bdec6255-d5f8-4349-964e-634140b7f3ee",
+        "category": "motherboards",
+        "price": "590000",
+        "stock": "3"
+    },
+    {
+        "id": "14314d616fe7ec747fa0a184",
+        "category": "graphics_cards",
+        "title": "tarjeta grafica",
+        "price": "",
+        "stock": "",
+        "photo": ""
+    },
+    {
+        "id": "293d7e3a9bb3fee0112e403c",
+        "category": "mice",
+        "title": "Raton perez",
+        "price": 345345,
+        "stock": 6,
+        "photo": ""
+    },
+    {
+        "id": "61e40be755a4721041bbecb7",
+        "category": "processors",
+        "title": "No lo proceso",
+        "price": 1,
+        "stock": 1,
+        "photo": "noNicePhoto"
     }
 ]

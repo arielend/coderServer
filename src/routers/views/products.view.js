@@ -15,6 +15,17 @@ productsRouter.get('/', async (request, response, next) => {
 
 })
 
+productsRouter.get('/real', async (request, response, next) => {
+    try {
+
+        return response.render('realProducts')
+
+    } catch (error) {
+        return next(error)
+        
+    }
+})
+
 productsRouter.get('/:id', async (request, response, next ) => {
 
     try {
