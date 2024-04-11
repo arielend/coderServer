@@ -2,6 +2,7 @@ import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
 import socketCallback from './src/websocket/index.socket.js'
+import socketCb from './src/routers/index.socket.js'
 
 import morgan from 'morgan'
 import indexRouter from './src/routers/index.router.js'
@@ -21,7 +22,7 @@ const io = new Server(nodeServer)
 
 nodeServer.listen(port, ready)
 
-io.on('connection', socketCallback)
+io.on('connection', socketCallback) //Pasar socketCB o unificar
 export { io }
 
 // Templates engine (Handlebars)
@@ -33,6 +34,11 @@ server.set('views', __dirname + '/src/views')
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.static(__dirname + '/public'))
+server.use(morgan("dev"))
+
+// Middlewares
+server.use(express.urlencoded({ extended: true }))
+server.use(express.json())
 server.use(morgan("dev"))
 
 // Router

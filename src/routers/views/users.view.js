@@ -19,8 +19,6 @@ usersRouter.get('/:id', async ( request, response, next ) => {
         const { id } = request.params
         const user = await usersManager.readOne(id)
 
-        console.log('Que es user: ', typeof(user));
-
         return response.render('userProfile', { user })
         
     } catch (error) {

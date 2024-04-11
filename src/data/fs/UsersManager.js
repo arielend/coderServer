@@ -24,7 +24,7 @@ class UsersManager{
             }else{
                 const user = {
                     id: crypto.randomBytes(12).toString('hex'),
-                    photo: data.photo || 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-1024.png',
+                    photo: data.photo || 'https://pbs.twimg.com/profile_images/1012362101510160384/EjayQ10E_400x400.jpg',
                     email: data.email,
                     password: data.password,
                     rol: 'customer'
