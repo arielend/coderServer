@@ -36,7 +36,7 @@
     },
     {
       "id": "83f7c6bbf7934efcb815a010",
-      "photo": "./photo6.jpg",
+      "photo": "/images/no_profile_photo.svg",
       "email": "pqr@abc.com",
       "password": "abc123",
       "rol": "customer"

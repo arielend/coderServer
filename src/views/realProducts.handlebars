@@ -110,9 +110,9 @@
         console.log("Click de boton")
         const category = document.querySelector('#category').value
         const title = document.querySelector('#title').value
-        const price = parseInt(document.querySelector('#price').value) || 1
-        const stock = parseInt(document.querySelector('#stock').value) || 1
-        const photo = document.querySelector('#photo').value || 'noNicePhoto'        
+        const price = parseInt(document.querySelector('#price').value)
+        const stock = parseInt(document.querySelector('#stock').value)
+        const photo = document.querySelector('#photo').value        
 
         const newProduct = { category, title, price, stock, photo }
         socket.emit('createProduct', newProduct)        

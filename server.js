@@ -22,6 +22,7 @@ const io = new Server(nodeServer)
 nodeServer.listen(port, ready)
 
 io.on('connection', socketCallback)
+export { io }
 
 // Templates engine (Handlebars)
 server.engine('handlebars', engine())
@@ -31,6 +32,7 @@ server.set('views', __dirname + '/src/views')
 // Middlewares
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
+server.use(express.static(__dirname + '/public'))
 server.use(morgan("dev"))
 
 // Router

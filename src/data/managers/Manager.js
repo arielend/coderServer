@@ -3,10 +3,9 @@ import crypto from 'crypto'
 
 class Manager {
 
-    constructor (path, itemName, requiredFields = []) {
+    constructor (path, itemName) {
         this.path = path
         this.itemName = itemName
-        this.requiredFields = requiredFields
         this.init()
     }
 
@@ -29,27 +28,6 @@ class Manager {
 
         try {
 
-            //if(Object.keys(data).length ===0) {}
-            if(!data) {
-                const error = new Error('Bad request: the create method requires a data object that has not been passed as a parameter.')
-                error.statusCode = 400
-                throw error
-            }
-
-            const missingFields = []
-
-            for (const field of this.requiredFields) {
-                if (!data[field]) {
-                    missingFields.push(field)
-                }
-            }
-
-            if(missingFields.length > 0) {
-                const error = new Error(`Bad request: required fields missing: ${missingFields}`)
-                error.statusCode = 400
-                throw error
-            }
-
             const newItem = {}
             newItem.id = crypto.randomBytes(12).toString('hex')
             for (const field in data) {
@@ -63,7 +41,9 @@ class Manager {
 
             await fs.promises.writeFile(this.path, allItems)
 
-            console.log(`New ${this.itemName} created with ID ${newItem.id}`);
+            console.log(`New ${this.itemName} created with ID ${newItem.id}`)
+
+            return newItem
 
         } catch (error) {
             console.log(`An error has ocurred at create a new ${this.itemName}: ${error}`)

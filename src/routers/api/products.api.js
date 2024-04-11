@@ -1,13 +1,15 @@
 import { Router } from 'express'
-//import productsManager from '../../data/fs/ProductsManager.js'
-
 import { productsManager } from '../../data/managers/managers.js'
+
+import uploader from '../../middlewares/multer.js'
+import isPhoto from '../../middlewares/isPhoto.js'
+import productFieldsValidate from '../../middlewares/productFieldsValidate.js'
 
 const productsRouter = Router()
 
 productsRouter.get('/', read)
 productsRouter.get('/:id', readOne)
-productsRouter.post('/', create)
+productsRouter.post('/', uploader.single('photo'), isPhoto, productFieldsValidate, create)
 productsRouter.put('/:id', update)
 productsRouter.delete('/:id', destroy)
 
