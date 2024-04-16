@@ -1,6 +1,7 @@
 node_modules/
 practice/
-
+functions/
 .env
+utils.js
 
 createProducts.js

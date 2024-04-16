@@ -22,17 +22,19 @@ class ProductsManager {
         }
     }
 
-    async create (data) {
+    async create (data, next) {
 
         try {
 
-            if(!data) {
-                const error = new Error('The create method requires a data object that has not been passed as a parameter.')
+            if(Object.keys(data).length === 0) {
+                const error = new Error('Bad request: the create method requires a data object that has not been passed as a parameter.')
+                error.statusCode = 400
                 throw error                
             }
 
-            if(!data.title || !data.category || !data.price ){
-                const error = new Error('Title, Category and Price fields are required.')
+            if(!data.title){
+                const error = new Error('Bad request: title field is required.')
+                error.statusCode = 400
                 throw error
             } else {
 
@@ -41,7 +43,7 @@ class ProductsManager {
                     title: data.title,  
                     photo: data.photo || './products/noPhoto.jpg',
                     category: data.category,
-                    price: data.price,
+                    price: data.price || 1,
                     stock: data.stock || 0
                 }
 
@@ -58,8 +60,7 @@ class ProductsManager {
             }
         }
         catch(error) {
-            console.log(`An error has ocurred at create a new product: ${error}`)
-            throw error            
+            return next(error)     
         }
     }
 
@@ -88,12 +89,13 @@ class ProductsManager {
         }
     }
 
-    async readOne(id) {
+    async readOne(id, next) {
         
         try {
 
-            if(!id) {
-                const error = new Error('The ID parameter is required by the readOne method.')
+            if(id === ':id') {
+                const error = new Error('Bad request:: the ID parameter is required by the readOne method.')
+                error.statusCode = 400
                 throw error
             }
 
@@ -117,48 +119,76 @@ class ProductsManager {
             }
             
         } catch (error) {
-            console.log(`An error has ocurred while reading products: ${error}`)
+            return next(error)
         }
     }
 
-    async destroyOne (id) {
+    async destroy (id, next) {
 
-        if(!id) {
-            const error = new Error('The ID parameter is required by the destroyOne method.')
+        if(id === ':id') {
+            const error = new Error('Bad request:: the ID parameter is required by the destroy method.')
+            error.statusCode = 400
             throw error
         }
 
         try {
 
-            let allProducts = await fs.promises.readFile(this.path, 'utf-8')
-            allProducts = JSON.parse(allProducts)
+            let allProducts = await this.read()
+            
+            const foundProduct = allProducts.find ( product => product.id === id)
 
-            if(allProducts.length === 0) {
-                const error = new Error ('No products to show. Empty inventary')
+            if(!foundProduct) {
+                const error = new Error(`Product ID ${id} not found to delete.`)
+                error.statusCode = 404
                 throw error
             } else {
-                const foundProduct = allProducts.find ( product => product.id === id)
 
-                if(!foundProduct) {
-                    console.log(`Product ID ${id} not found to delete.`)
-                } else {
+                let productsUpdated = allProducts.filter ( user => user.id !== id)
+                productsUpdated = JSON.stringify(productsUpdated, null, 4)
 
-                    let productsUpdated = allProducts.filter ( user => user.id !== id)
-                    productsUpdated = JSON.stringify(productsUpdated, null, 4)
+                await fs.promises.writeFile(this.path, productsUpdated)
+                console.log(`Product ID ${id} has been deleted.`)
+                return foundProduct
 
-                    await fs.promises.writeFile(this.path, productsUpdated)
-                    console.log(`Product ID ${id} has been deleted.`)
-                    return foundProduct
+            }            
+            
+        } catch (error) {
+            return next(error)
+        }
+    }
 
-                }
+    async update(id, data, next) {
+
+        try {
+
+            if(id === ':id') {
+                const error = new Error('Bad request: the ID parameter is required by the update method.')
+                error.statusCode = 400
+                throw error
+            }
+    
+            let allProducts = await fs.promises.readFile(this.path, 'utf-8')
+            allProducts = JSON.parse(allProducts)
+            let productFound = allProducts.find( product => product.id === id)
+    
+            if(!productFound) {
+                const error = new Error(`Not found: product ID ${id} not found.`)
+                error.statusCode = 404
+                throw error                
+            } else {
+    
+                productFound = Object.assign(productFound, data)
+                allProducts = JSON.stringify(allProducts, null, 4)
+    
+                await fs.promises.writeFile(this.path, allProducts)
+                console.log(`Product ID ${id} updated.`)
+                return productFound
             }
             
         } catch (error) {
-            console.log(`An error has ocurred while reading products: ${error}`)
-        }
-    }
-    
-    
+            return next(error)
+        }    
+    }    
 }
 
 const productsManager = new ProductsManager()
