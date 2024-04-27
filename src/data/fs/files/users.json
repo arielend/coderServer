@@ -1,4 +1,53 @@
 [
+  {
+    "id": "cf9e1165e3963ce3410795e7",
+    "photo": "https://pm1.aminoapps.com/6637/361eba430f7f17bb5720563a53932839699b6963_hq.jpg",
+    "email": "willie@abc.com",
+    "password": "abc123",
+    "rol": "customer"
+  },
+  {
+    "id": "90f5a220800ff6c2f5650b8a",
+    "photo": "https://i.blogs.es/387576/mrburns/1366_2000.png",
+    "email": "monty@abc.com",
+    "password": "abc123",
+    "rol": "customer"
+  },
+  {
+    "id": "116d1ef1752241fa55ed611b",
+    "photo": "https://qph.cf2.quoracdn.net/main-qimg-ff2dbaa8b67e2c9c4fb6e0255a5a031d-lq",
+    "email": "timothy@abc.com",
+    "password": "abc123",
+    "rol": "customer"
+  },
+  {
+    "id": "c3c1184ffebc13bec91b3dee",
+    "photo": "https://i.pinimg.com/564x/75/a7/80/75a7801776d1e4d548f1bd5a46654eee.jpg",
+    "email": "moe@abc.com",
+    "password": "abc123",
+    "rol": "customer"
+  },
+  {
+    "id": "581a07c97576049b925dae69",
+    "photo": "https://i.pinimg.com/736x/94/27/22/9427226f2f1d58de41b6ab0cf7ed51d9.jpg",
+    "email": "waylon@abc.com",
+    "password": "abc123",
+    "rol": "customer"
+  },
+  {
+    "id": "83f7c6bbf7934efcb815a010",
+    "photo": "https://www.giantbomb.com/a/uploads/square_medium/0/598/192280-comic_book_guy_13018.jpg",
+    "email": "jeff@abc.com",
+    "password": "abc123",
+    "rol": "customer"
+  },
+  {
+    "id": "f54c295012d77ae2f8159edf",
+    "photo": "https://pbs.twimg.com/profile_images/1012362101510160384/EjayQ10E_400x400.jpg",
+    "email": "naty@abc.com",
+    "password": "6HKartTb}-dXNQS",
+    "rol": "customer"
+  },
     {
       "id": "cf9e1165e3963ce3410795e7",
       "photo": "./photo1.jpg",

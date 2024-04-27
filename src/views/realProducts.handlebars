@@ -1,0 +1,122 @@
+<h1 class='text-center my-2'>Realtime Products</h1>
+
+<div class='d-flex'>
+
+    <div class='w-50'>
+        <h3 class='text-center'>Nuevo producto</h3>
+        <form class="d-flex flex-column w-75 m-auto align-items-center border border-secondary rounded p-4">
+
+            <div class='form-group w-70 my-2'>
+                <label for='exampleFormControlSelect1'>Select category</label>
+                <select class='form-control' id='category'>
+                    <option value="graphics_cards">Graphics Cards</option>
+                    <option value="keyboards">Keyboards</option>
+                    <option value="mice">Mice</option>
+                    <option value="motherboards">Motherboards</option>
+                    <option value="processors">Processors</option>
+                    <option value="ram_memory">Ram memory</option>
+                    <option value="storage_drives">Storage Drives</option>
+                </select>
+            </div>
+
+            <div class='form-group w-70 my-2'>
+                <label for='exampleFormControlInput1'>Title</label>
+                <input
+                    type='text'
+                    class='form-control'
+                    id='title'
+                    placeholder='Product title'
+                />
+            </div>
+
+            <div class='form-group w-70 my-2'>
+                <label for='exampleFormControlInput1'>Price</label>
+                <input
+                    type='text'
+                    class='form-control'
+                    id='price'
+                    placeholder='Product price'
+                />
+            </div>
+
+            <div class='form-group w-70 my-2'>
+                <label for='exampleFormControlInput1'>Stock</label>
+                <input
+                    type='number'
+                    class='form-control'
+                    id='stock'
+                />
+            </div>
+
+            <div class='form-group w-70 my-2'>
+                <label for='exampleFormControlInput1'>Image url</label>
+                <input
+                    type='text'
+                    class='form-control'
+                    id='photo'
+                    placeholder="Paste image url link"
+                />
+            </div>
+
+            <div class="form-group w-70 mt-2">
+                <input id="confirm" name="confirm" type="button" class="btn btn-primary" value="Register"/>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class='w-50'>
+        <h3 class='text-center'>Listado actualizado</h3>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 mx-2 text-center" id="productsList"></div>
+    </div>
+
+</div>
+
+<script src='/socket.io/socket.io.js'></script>
+<script>
+
+    const socket = io()
+    socket.on('products', (data) => {
+
+        let list = document.querySelector('#productsList')
+
+        let template = ``
+        template = data.map(
+            each => `
+            <div class='col'>
+                <div class='card mb-4 rounded-3 shadow-sm'>
+                    <div class='card-header py-3'>
+                        <h4 class='my-0 fw-normal'>${each.category}</h4>
+                    </div>
+                    <div class='card-body'>
+                        <h5>${each.title}</h5>
+                        <h6 class='card-title'>
+                            ${each.price}
+                        </h6>
+                        <a href="/products/${each.id}" class='w-100 btn btn-lg btn-outline-primary'>
+                            View details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            `).join("")
+
+        list.innerHTML = template        
+    })
+
+    document.querySelector('#confirm').addEventListener('click', (event)=>{
+
+        console.log("Click de boton")
+        const category = document.querySelector('#category').value
+        const title = document.querySelector('#title').value
+        const price = parseInt(document.querySelector('#price').value)
+        const stock = parseInt(document.querySelector('#stock').value)
+        const photo = document.querySelector('#photo').value        
+
+        const newProduct = { category, title, price, stock, photo }
+        socket.emit('createProduct', newProduct)        
+
+    })
+
+</script>
