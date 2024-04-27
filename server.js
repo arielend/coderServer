@@ -1,7 +1,9 @@
+import 'dotenv/config.js'
 import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
 import socketCallback from './src/websocket/index.socket.js'
+import dbConnect from './src/utils/dbConnection.js'
 import morgan from 'morgan'
 import indexRouter from './src/routers/index.router.js'
 import errorHandler from './src/middlewares/errorHandler.js'
@@ -13,14 +15,17 @@ import __dirname from './utils.js'
 // Server
 const server = express()
 const port = 8080
-const ready = () => { console.log(`Server ready on http://localhost:${port}/`) }
+const ready = async () => { 
+    console.log(`Server ready on http://localhost:${port}/`)
+    await dbConnect()
+}
 
 const nodeServer = createServer(server)
 const io = new Server(nodeServer)
 
 nodeServer.listen(port, ready)
 
-io.on('connection', socketCallback) //Pasar socketCB o unificar
+io.on('connection', socketCallback)
 export { io }
 
 // Templates engine (Handlebars)
