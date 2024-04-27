@@ -3,7 +3,6 @@ import { createServer } from 'http'
 import { Server } from 'socket.io'
 import socketCallback from './src/websocket/index.socket.js'
 import socketCb from './src/routers/index.socket.js'
-
 import morgan from 'morgan'
 import indexRouter from './src/routers/index.router.js'
 import errorHandler from './src/middlewares/errorHandler.js'
@@ -34,11 +33,6 @@ server.set('views', __dirname + '/src/views')
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.static(__dirname + '/public'))
-server.use(morgan("dev"))
-
-// Middlewares
-server.use(express.urlencoded({ extended: true }))
-server.use(express.json())
 server.use(morgan("dev"))
 
 // Router
