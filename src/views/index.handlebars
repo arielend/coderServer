@@ -1,4 +1,41 @@
-<h1 class="text-center my-2">Productos</h1>
+<h1 class="text-center my-2">Welcome to CoderStore!</h1>
+
+<div class="d-flex flex-column justify-content-center align-items-center row-gap-4 px-4 mt-2 mb-4">
+    <h3>Explore our categories</h3>
+    <div>
+        <a href='/products?category=mice' title="mices">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/mice_icon.png" alt="" />
+        </a>
+
+        <a href='/products?category=keyboards' title="keyboards">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/keyboards_icon.png" alt="" />
+        </a>
+
+        <a href='/products?category=storage_drives' title="storage">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/drives_icon.png" alt="" />
+        </a>
+
+        <a href='/products?category=motherboards' title="motherboards">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/motherboards_icon.png" alt="" />
+        </a>
+
+        <a href='/products?category=ram_memory' title="ram memories">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/ramMemories_icon.png" alt="" />
+        </a>
+
+        <a href='/products?category=graphics_cards' title="graphics cards">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/graphicsCards_icon.png" alt="" />
+        </a>
+
+        <a href='/products?category=procecssors' title="processors">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/processors_icon.png" alt="" />
+        </a>
+
+    </div>
+    
+</div>
+
+<h2 class="text-center my-2">Our products!</h2>
 
 <div class='row row-cols-1 row-cols-md-3 mb-3 text-center'>
     {{#each products}}
