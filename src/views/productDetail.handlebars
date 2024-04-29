@@ -1,6 +1,6 @@
 <h1 class='text-center my-2'>Detalles del producto</h1>
 
-{{#if product.id}}
+{{#if product._id}}
 
     <div class='card mx-4'>
         <div class='d-flex card-header justify-content-between px-4'>
@@ -13,7 +13,7 @@
                     class='bg-secondary-subtle rounded rounded-3 me-4'
                     style='height: 220px'
                     src={{product.photo}}
-                    alt={{product.id}}
+                    alt={{product._id}}
                 />
                 <div class=''>
                     <h5 class='card-title'>Categoría: {{product.category}}</h5>
@@ -34,7 +34,5 @@
     </div>
 
 {{else}}
-
     <h3 class='text-center mt-4 text-secondary'>No existe el producto</h3>
-
 {{/if}}

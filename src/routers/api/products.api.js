@@ -1,6 +1,5 @@
 import { Router } from 'express'
-import { productsManager } from '../../data/managers/managers.js'
-
+import productsManager from '../../data/mongo/managers/productsManager.js'
 import uploader from '../../middlewares/multer.js'
 import isPhoto from '../../middlewares/isPhoto.js'
 import productFieldsValidate from '../../middlewares/productFieldsValidate.js'
@@ -41,7 +40,7 @@ async function readOne ( request, response, next ) {
     try {
 
         const { id } = request.params
-        
+
         const foundProduct = await productsManager.readOne(id, next)
 
         if (foundProduct) {

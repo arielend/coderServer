@@ -14,9 +14,9 @@ class Manager {
         }
     }
 
-    async read (filter = []) {
+    async read (filter) {
         try {
-            const allItems = await this.Model.find()
+            const allItems = await this.Model.find(filter).lean()
             return allItems            
         } catch (error) {
             console.log(error)
@@ -26,7 +26,8 @@ class Manager {
 
     async readOne (id) {
         try {
-            const itemFound = await this.Model.findById(id)
+            //const itemFound = await this.Model.findById(id)
+            const itemFound = await this.Model.findOne({_id: id}).lean()
             return itemFound            
         } catch (error) {
             console.log(error)
@@ -36,7 +37,7 @@ class Manager {
 
     async update (id, data) {
         try {
-            const itemUpdated = await this.Model.findByIdAndUpdate(id, data, { new: true})
+            const itemUpdated = await this.Model.findByIdAndUpdate(id, data, { new: true}).lean()
             return itemUpdated            
         } catch (error) {
             console.log(error)
@@ -46,7 +47,7 @@ class Manager {
 
     async destroy (id) {
         try {
-            const itemDeleted = this.Model.findOneAndDelete(id)
+            const itemDeleted = this.Model.findOneAndDelete(id).lean()
             return itemDeleted              
         } catch (error) {
             console.log(error)

@@ -10,9 +10,8 @@ const schema = new Schema({
     rol: { type: String, default: 'customer', enum: ['customer', 'admin'] }
 
 },{
-    timestamps: true   
+    timestamps: true
 })
 
 const UserModel = model(collection, schema)
-
 export default UserModel

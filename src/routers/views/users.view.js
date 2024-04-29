@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { usersManager } from '../../data/managers/managers.js'
+import usersManager from '../../data/mongo/managers/usersManager.js'
 
 const usersRouter = Router()
 
@@ -27,9 +27,10 @@ usersRouter.get('/real', async (request, response, next) => {
 usersRouter.get('/:id', async ( request, response, next ) => {
 
     try {
+
         const { id } = request.params
         const user = await usersManager.readOne(id)
-
+        console.log(user);
         return response.render('userProfile', { user })
         
     } catch (error) {
