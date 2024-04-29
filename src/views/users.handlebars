@@ -1,1 +1,19 @@
 <h1 class="text-center my-2">Usuarios</h1>
+
+<div class='row row-cols-1 row-cols-md-3 mb-3 text-center'>
+    {{#each users}}
+        <div class='col'>
+            <div class='card mb-4 rounded-3 shadow-sm'>
+                <div class='card-header py-3'>
+                    <h4 class='my-0 fw-normal'>{{this.rol}}</h4>
+                </div>
+                <div>
+                    <img src={{this.photo}} alt="">
+                </div>
+                <div class='card-body'>
+                    <h5>{{this.email}}</h5>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
