@@ -1,19 +1,19 @@
 <h1 class='text-center my-2'>Datos del usuario</h1>
 
-{{#if user.id}}
+{{#if user._id}}
 
     <div class='card mx-4'>
         <div class='d-flex card-header justify-content-between px-4'>
             <span class='h4'>Usuario: {{user.email}}</span>
-            <span>ID: {{user.id}}</span>
+            <span>ID: {{user._id}}</span>
         </div>
         <div class='card-body'>
             <div class='d-flex justify-content-start px-4'>
                 <img
                     class='bg-secondary-subtle rounded rounded-3 me-4'
                     style='height: 220px'
-                    src={{product.photo}}
-                    alt={{product.id}}
+                    src={{user.photo}}
+                    alt={{user._id}}
                 />
                 <div class=''>
                     <h5 class='card-title'>Rol: {{user.rol}}</h5>
@@ -28,7 +28,5 @@
     </div>
 
 {{else}}
-
     <h3 class="text-center pt-4 text-primary">No existe el usuario</h>
-
 {{/if}}
