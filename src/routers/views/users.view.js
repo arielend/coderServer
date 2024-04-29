@@ -13,6 +13,17 @@ usersRouter.get('/', async (request, response, next) => {
     }
 })
 
+usersRouter.get('/real', async (request, response, next) => {
+    try {
+
+        return response.render('realUsers')
+
+    } catch (error) {
+        return next(error)
+        
+    }
+})
+
 usersRouter.get('/:id', async ( request, response, next ) => {
 
     try {

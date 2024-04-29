@@ -14,5 +14,4 @@ const schema = new Schema({
 })
 
 const UserModel = model(collection, schema)
-
 export default UserModel

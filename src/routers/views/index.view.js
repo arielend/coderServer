@@ -15,7 +15,7 @@ viewsRouter.use('/chat', chatRouter)
 
 viewsRouter.get('/', (_request, response, next) => {
     try{
-        return response.render('index', {title: 'CompuMundoHiperMegaRed'})
+        return response.render('index', {title: 'CoCoderServer'})
     }catch (error) {
         return next(error)
     }
