@@ -24,6 +24,15 @@ class Manager {
         }
     }
 
+    async paginate ({filter, options}) {
+        try{    
+            const allItems = await this.Model.paginate(filter, opts)
+            return allItems
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async readOne (id) {
         try {
             //const itemFound = await this.Model.findById(id)
@@ -49,6 +58,16 @@ class Manager {
         try {
             const itemDeleted = this.Model.findOneAndDelete(id).lean()
             return itemDeleted              
+        } catch (error) {
+            console.log(error)
+            throw error            
+        }
+    }
+
+    async aggregate (obj) {
+        try {
+            const result = this.Model.aggregate(obj)
+            return result              
         } catch (error) {
             console.log(error)
             throw error            
