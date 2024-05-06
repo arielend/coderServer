@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import usersManager from '../../data/fs/UsersManager.js'
+import usersManager from '../../data/mongo/managers/usersManager.js'
 
 const usersRouter = Router();
 
@@ -12,7 +12,7 @@ usersRouter.delete('/:id', destroy)
 async function create(req, res, next) {
     try {
       const data = req.body;
-      const users = await notesManager.create(data);
+      const users = await usersManager.create(data);
       return res.json({
         statusCode: 201,
         message: "CREATED USER: " + users.id,
@@ -24,8 +24,8 @@ async function create(req, res, next) {
   
   async function read(req, res, next) {
     try {
-      const { roll } = req.query;
-      const all = await usersManager.read(roll);
+      const { rol } = req.query;
+      const all = await usersManager.read(rol);
       if (all.length > 0) {
         return res.json({
           statusCode: 200,
