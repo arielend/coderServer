@@ -1,4 +1,5 @@
 import { Schema, model, Types } from 'mongoose'
+import mongoosePaginate from 'mongoose-paginate-v2'
 
 const collection = 'notes'
 
@@ -17,6 +18,8 @@ schema.pre('find', function () {
 schema.pre('findOne', function () {
     this.populate('user_id', 'email -_id')
 })
+
+schema.plugin(mongoosePaginate)
 
 const NoteModel = model(collection, schema)
 export default NoteModel

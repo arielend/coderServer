@@ -6,7 +6,7 @@ import productFieldsValidate from '../../middlewares/productFieldsValidate.js'
 
 const productsRouter = Router()
 
-productsRouter.get('/', read)
+productsRouter.get('/', paginate)
 productsRouter.get('/:id', readOne)
 productsRouter.post('/', uploader.single('photo'), isPhoto, productFieldsValidate, create)
 productsRouter.put('/:id', update)
@@ -15,7 +15,6 @@ productsRouter.delete('/:id', destroy)
 async function read( request, response, next ) {
 
     try {
-
         const { category } = request.query
         const allProducts = category ? await productsManager.read(category) : await productsManager.read()
 
@@ -30,6 +29,31 @@ async function read( request, response, next ) {
             error.statusCode = 404
             throw error
         }
+    } catch (error) {
+        return next(error)
+    }
+}
+
+async function paginate (request, response, next) {
+    
+    try {
+        const sortAndPaginate = {}
+        request.query.limit && (sortAndPaginate.limit = request.query.limit)
+        request.query.page && (sortAndPaginate.page = request.query.page)
+        request.query.prevPage && (sortAndPaginate.prevPage = request.query.prevPage)
+        request.query.nextPage && (sortAndPaginate.nextPage = request.query.nextPage )
+
+        const filter = {}
+        request.query.category && (filter.category = request.query.category)
+
+        const result = await productsManager.paginate({filter, sortAndPaginate})
+        let products = result.docs.map( product => product.toObject())
+        let page = result.page
+        let prevPage = result.prevPage
+        let nextPage = result.nextPage
+
+        return response.render('products', {products, page, prevPage, nextPage} )
+        
     } catch (error) {
         return next(error)
     }
