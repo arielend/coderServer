@@ -19,7 +19,7 @@ productsRouter.get('/', async (_request, response, next) => {
 productsRouter.get('/real', async (_request, response, next) => {
     try {
 
-        return response.render('realProducts')
+        return response.render('productsLoad')
 
     } catch (error) {
         return next(error)

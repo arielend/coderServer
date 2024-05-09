@@ -24,6 +24,27 @@ class Manager {
         }
     }
 
+    async paginate({ filter, sortAndPaginate }) {
+        try {
+            const allItems = await this.Model.paginate(filter, sortAndPaginate)
+            return allItems            
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
+    }
+
+    async aggregate (obj) {
+
+        try {
+            const result = await this.Model.aggregate(obj)
+            return result
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
+    }
+
     async readOne (id) {
         try {
             //const itemFound = await this.Model.findById(id)
