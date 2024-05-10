@@ -4,6 +4,7 @@ import usersManager from '../../data/mongo/managers/usersManager.js'
 const usersRouter = Router();
 
 usersRouter.get('/', read)
+usersRouter.get('/paginate', paginate)
 usersRouter.get('/:id', readOne)
 usersRouter.post('/', create)
 usersRouter.put('/:id', update)
@@ -41,6 +42,33 @@ async function create(req, res, next) {
     }
   }
   
+  async function paginate(req, res, next) {
+    try {
+      const filter = {}
+      const opts = {}
+      if (req.query.limit) {
+        opts.limit = req.query.limit
+      }
+      if (req.query.page) {
+        opts.page = req.query.page
+      }
+      const all = await usersManager.paginate({filter, opts})
+      return res.json({
+        statusCode: 200,
+        response: all.docs,
+        info: {
+          page: all.page,
+          totalPages: all.totalPages,
+          limit: all.limit,
+          prevPage: all.prevPage,
+          nextPage: all.nextPage,
+        }
+      })
+    } catch (error) {
+      return next(error)
+    }
+  }
+
   async function readOne(req, res, next) {
     try {
       const { id } = req.params;

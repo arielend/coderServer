@@ -1,6 +1,6 @@
-import { Router } from 'express'
-import cartsManager from '../../data/mongo/managers/cartsManager.js'
-import { Types } from 'mongoose'
+import { Router } from "express"
+import cartsManager from "../../data/mongo/managers/cartsManager";
+import { Types } from "mongoose";
 
 const ticketsRouter = Router()
 

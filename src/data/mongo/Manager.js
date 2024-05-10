@@ -23,8 +23,8 @@ class Manager {
             throw error            
         }
     }
-
-    async paginate({ filter, sortAndPaginate }) {
+  
+  async paginate({ filter, sortAndPaginate }) {
         try {
             const allItems = await this.Model.paginate(filter, sortAndPaginate)
             return allItems            

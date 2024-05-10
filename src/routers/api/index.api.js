@@ -10,5 +10,6 @@ apiRouter.use('/carts', cartsRouter)
 apiRouter.use('/products', productsRouter)
 apiRouter.use('/tickets', ticketsRouter)
 apiRouter.use('/users', usersRouter)
+apiRouter.use('/tickets', ticketsRouter)
 
 export default apiRouter
