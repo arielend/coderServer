@@ -23,13 +23,25 @@ class Manager {
             throw error            
         }
     }
-
-    async paginate ({filter, options}) {
-        try{    
-            const allItems = await this.Model.paginate(filter, opts)
-            return allItems
+  
+  async paginate({ filter, sortAndPaginate }) {
+        try {
+            const allItems = await this.Model.paginate(filter, sortAndPaginate)
+            return allItems            
         } catch (error) {
-            throw error;
+            console.log(error)
+            throw error
+        }
+    }
+
+    async aggregate (obj) {
+
+        try {
+            const result = await this.Model.aggregate(obj)
+            return result
+        } catch (error) {
+            console.log(error)
+            throw error
         }
     }
 
@@ -58,16 +70,6 @@ class Manager {
         try {
             const itemDeleted = this.Model.findOneAndDelete(id).lean()
             return itemDeleted              
-        } catch (error) {
-            console.log(error)
-            throw error            
-        }
-    }
-
-    async aggregate (obj) {
-        try {
-            const result = this.Model.aggregate(obj)
-            return result              
         } catch (error) {
             console.log(error)
             throw error            

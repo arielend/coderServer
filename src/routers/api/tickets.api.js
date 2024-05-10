@@ -1,24 +1,66 @@
 import { Router } from "express"
 import cartsManager from "../../data/mongo/managers/cartsManager";
-import { Types } from "mongoose";   
+import { Types } from "mongoose";
 
 const ticketsRouter = Router()
 
-ticketsRouter.get('/:uid', async(req, res, next) => {
-    try{
-        const{ uid } = req.params
+ticketsRouter.get('/:id', async (request, response, next) => {
+    try {
+        const { id } = request.params
+
         const ticket = await cartsManager.aggregate([
             {
-                $match: {
-                    user_id: new Types.ObjectId (uid),
-                },
+                $match:{
+                    user_id: new Types.ObjectId(id)
+                }
             },
+            {
+                $lookup:{
+                    foreignField: "_id", 
+                    from: 'products', 
+                    localField: 'product_id', 
+                    as: 'product_id'
+                }
+            },
+            {
+                $replaceRoot:{
+                    newRoot:{
+                        $mergeObjects: [{ $arrayElemAt: ["$product_id", 0]}, "$$ROOT"]
+                    }
+                }
+            },
+            {
+                $set: {
+                    subTotal: { 
+                        $multiply: ["$product_quantity", "$price" ]
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: "$user_id",
+                    total: { $sum: "$subTotal"}
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    user_id: "$_id",
+                    total: "$total",
+                    date: new Date()
+                }
+            },
+            {
+                $merge: {
+                    into: "tickets"
+                }
+            }
         ])
-        return res.json({
+        return response.json({
             statusCode: 200,
-            response: ticket,
+            response: ticket
         })
-    }catch(error){
+    } catch (error) {
         return next(error)
     }
 })
