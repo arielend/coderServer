@@ -23,8 +23,8 @@ class Manager {
             throw error            
         }
     }
-  
-  async paginate({ filter, sortAndPaginate }) {
+
+    async paginate({ filter, sortAndPaginate }) {
         try {
             const allItems = await this.Model.paginate(filter, sortAndPaginate)
             return allItems            
@@ -53,6 +53,16 @@ class Manager {
         } catch (error) {
             console.log(error)
             throw error            
+        }
+    }
+
+    async readByEmail (email) {
+        try {
+            const response = await this.Model.findOne({email}).lean()
+            return response            
+        } catch (error) {
+            console.log(error)
+            throw error
         }
     }
 
