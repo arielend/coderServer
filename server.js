@@ -11,6 +11,7 @@ import morgan from 'morgan'
 import indexRouter from './src/routers/index.router.js'
 import errorHandler from './src/middlewares/errorHandler.js'
 import pathHandler from './src/middlewares/pathHandler.js'
+import MongoStore from 'connect-mongo'
 
 import { engine } from 'express-handlebars'
 import __dirname from './utils.js'
@@ -52,7 +53,15 @@ server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.static(__dirname + '/public'))
 server.use(morgan("dev"))
-
+server.use(
+    session({
+        store: new MongoStore({mongoUrl: process.env.MONGO_URI, ttl: 60 * 60}),
+        secret: process.env.SECRET_SESSION,
+        resave: true,
+        saveUninitialized: true,
+        cookie: {maxAge: 60 * 60 * 1000},
+    })
+)
 // Router
 server.use('/', indexRouter)
 
