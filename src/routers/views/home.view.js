@@ -4,12 +4,9 @@ import productsManager from '../../data/mongo/managers/productsManager.js'
 
 const homeRouter = Router()
 
-homeRouter.get('/', async (_request, response, next) => {
+homeRouter.get('/', async (request, response, next) => {
 
-    // Obtener el dato de la sesion
-    let user = {
-        _id: new Types.ObjectId('662ff23998461b4dd2ff1190')
-    }
+    const user = request.session.email;
 
     try {
         if(user) {

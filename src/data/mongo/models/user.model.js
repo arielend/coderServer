@@ -8,7 +8,7 @@ const schema = new Schema({
     email: { type: String, required: true, unique: true, index: true },
     password: { type: String, required: true },
     photo: { type: String, default: '/images/no_profile_photo.svg' },
-    rol: { type: String, default: 'customer', enum: ['customer', 'admin'], index: true }
+    role: { type: String, default: 'customer', enum: ['customer', 'admin'], index: true }
 
 },{
     timestamps: true

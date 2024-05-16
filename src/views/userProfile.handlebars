@@ -1,11 +1,11 @@
 <h1 class='text-center my-2'>Datos del usuario</h1>
 
-{{#if user._id}}
+{{#if user}}
 
     <div class='card mx-4'>
         <div class='d-flex card-header justify-content-between px-4'>
             <span class='h4'>Usuario: {{user.email}}</span>
-            <span>ID: {{user._id}}</span>
+            <span>ID: {{user.user_id}}</span>
         </div>
         <div class='card-body'>
             <div class='d-flex justify-content-start px-4'>
@@ -13,10 +13,10 @@
                     class='bg-secondary-subtle rounded rounded-3 me-4'
                     style='height: 220px'
                     src={{user.photo}}
-                    alt={{user._id}}
+                    alt={{user.user_id}}
                 />
                 <div class=''>
-                    <h5 class='card-title'>Rol: {{user.rol}}</h5>
+                    <h5 class='card-title'>Rol: {{user.role}}</h5>
                 </div>
             </div>
 

@@ -1,10 +1,13 @@
-document.getElementById('btn_login').addEventListener("click", async (e)=>{
-    
+document.getElementById('btn_register').addEventListener('click', async (e) => {
+
+    console.log('click on register');
+
     e.preventDefault()
-    
+
     const data = JSON.stringify({
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
+        photo: document.getElementById('photo_url').value
     })
 
     const fetchOptions = {
@@ -13,10 +16,10 @@ document.getElementById('btn_login').addEventListener("click", async (e)=>{
         body: data
     }
 
-    let response = await fetch('/api/sessions/login', fetchOptions)
+    let response = await fetch('/api/sessions/register', fetchOptions)
     response = await response.json()
 
-    if(response.statusCode === 200 ) {
+    if(response.statusCode === 201){
 
         setTimeout(()=>{
             location.replace('/')
@@ -28,9 +31,10 @@ document.getElementById('btn_login').addEventListener("click", async (e)=>{
             timer: 1500,
             timerProgressBar: true,
             confirmButtonColor: "#ff3b3c",
-        })        
+        })
     }
-    else{
+    else 
+    {
         Swal.fire({
             title: response.message,
             icon: "error",
