@@ -13,6 +13,7 @@
   "author": "Natalia Peripolli y Ariel Endrizzi",
   "license": "ISC",
   "dependencies": {
+    "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

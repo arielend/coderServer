@@ -13,6 +13,16 @@ usersRouter.get('/', async (request, response, next) => {
     }
 })
 
+usersRouter.get('/register', async (request, response, next) => {
+
+    try {
+        const users = await usersManager.read()
+        return response.render('register', { users })        
+    } catch (error) {
+        next(error)
+    }
+})
+
 usersRouter.get('/real', async (request, response, next) => {
     try {
 
