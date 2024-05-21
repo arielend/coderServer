@@ -3,12 +3,11 @@ import cartsManager from '../../data/mongo/managers/cartsManager.js'
 
 const cartsRouter = Router()
 
-//cartsRouter.get('/', read)
 cartsRouter.get('/', paginate)
 cartsRouter.get('/:id', paginate)
 cartsRouter.post('/', create)
 cartsRouter.put('/:id', update)
-cartsRouter.delete('/:id', destroy)
+cartsRouter.delete('/', destroy)
 
 // async function read( request, response, next ) {
 
@@ -53,6 +52,8 @@ async function paginate (request, response, next) {
 
     try {
 
+        const user = request.session
+
         const sortAndPaginate = {}
         request.query.limit && (sortAndPaginate.limit = request.query.limit)
         request.query.page && (sortAndPaginate.page = request.query.page)
@@ -60,17 +61,31 @@ async function paginate (request, response, next) {
         request.query.nextPage && (sortAndPaginate.nextPage = request.query.nextPage )
 
         const filter = {}
-        request.params.id && (filter.user_id = request.params.id)
+        request.params.id && (user.user_id)
 
         const result = await cartsManager.paginate({filter, sortAndPaginate})
         const userCarts = result.docs.map( cart => cart.toObject())
 
-        let page = result.page
-        let prevPage = result.prevPage
-        let nextPage = result.nextPage
+        let pagination = {
+            page: result.page,
+            prevPage: result.prevPage,
+            nextPage: result.nextPage,
+            totalPages: result.totalPages
+        }
 
         if (userCarts.length !== 0) {
-            return response.render('carts', {userCarts, page, prevPage, nextPage})
+            return response.render('carts', {userCarts, pagination})
+            // return response.json({
+            //     statusCode: 200,
+            //     userCarts,
+            //     pagination
+            // })
+        }
+        else{
+            return response.json({
+                statusCode: 400,
+                message: 'No carts to show'
+            })
         }
 
         // return response.json({
@@ -158,19 +173,19 @@ async function update (request, response, next) {
 async function destroy (request, response, next) {
     try {
 
-        const { id } = request.params
-        const foundCart = await cartsManager.readOne(id, next)
+        const { _id } = request.body
 
-        if (!foundCart) {
+        const deletedCart = await cartsManager.destroy({_id})
+
+        if (!deletedCart) {
             const error = new Error(`Cart id ${id} not found`)
             error.statusCode = 404
             throw error
         } else {
-            const deletedCart = await cartsManager.destroy(id)
             return response.json({
                 statusCode: 200,
                 succes: true,
-                message: `Cart ID ${id} succesfully deleted.`
+                message: `Cart ID ${_id} succesfully deleted.`
             })
         }
         

@@ -2,10 +2,11 @@ import { Router } from 'express'
 
 const chatRouter = Router()
 
-chatRouter.get('/', async (_request, response, next) => {
+chatRouter.get('/', async (request, response, next) => {
 
     try {
-        return response.render('chat', {title: 'Coderserver | Chat'})        
+        const user = request.session
+        return response.render('chat', {title: 'Coderserver | Chat', user})        
     } catch (error) {
         next(error)
     }

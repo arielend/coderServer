@@ -6,10 +6,10 @@ const homeRouter = Router()
 
 homeRouter.get('/', async (request, response, next) => {
 
-    const user = request.session.email;
+    const user = request.session;
 
     try {
-        if(user) {
+        if(user.online) {
 
             const filter = {}
             const sortAndPaginate = { limit: 6 }
@@ -23,6 +23,9 @@ homeRouter.get('/', async (request, response, next) => {
                 nextPage: result.nextPage,
                 totalPages: result.totalPages
             }
+
+            console.log('El user en home view: ', user);
+
 
             return response.render('index', {layout: 'main', title: 'CoderServer | Home ', products, pagination, user})
         }

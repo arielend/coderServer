@@ -49,7 +49,6 @@ class UsersManager{
             if(all.length === 0){
                 throw new Error("No hay usuarios");
             }else{
-                console.log(all)
                 return all
             }
         }catch(error){
@@ -65,7 +64,6 @@ class UsersManager{
             if(!user){
                 throw new Error('Usuario no encontrado')
             }else{
-                console.log(user);
                 return user;
             }
         }catch(error){
@@ -99,7 +97,6 @@ class UsersManager{
                 let filtered = all.filter(each=>each.id!==id);
                 filtered = JSON.stringify(filtered, null, 2);
                 await fs.promises.writeFile(this.path,filtered)
-                console.log({deleted: user.id});
                 return user;
             }
         }catch(error){

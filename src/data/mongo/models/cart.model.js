@@ -23,11 +23,11 @@ schema.pre('findOne', function () {
 })
 
 schema.pre('find', function () {
-    this.populate('product_id', 'title -_id')
+    this.populate('product_id', 'title photo price -_id')
 })
 
 schema.pre('findOne', function () {
-    this.populate('product_id', 'title -_id')
+    this.populate('product_id', 'title photo price -_id')
 })
 
 schema.plugin(mongoosePaginate)
