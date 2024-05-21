@@ -81,7 +81,7 @@ chatSocket.on('server messages', async (serverMessages) => {
                 `
                 <div class="d-flex ${divClass} justify-content-center m-2">
                     <div class="d-flex justify-content-center p-2 align-items-center" >
-                        <img class="h-full w-full" src="/images/coderserver_avatar.svg" alt="User avatar">
+                        <img class="h-full w-full" src="/images/user_icon_dark.svg" alt="User avatar">
                     </div>
                     <span id='messages' name='messages' class='form-control ${spanClass} p-2'>
                         <div class="d-flex flex-column justify-content-between">

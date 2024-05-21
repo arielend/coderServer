@@ -3,6 +3,7 @@ import usersManager from '../../data/mongo/managers/usersManager.js'
 
 const usersRouter = Router();
 
+
 usersRouter.get('/', read)
 usersRouter.get('/paginate', paginate)
 usersRouter.get('/:id', readOne)
@@ -69,15 +70,17 @@ async function create(req, res, next) {
     }
   }
 
-  async function readOne(req, res, next) {
+  async function readOne(request, response, next) {
     try {
-      const { id } = req.params;
-      const foundUser = await usersManager.readOne(id);
+
+      const { user_id } = request.session;
+      const foundUser = await usersManager.readOne(user_id);
+
       if (foundUser) {
-        return res.json({
+        return response.json({
           statusCode: 200,
-          response: foundUser,
-        });
+          response: foundUser
+        })
       } else {
         const error = new Error("Not found!");
         error.statusCode = 404;

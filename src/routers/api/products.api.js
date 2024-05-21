@@ -48,6 +48,20 @@ async function paginate (request, response, next) {
 
         const result = await productsManager.paginate({filter, sortAndPaginate})
         let products = result.docs.map( product => product.toObject())
+
+        //Defino el objeto pagination con las propiedades de paginate
+        // let pagination = {}
+        // pagination.page = result.page
+        // pagination.totalPages = result.totalPages
+        // pagination.prevPage = result.prevPage
+        // pagination.nextPage = result.nextPage
+
+        // return response.json({
+        //     statusCode: 200,
+        //     response: products,
+        //     pagination
+        // })
+
         let page = result.page
         let prevPage = result.prevPage
         let nextPage = result.nextPage
