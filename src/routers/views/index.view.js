@@ -6,6 +6,7 @@ import usersRouter from './users.view.js'
 
 const viewsRouter = Router();
 
+viewsRouter.use('/', productsRouter)
 viewsRouter.use('/notes', notesRouter)
 viewsRouter.use('/register', registerRouter)
 viewsRouter.use('/products', productsRouter)

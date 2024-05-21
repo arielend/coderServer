@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { usersManager } from '../../data/managers/managers.js'
+import  usersManager  from '../../data/fs/UsersManager.js'
 
 const usersRouter = Router()
 
@@ -10,6 +10,14 @@ usersRouter.get('/', async (request, response, next) => {
         return response.render('users', { users })        
     } catch (error) {
         next(error)
+    }
+})
+
+usersRouter.get('/real', async (request, response, next) => {
+    try {
+        return response.render('realUsers')
+    } catch (error) {
+        return next(error)
     }
 })
 

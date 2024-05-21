@@ -390,5 +390,13 @@
         "price": 240000,
         "stock": 2,
         "photo": ""
+    },
+    {
+        "id": "a95da346516a3c11949a6b32",
+        "category": "graphics_cards",
+        "title": "",
+        "price": null,
+        "stock": null,
+        "photo": ""
     }
 ]
