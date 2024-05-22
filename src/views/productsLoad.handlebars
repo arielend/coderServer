@@ -1,4 +1,4 @@
-<h1 class='text-center my-2'>Realtime Products</h1>
+<h1 class='text-center mb-2'>Sección de cargas de productos</h1>
 
 <div class='d-flex'>
 
@@ -67,56 +67,11 @@
     </div>
 
     <div class='w-50'>
-        <h3 class='text-center'>Listado actualizado</h3>
+        <h3 class='text-center'>Últimos productos agregados a la base de datos</h3>
         <div class="row row-cols-1 row-cols-md-3 mb-3 mx-2 text-center" id="productsList"></div>
     </div>
 
 </div>
 
 <script src='/socket.io/socket.io.js'></script>
-<script>
-
-    const socket = io()
-    socket.on('products', (data) => {
-
-        let list = document.querySelector('#productsList')
-
-        let template = ``
-        template = data.map(
-            each => `
-            <div class='col'>
-                <div class='card mb-4 rounded-3 shadow-sm'>
-                    <div class='card-header py-3'>
-                        <h4 class='my-0 fw-normal'>${each.category}</h4>
-                    </div>
-                    <div class='card-body'>
-                        <h5>${each.title}</h5>
-                        <h6 class='card-title'>
-                            ${each.price}
-                        </h6>
-                        <a href="/products/${each.id}" class='w-100 btn btn-lg btn-outline-primary'>
-                            View details
-                        </a>
-                    </div>
-                </div>
-            </div>
-            `).join("")
-
-        list.innerHTML = template        
-    })
-
-    document.querySelector('#confirm').addEventListener('click', (event)=>{
-
-        console.log("Click de boton")
-        const category = document.querySelector('#category').value
-        const title = document.querySelector('#title').value
-        const price = parseInt(document.querySelector('#price').value)
-        const stock = parseInt(document.querySelector('#stock').value)
-        const photo = document.querySelector('#photo').value        
-
-        const newProduct = { category, title, price, stock, photo }
-        socket.emit('createProduct', newProduct)        
-
-    })
-
-</script>
+<script src="/scripts/realtimeProducts.js"></script>

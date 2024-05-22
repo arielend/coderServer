@@ -1,4 +1,4 @@
-import usersManager from "../data/mongo/managers/usersManager";
+import usersManager from "../data/mongo/managers/usersManager.js";
 import { verifyHash } from "../utils/hash.util.js";
 
 async function isValidPassword(req, res, next) {
@@ -12,6 +12,7 @@ async function isValidPassword(req, res, next) {
         const error = new Error('Bad auth')
         error.statusCode = 401
         throw error
+
     } catch (error) {
         return next(error)
     }

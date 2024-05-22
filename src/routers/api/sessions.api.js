@@ -21,10 +21,7 @@ sessionsRouter.post(
         const data = req.body
         const one = await usersManager.create(data)
         return json({statusCode: 201, message: 'Registered'})
-    } catch (error) {
-        return next(error)
-    }
-})
+
 
 sessionsRouter.post(
     '/login', 
@@ -50,10 +47,27 @@ sessionsRouter.get('/online', async(req, res, next) =>{
             statusCode: 401,
             message: 'Bad auth'
         })
+
+sessionsRouter.get('/isOnline', async (request, response, next) => {
+    try {
+        if (request.session.online) {
+            return response.json({
+                statusCode: 200,
+                message: "¡User Online!",
+                user_id: request.session.user_id
+
+            })
+        } else {
+            return response.json({
+                statusCode: 401,
+                message: "¡Bath auth!"
+            })
+        }
     } catch (error) {
         return next(error)
     }
 })
+
 
 sessionsRouter.post('signout', async (req, res, next) =>{
     try {
@@ -64,9 +78,11 @@ sessionsRouter.post('signout', async (req, res, next) =>{
         const error = new Error('Invalid credentials')
         error.statusCode = 403
         throw error
+
     } catch (error) {
         return next(error)
     }
 })
 
 export default sessionsRouter;
+

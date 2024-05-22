@@ -1,23 +1,23 @@
-import { productsManager, usersManager } from '../data/managers/managers.js'
-
+//import { io } from '../../server.js'
+import productsManager from '../data/mongo/managers/productsManager.js'
+import usersManager from '../data/mongo/managers/usersManager.js'
 
 async function socketCallback (socket) {
 
     console.log(`Cliente ${socket.id} connected.`)
 
     socket.emit('products', await productsManager.read())
-    socket.emit('users', await usersManager.read())
+    //socket.emit('users', await usersManager.read())
 
     socket.on('createProduct', async (data) => {
         await productsManager.create(data)
-        //Posiblemente haya que volver a emitir cuando se ejecute sin nodemon
+        socket.emit('products', await productsManager.read())
     })
 
     socket.on('register', async (data) => {
         await usersManager.create(data)
-        //Posiblemente haya que volver a emitir cuando se ejecute sin nodemon
+        socket.emit('users', await usersManager.read())
     })
-
 }
 
 export default socketCallback

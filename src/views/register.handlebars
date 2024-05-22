@@ -1,47 +1,45 @@
-<h1 class='text-center my-2'>Register</h1>
+<div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+    <h1 class='text-white text-center my-2'>Create your account</h1>
+    <form>
+        <div class="d-flex justify-content-center">
+            <div class="card" style="background: rgba(255, 255, 255, 0.1); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(5px); padding: 20px;">
+                <div class="card-header">
+                    <h3 class="text-white">Sign Up</h3>                    
+                </div>
+                <div class="card-body">
+                    <form id="login_form"> 
+                        <div class="d-flex gap-4 justify-content-center align-items-center">
+                            <img src="/images/user_icon.svg" style="height: 30px;"/>
+                            <input id="email" name="email" type="text" class="form-control my-2 text-white" placeholder="e-mail" style="background: rgba(255, 255, 255, 0.379); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(5px) color:white;">
+                        </div>
 
-<div class=''>
+                        <div class="d-flex gap-4 justify-content-center align-items-center">
+                            <img src="/images/pass_icon.svg" style="height: 30px;"/>
+                            <input id="password" name="password" type="password" class="form-control my-2" placeholder="password" style="background: rgba(255, 255, 255, 0.379); box-shadow: 0 4px 30px rgba(20, 19, 19, 0.1); backdrop-filter: blur(2px); color:white;">
+                        </div>
 
-    <form class='d-flex flex-column w-25 m-auto align-items-center border border-secondary rounded p-4' >
-
-        <div class='form-group w-100 my-2'>
-            <label for='exampleFormControlInput1'>Email</label>
-            <input
-                type='email'
-                class='form-control'
-                id='email'
-                placeholder='Email'
-            />
+                        <div class="d-flex gap-4 justify-content-center align-items-center">
+                            <img src="/images/camera_icon.svg" style="height: 30px;"/>
+                            <input id="photo_url" name="photo_url" type="text" class="form-control my-2" placeholder="Paste url photo" style="background: rgba(255, 255, 255, 0.379); box-shadow: 0 4px 30px rgba(20, 19, 19, 0.1); backdrop-filter: blur(2px); color:white;" onchange="handleFiles(this.files)" />
+                        </div>
+                        
+                        <div class="d-flex gap-4 justify-content-center align-items-center">
+                            <button type="button" id="btn_register" class="btn border-1 border-white rounded px-4 text-white">Register</button>                           
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <div class="d-flex justify-content-center links text-white">
+                        Do you have an account?<a href="/" class="ms-4" style="color: #EAFF6A; text-decoration: none;">Login</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" style="color: #EAFF6A; text-decoration: none;">Forgot your password?</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class='form-group w-100 my-2'>
-            <label for='exampleFormControlInput1'>Password</label>
-            <input
-                type='password'
-                class='form-control'
-                id='password'
-                placeholder='Password'
-            />
-        </div> 
-
-        <div class="form-group w-100 mt-2">
-            <label for="formFile" class="form-label">Add profile photo</label>
-            <input class="form-control" type="file" id="photo" name="photo" onchange="handleFiles(this.files)">
-        </div>
-
-        <div class='form-group w-70 mt-2'>
-            <input
-                id='register'
-                name='register'
-                type='button'
-                class='btn btn-primary'
-                value='Register'
-            />
-        </div>        
-
     </form>
-
 </div>
 
-<script src='/socket.io/socket.io.js'></script>
-<script src="/scripts/handleFiles.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/scripts/register.js"></script>

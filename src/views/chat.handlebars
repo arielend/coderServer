@@ -1,0 +1,50 @@
+<div class="d-flex flex-column justify-content-center align-items-center p-4">
+    <img src="/images/coderchat.png" alt="Logo coderchat" width="120px" />
+    <h1 class='text-center my-2'>Coderchat Room</h1>
+</div>
+
+<div class='' >
+
+    <form id="chatForm" class='d-flex flex-column w-50 m-auto align-items-center border border-secondary rounded p-4 '>
+
+        <div class='d-flex align-items-center justify-content-between gap-4 form-group w-100 my-2'>
+            <label class='w-25' for='exampleFormControlInput1'>
+                User: <span class="text-success fw-bold" id="nickname"></span>
+            </label>
+            <input
+                type='text'
+                class='form-control py-2 w-75'
+                id='chatInput'
+                name='chatInput'
+                placeholder='Type a message'
+            />
+        </div>
+
+        <div class='form-group mt-2'>
+            <input
+                id='sendButton'
+                name='sendButton'
+                type='button'
+                class='btn btn-primary'
+                value='Send'
+            />
+        </div>
+
+        <div class='form-group w-100 mt-4'>
+
+            <h5 class="text-center">Messages</h5>
+
+            <div id="messages" class="">
+                {{!-- Aquí se van a renderizar los mensajes del chat --}}
+            </div>            
+
+        </div>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src='/socket.io/socket.io.js'></script>
+
+<script src='/scripts/chat.js'></script>

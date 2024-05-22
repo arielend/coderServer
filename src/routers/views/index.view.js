@@ -1,23 +1,25 @@
 import { Router } from  'express'
+
+import homeRouter from './home.view.js'
+import cartsRouter from './carts.view.js'
+import chatRouter from './chat.view.js'
 import notesRouter from './notes.view.js'
-import registerRouter from './register.view.js'
 import productsRouter from './products.view.js'
+import registerRouter from './register.view.js'
 import usersRouter from './users.view.js'
 
 const viewsRouter = Router();
 
-viewsRouter.use('/', productsRouter)
-viewsRouter.use('/notes', notesRouter)
-viewsRouter.use('/register', registerRouter)
-viewsRouter.use('/products', productsRouter)
-viewsRouter.use('/users', usersRouter)
 
-viewsRouter.get('/', (_request, response, next) => {
-    try{
-        return response.render('index', {title: 'CompuMundoHiperMegaRed'})
-    }catch (error) {
-        return next(error)
-    }
-})
+viewsRouter.use('/', productsRouter)
+
+viewsRouter.use('/', homeRouter)
+viewsRouter.use('/carts/', cartsRouter)
+viewsRouter.use('/chat', chatRouter)
+
+viewsRouter.use('/notes', notesRouter)
+viewsRouter.use('/products', productsRouter)
+viewsRouter.use('/register', registerRouter)
+viewsRouter.use('/users', usersRouter)
 
 export default viewsRouter;

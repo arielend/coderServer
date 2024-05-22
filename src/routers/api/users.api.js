@@ -1,9 +1,11 @@
 import { Router } from 'express'
-import usersManager from '../../data/fs/UsersManager.js'
+import usersManager from '../../data/mongo/managers/usersManager.js'
 
 const usersRouter = Router();
 
+
 usersRouter.get('/', read)
+usersRouter.get('/paginate', paginate)
 usersRouter.get('/:id', readOne)
 usersRouter.post('/', create)
 usersRouter.put('/:id', update)
@@ -12,7 +14,7 @@ usersRouter.delete('/:id', destroy)
 async function create(req, res, next) {
     try {
       const data = req.body;
-      const users = await notesManager.create(data);
+      const users = await usersManager.create(data);
       return res.json({
         statusCode: 201,
         message: "CREATED USER: " + users.id,
@@ -24,8 +26,8 @@ async function create(req, res, next) {
   
   async function read(req, res, next) {
     try {
-      const { roll } = req.query;
-      const all = await usersManager.read(roll);
+      const { rol } = req.query;
+      const all = await usersManager.read(rol);
       if (all.length > 0) {
         return res.json({
           statusCode: 200,
@@ -41,15 +43,44 @@ async function create(req, res, next) {
     }
   }
   
-  async function readOne(req, res, next) {
+  async function paginate(req, res, next) {
     try {
-      const { id } = req.params;
-      const foundUser = await usersManager.readOne(id);
+      const filter = {}
+      const opts = {}
+      if (req.query.limit) {
+        opts.limit = req.query.limit
+      }
+      if (req.query.page) {
+        opts.page = req.query.page
+      }
+      const all = await usersManager.paginate({filter, opts})
+      return res.json({
+        statusCode: 200,
+        response: all.docs,
+        info: {
+          page: all.page,
+          totalPages: all.totalPages,
+          limit: all.limit,
+          prevPage: all.prevPage,
+          nextPage: all.nextPage,
+        }
+      })
+    } catch (error) {
+      return next(error)
+    }
+  }
+
+  async function readOne(request, response, next) {
+    try {
+
+      const { user_id } = request.session;
+      const foundUser = await usersManager.readOne(user_id);
+
       if (foundUser) {
-        return res.json({
+        return response.json({
           statusCode: 200,
-          response: foundUser,
-        });
+          response: foundUser
+        })
       } else {
         const error = new Error("Not found!");
         error.statusCode = 404;
