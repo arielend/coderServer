@@ -5,10 +5,10 @@ import { Server } from 'socket.io'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import fileStore from 'session-file-store'
-import MongoStore from 'connect-mongo'
 
 import socketCallback from './src/websocket/index.socket.js'
-import chatSocketCallback from './src/websocket/chat.socket.js'
+import chatSocketCallback from './src/websocket/chat.socket.js''
+
 
 import dbConnect from './src/utils/dbConnection.js'
 import morgan from 'morgan'
@@ -35,16 +35,6 @@ nodeServer.listen(port, ready)
 
 io.on('connection', socketCallback)
 
-//SOCKET NAMESPACES
-//Realtime products Namespace
-const productsNamespace = io.of('/products')
-productsNamespace.on('connection', socketCallback)
-
-//Chat Namespace
-const chatNamespace = io.of('/chat')
-chatNamespace.on('connection', chatSocketCallback)
-
-//Export del servidor de socket
 export { io }
 
 // Templates engine (Handlebars)
