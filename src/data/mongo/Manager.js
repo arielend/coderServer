@@ -6,8 +6,10 @@ class Manager {
 
     async create (data) {
         try {
+
             const itemCreated = await this.Model.create(data)
             return itemCreated
+
         } catch (error) {
             console.log(error)
             throw error

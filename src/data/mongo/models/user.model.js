@@ -6,6 +6,7 @@ const collection = 'users'
 const schema = new Schema({
 
     email: { type: String, required: true, unique: true, index: true },
+    username: { type: String, required: true, default: 'No name'},
     password: { type: String, required: true },
     photo: { type: String, default: '/images/no_profile_photo.svg' },
     role: { type: String, default: 'customer', enum: ['customer', 'admin'], index: true }

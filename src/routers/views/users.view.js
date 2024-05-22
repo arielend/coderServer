@@ -1,14 +1,13 @@
 import { Router } from 'express'
 import usersManager from '../../data/mongo/managers/usersManager.js'
-
+import isOnline from '../../middlewares/isOnline.js'
 const usersRouter = Router()
 
-usersRouter.get('/', async (request, response, next) => {
-    try {
-        const users = await usersManager.read()
-        return response.render('users', { users })        
+usersRouter.get('/', isOnline, async (request, response, next) => {
+    try {        
+        return response.render('userProfile', {layout: 'main', user: request.session})        
     } catch (error) {
-        next(error)
+        return next(error)
     }
 })
 
@@ -28,14 +27,6 @@ usersRouter.get('/real', async (request, response, next) => {
     } catch (error) {
         return next(error)
         
-    }
-})
-
-usersRouter.get('/:id', async (request, response, next) => {
-    try {        
-        return response.render('userProfile', {layout: 'main', user: request.session})        
-    } catch (error) {
-        return next(error)
     }
 })
 

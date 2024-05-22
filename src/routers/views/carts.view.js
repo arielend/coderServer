@@ -1,11 +1,17 @@
 import { Router } from 'express'
+import cartsManager from '../../data/mongo/managers/cartsManager.js'
+import isOnline from '../../middlewares/isOnline.js'
 
 const cartsRouter = Router()
 
-cartsRouter.get('/:id', async (_request, response, next) => {
+cartsRouter.get('/', isOnline, async (request, response, next) => {
+
+    const user = request.session
+    const { user_id } = request.session 
 
     try {
-        return response.render('carts')        
+        const userCarts = await cartsManager.read({user_id})        
+        return response.render('carts', {user, userCarts})
     } catch (error) {
         next(error)
     }
