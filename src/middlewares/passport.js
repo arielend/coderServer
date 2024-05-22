@@ -13,12 +13,9 @@ passport.use(
         async (request, email, password, done) => {
             try {
 
-                //Validamos los campos requeridos
-                // if (email == "_" || password === "_" ) {
-                //     const error = new Error("Email and password fields are required!")
-                //     error.statusCode = 400
-                //     return done(error)
-                // }
+                //La validación de campos requeridos del formulario de registro
+                //se realiza por fuera de passport porque passport no se ejecuta si los mismos
+                //estan vacios
 
                 //Validamos el formato del mail
                 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
@@ -91,6 +88,7 @@ passport.use(
                 //En caso de usar session
                 request.session.email = email
                 request.session.username = user.username
+                request.session.bio = user.bio
                 request.session.photo = user.photo
                 request.session.role = user.role
                 request.session.user_id = user._id
@@ -100,6 +98,7 @@ passport.use(
                 // const data = {
                 //     email,
                 //     username: user.username,
+                //     bio: user.bio,
                 //     _id: user._id,
                 //     role: user.role,
                 //     isOnline: true,
@@ -128,8 +127,6 @@ passport.use('google',
         async (request, accessToken, refreshToken, profile, done) => {
             try {
 
-                console.log('Profile google:', profile)
-
                 const { id, picture, displayName } = profile
                 let user = await usersManager.readByEmail(id)
 
@@ -137,6 +134,7 @@ passport.use('google',
                     user = {
                         email: id,
                         username: displayName,
+                        token: accessToken,
                         password: createHash(id),
                         photo: picture
                     }
@@ -145,6 +143,7 @@ passport.use('google',
 
                 request.session.email = user.email
                 request.session.role = user.role
+                request.session.token = accessToken
                 request.session.photo = user.photo
                 request.session.user_id = user._id
                 request.session.isOnline = true

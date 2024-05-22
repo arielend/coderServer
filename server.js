@@ -6,7 +6,6 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import fileStore from 'session-file-store'
 import MongoStore from 'connect-mongo'
-
 import socketCallback from './src/websocket/index.socket.js'
 import chatSocketCallback from './src/websocket/chat.socket.js'
 

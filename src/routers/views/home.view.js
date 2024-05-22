@@ -23,10 +23,7 @@ homeRouter.get('/', async (request, response, next) => {
                 nextPage: result.nextPage,
                 totalPages: result.totalPages
             }
-
-            console.log('El user en home view: ', user);
-
-
+            
             return response.render('index', {layout: 'main', title: 'CoderServer | Home ', products, pagination, user})
         }
         else {            

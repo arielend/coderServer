@@ -94,12 +94,16 @@ sessionsRouter.post('/logout', async (request, response, next) => {
 
 sessionsRouter.get('/google', passport.authenticate('google', { scope: [ 'email', 'profile' ]}))
 
-sessionsRouter.get('/google/callback', passport.authenticate('google', {session: false}), (request, accessToken, refreshToken, profile, done ) => {
+sessionsRouter.get('/google/callback', passport.authenticate('google', {session: false, failureRedirect: '/login' }), 
+    (request, response, next ) => {
     try {
+
         return response.json({
+            session: request.session,
             statusCode: 200,
             message: 'Logged in with Google!'
         })
+
     } catch (error) {
         return next(error)
     }
