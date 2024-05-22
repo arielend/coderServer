@@ -1,8 +1,6 @@
 const socket = io()
 socket.on('products', (data) => {
 
-    //console.log('Así viene data a realtime:', data);
-
     let list = document.querySelector('#productsList')
 
     let template = ``
@@ -24,14 +22,12 @@ socket.on('products', (data) => {
                     </div>
                 </div>
             </div>
-            `).toReversed().splice( 0, 6 ).join("") //Se agregó toReversed() para invertir el orden de la lista
-            // Eliminar splice
+            `).toReversed().splice( 0, 6 ).join("")
     list.innerHTML = template
 })
 
 document.querySelector('#confirm').addEventListener('click', (event) => {
 
-    console.log("Click de boton")
     const category = document.querySelector('#category').value
     const title = document.querySelector('#title').value
     const price = parseInt(document.querySelector('#price').value)

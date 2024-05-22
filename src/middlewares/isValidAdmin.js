@@ -5,7 +5,7 @@ async function isValidAdmin(req, res, next) {
             return next()
         }
         const error = new Error('Forbidden')
-        error.statusCode: 403;
+        error.statusCode = 403
         throw error;
     } catch (error) {
         return next(error)

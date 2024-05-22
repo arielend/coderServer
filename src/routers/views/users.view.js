@@ -1,13 +1,21 @@
 import { Router } from 'express'
 import usersManager from '../../data/mongo/managers/usersManager.js'
-
+import isOnline from '../../middlewares/isOnline.js'
 const usersRouter = Router()
 
-usersRouter.get('/', async (request, response, next) => {
+usersRouter.get('/', isOnline, async (request, response, next) => {
+    try {        
+        return response.render('userProfile', {layout: 'main', user: request.session})        
+    } catch (error) {
+        return next(error)
+    }
+})
+
+usersRouter.get('/register', async (request, response, next) => {
 
     try {
         const users = await usersManager.read()
-        return response.render('users', { users })        
+        return response.render('register', { users })        
     } catch (error) {
         next(error)
     }
@@ -15,28 +23,11 @@ usersRouter.get('/', async (request, response, next) => {
 
 usersRouter.get('/real', async (request, response, next) => {
     try {
-
-        return response.render('realUsers')
-
+        return response.render('userProfile')
     } catch (error) {
         return next(error)
         
     }
-})
-
-usersRouter.get('/:id', async ( request, response, next ) => {
-
-    try {
-
-        const { id } = request.params
-        const user = await usersManager.readOne(id)
-        console.log(user);
-        return response.render('userProfile', { user })
-        
-    } catch (error) {
-        return next(error)
-    }
-
 })
 
 export default usersRouter

@@ -1,13 +1,13 @@
-import { createHash } from "../utils/hash.util.js";
+import { createHash } from '../utils/hash.js'
 
-function createHashPassword(req, res, next) {
+function createHashPassword ( request, response, next ) {
     try {
-        const {password} = req.body
+        const { password } = request.body
         const hashPassword = createHash(password)
-        req.body.password = hashPassword
-        return next()
+        request.body.password = hashPassword
+        return next()        
     } catch (error) {
-        return next(error)
+        return next(error)        
     }
 }
 

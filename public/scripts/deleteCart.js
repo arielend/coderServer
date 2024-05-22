@@ -1,35 +1,24 @@
-const btn_login = document.getElementById('btn_login')
-const passInput = document.getElementById('password')
-
-btn_login.addEventListener("click", login)
-passInput.addEventListener('keyup', enterToLogin)
-
-function enterToLogin (e) {
-    if(e.key == 'Enter'){
-        login()
-    }
-}
-
-async function login () {
+const deleteCartItem = async (id) => {
 
     const data = JSON.stringify({
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
+        _id: id
     })
 
     const fetchOptions = {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: data
+        method: 'DELETE',
+        body: data,
+        headers: { "Content-Type": "application/json" }
     }
 
-    let response = await fetch('/api/sessions/login', fetchOptions)
+    const url = '/api/carts'
+
+    let response = await fetch(url, fetchOptions)
     response = await response.json()
 
     if(response.statusCode === 200 ) {
 
         setTimeout(()=>{
-            location.replace('/')
+            location.replace('/carts')
         }, 1500)
 
         Swal.fire({

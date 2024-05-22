@@ -1,18 +1,19 @@
-import usersManager from "../data/mongo/managers/usersManager.js";
-import { verifyHash } from "../utils/hash.util.js";
+import usersManager from '../data/mongo/managers/usersManager.js'
+import { verifyHash } from '../utils/hash.js'
 
-async function isValidPassword(req, res, next) {
+async function isValidPassword (request, response, next) {
     try {
-        const {email, password} = req.body
-        const one = await usersManager.readByEmail(email)
-        const verify = verifyHash(password, one.password)
-        if (verify) {
+        const { email, password } = request.body
+        const registeredUser = await usersManager.readByEmail(email)
+        const verify = verifyHash(password, registeredUser.password)
+
+        if(verify) {
             return next()
         }
-        const error = new Error('Bad auth')
-        error.statusCode = 401
-        throw error
 
+        const error = new Error('¡Invalid credentials!')
+        error.statusCode = 401
+        throw error        
     } catch (error) {
         return next(error)
     }
