@@ -16,6 +16,9 @@ import errorHandler from './src/middlewares/errorHandler.js'
 import pathHandler from './src/middlewares/pathHandler.js'
 
 import { engine } from 'express-handlebars'
+import ExpressHandlebars from 'express-handlebars'
+import Handlebars from 'handlebars'
+
 import __dirname from './utils.js'
 
 // Server
@@ -49,6 +52,16 @@ export { io }
 server.engine('handlebars', engine())
 server.set('view engine', 'handlebars')
 server.set('views', __dirname + '/src/views')
+
+// Configuro Helpers de Handlebars
+Handlebars.registerHelper('multiply', (a, b) => {return a * b})
+Handlebars.registerHelper('calculateTotal', function(userCarts) {
+    let total = 0
+    userCarts.forEach(item => {
+        total += item.product_id.price * item.product_quantity
+    })
+    return total.toFixed(2)
+})
 
 // Middlewares
 server.use(express.urlencoded({ extended: true }))

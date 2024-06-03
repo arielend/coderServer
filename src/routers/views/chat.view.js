@@ -1,16 +1,22 @@
-import { Router } from 'express'
+import CustomRouter from "../CustomRouter.js"
 
-const chatRouter = Router()
+class ChatRouter extends CustomRouter {
 
-chatRouter.get('/', async (request, response, next) => {
+    init() {
+        this.read('/', ['PUBLIC'], read)
+    }
+}
 
+async function read (request, response, next) {
+    
     try {
         const user = request.session
         return response.render('chat', {title: 'Coderserver | Chat', user})        
     } catch (error) {
         next(error)
     }
+    
+}
 
-})
-
-export default chatRouter
+const chatRouter = new ChatRouter()
+export default chatRouter.getRouter()

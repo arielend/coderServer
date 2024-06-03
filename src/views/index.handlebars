@@ -1,60 +1,61 @@
-<h1 class="text-center my-2">Welcome to CoderServer TecnoStore!</h1>
-
 <div class="d-flex flex-column justify-content-center align-items-center row-gap-4 px-4 mt-2 mb-4">
-    <h3>Explore our categories</h3>
+    <h4 class="mb-1">Explore our categories</h4>
     <div>
         <a href='/api/products?category=mice' title="mices" style="text-decoration: none;">
-            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/mice_icon.png" alt="" />
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/mice_icon.png" alt="" />
         </a>
 
         <a href='/api/products?category=keyboards' title="keyboards" style="text-decoration: none;">
-            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/keyboards_icon.png" alt="" />
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/keyboards_icon.png" alt="" />
         </a>
 
         <a href='/api/products?category=storage_drives' title="storage" style="text-decoration: none;">
-            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/drives_icon.png" alt="" />
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/drives_icon.png" alt="" />
         </a>
 
         <a href='/api/products?category=motherboards' title="motherboards" style="text-decoration: none;">
-            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/motherboards_icon.png" alt="" />
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/motherboards_icon.png" alt="" />
         </a>
 
         <a href='/api/products?category=ram_memory' title="ram memories" style="text-decoration: none;">
-            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/ramMemories_icon.png" alt="" />
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/ramMemories_icon.png" alt="" />
         </a>
 
         <a href='/api/products?category=graphics_cards' title="graphics cards" style="text-decoration: none;">
-            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/graphicsCards_icon.png" alt="" />
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/graphicsCards_icon.png" alt="" />
         </a>
 
         <a href='/api/products?category=processors' title="processors" style="text-decoration: none;">
-            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 80px' src="/images/processors_icon.png" alt="" />
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/processors_icon.png" alt="" />
         </a>
 
     </div>
     
 </div>
 
-<h2 class="text-center my-2">Our products!</h2>
+<div class='d-flex justify-content-center flex-wrap'>
+    {{#each products}}       
 
-<div class='row row-cols-1 row-cols-md-3 mb-3 text-center'>
-    {{#each products}}
-        <div class='col'>
-            <div class='card mb-4 rounded-3 shadow-sm'>
-                <div class='card-header py-3'>
-                    <h4 class='my-0 fw-normal'>{{this.category}}</h4>
-                </div>
-                <div class='card-body'>
-                    <h5>{{title}}</h5>
-                    <h6 class='card-title'>
-                        ${{price}}
-                    </h6>
-                    <a href="/products/{{_id}}" class='w-100 btn btn-lg btn-outline-primary'>
-                        View details
-                    </a>
+        <div class="item-card">
+            <h4 class="card-title">{{title}}</h4>
+            <div class="card-body">
+                <img class="photo" src="{{photo}}"/>
+                <div class="card-icons">
+                    <button>
+                        <img class="icon" src="/images/isFav_icon.svg" alt="fav icon"/>
+                    </button>
+                    <button>
+                        <img class="icon" src="/images/share_icon.svg" alt="fav icon"/>
+                    </button>
                 </div>
             </div>
+            <p class="price">$ {{price}}</p>
+            <a href="/products/{{this._id}}" class="button link">View Details</a>
         </div>
+
+
+
+
     {{/each}}
 </div>
 

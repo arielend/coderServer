@@ -1,4 +1,3 @@
-const user_id = document.getElementById('hidden_user_id').value
 const product_id = document.getElementById('hidden_product_id').value
 const product_price = document.getElementById('hidden_product_price').value
 let product_quantity = document.getElementById('hidden_countValue').value
@@ -43,7 +42,6 @@ document.getElementById('btn_addToCart').addEventListener('click', async (e) => 
     }
 
     const data = JSON.stringify({
-        user_id,
         product_id,
         product_quantity: count
     })
