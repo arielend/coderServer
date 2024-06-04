@@ -1,12 +1,12 @@
 import CustomRouter from '../CustomRouter.js'
 
 import cartsManager from '../../data/mongo/managers/cartsManager.js'
-import isAuthenticated from '../../middlewares/isAuthenticated.js'
+import passport from '../../middlewares/passport.js'
 
 class CartsRouter extends CustomRouter {
 
     init(){
-        this.read('/', ['ADMIN', 'CUSTOMER'], isAuthenticated, read)
+        this.read('/', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), read)
     }
 }
 

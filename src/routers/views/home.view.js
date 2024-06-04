@@ -1,12 +1,12 @@
 import CustomRouter from '../CustomRouter.js'
 
 import productsManager from '../../data/mongo/managers/productsManager.js'
-import isAuthenticated from '../../middlewares/isAuthenticated.js'
+import passport from '../../middlewares/passport.js'
 
 class HomeRouter extends CustomRouter {
 
     init() {
-        this.read('/', ['PUBLIC'], isAuthenticated, read)
+        this.read('/', ['PUBLIC'], passport.authenticate('jwt', { session: false }), read)
     }
 }
 
