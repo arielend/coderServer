@@ -74,7 +74,7 @@ async function create (request, response, next) {
         await cartsManager.destroyMany(_id)
         const lastTicket = await ticketsManager.readLastByUser(_id)
 
-        return response.status201(`Ticket ${lastTicket._id} created al ${lastTicket.date}!`)        
+        return response.status201(`Ticket ${lastTicket._id} created at ${lastTicket.date}!`)        
     } catch (error) {
         return next(error)
     }

@@ -118,7 +118,7 @@ class Manager {
 
     async destroy (id) {
         try {
-            const itemDeleted = this.Model.findOneAndDelete(id).lean()
+            const itemDeleted = await this.Model.findOneAndDelete(id).lean()
             return itemDeleted              
         } catch (error) {
             console.log(error)
@@ -126,9 +126,9 @@ class Manager {
         }
     }
 
-    destroyMany (id) {
+    async destroyMany (id) {
         try {
-            const itemsDeleted = this.Model.deleteMany({user_id: id}).lean()
+            const itemsDeleted = await this.Model.deleteMany({user_id: id}).lean()
             return itemsDeleted
         } catch (error) {
             console.log(error)
