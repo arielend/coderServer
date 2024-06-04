@@ -1,29 +1,31 @@
-<h1 class='text-center my-2'>Datos del usuario</h1>
+<h1 class='text-center my-2'>User profile page</h1>
 
 {{#if user}}
 
-    <div class='card mx-4'>
-        <div class='d-flex card-header justify-content-between px-4'>
-            <span class='h4'>Usuario: {{user.email}}</span>
-            <span>ID: {{user.user_id}}</span>
-        </div>
-        <div class='card-body'>
-            <div class='d-flex justify-content-start px-4'>
-                <img
-                    class='bg-secondary-subtle rounded rounded-3 me-4'
-                    style='height: 220px'
-                    src={{user.photo}}
-                    alt={{user.user_id}}
-                />
-                <div class=''>
-                    <h5 class='card-title'>Rol: {{user.role}}</h5>
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <div class="profileCard p-3 py-4 bg-white">
+                    <div class="text-center">
+                        <img src={{user.photo}} width="100" class="rounded-circle">
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <span class="bg-secondary p-1 px-4 rounded text-white">{{user.role}}</span>
+                        <h5 class="mt-2 mb-0">{{user.username}}</h5>
+                        <span>{{user.email}}</span>
+
+                        <div class="px-4 mt-1">
+                            <p class="fonts" style="color: #3f5da2; font-size: 14px;"> {{user.bio}} </p>
+                        </div>
+                    
+                        <div class="buttons">                        
+                            <button class="btn btn-outline-primary px-4">Billing info</button>
+                            <button class="btn btn-primary px-4 ms-3">Profile info</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
-        <div class='card-footer text-center'>
-            <a href='#' class='btn btn-primary'>Editar datos</a>
-            <a href='/' class='btn btn-primary'>Regresar</a>
         </div>
     </div>
 

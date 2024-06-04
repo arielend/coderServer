@@ -37,6 +37,8 @@ async function read( request, response, next ) {
 async function paginate (request, response, next) {
     
     try {
+        const user = request.session
+
         const sortAndPaginate = {}
         request.query.limit && (sortAndPaginate.limit = request.query.limit)
         request.query.page && (sortAndPaginate.page = request.query.page)
@@ -50,23 +52,15 @@ async function paginate (request, response, next) {
         let products = result.docs.map( product => product.toObject())
 
         //Defino el objeto pagination con las propiedades de paginate
-        // let pagination = {}
-        // pagination.page = result.page
-        // pagination.totalPages = result.totalPages
-        // pagination.prevPage = result.prevPage
-        // pagination.nextPage = result.nextPage
+        let pagination = {}
+        pagination.page = result.page
+        pagination.totalPages = result.totalPages
+        pagination.prevPage = result.prevPage
+        pagination.nextPage = result.nextPage
 
-        // return response.json({
-        //     statusCode: 200,
-        //     response: products,
-        //     pagination
-        // })
+        console.log('Esto es pagination en api products: ', pagination)
 
-        let page = result.page
-        let prevPage = result.prevPage
-        let nextPage = result.nextPage
-
-        return response.render('products', {products, page, prevPage, nextPage} )
+        return response.render('products', {products, pagination, user} )
         
     } catch (error) {
         return next(error)

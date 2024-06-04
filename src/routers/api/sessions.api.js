@@ -1,65 +1,58 @@
 import { Router } from 'express'
-import session from 'express-session'
-import cookieParser from 'cookie-parser'
+//import session from 'express-session'
+//import cookieParser from 'cookie-parser'
 import usersManager from '../../data/mongo/managers/usersManager.js'
+import passport from '../../middlewares/passport.js'
 
 import isValidData from '../../middlewares/isValidData.js'
-import isAnEmail from '../../middlewares/isAnEmail.js'
-import isValidEmail from '../../middlewares/isValidEmail.js'
+//import isAnEmail from '../../middlewares/isAnEmail.js'
+//import isValidEmail from '../../middlewares/isValidEmail.js'
 import isValidUser from '../../middlewares/isValidUser.js'
 import isValidPassword from '../../middlewares/isValidPassword.js'
-import isAdmin from '../../middlewares/isAdmin.js'
+//import checkPasswordConditions from '../../middlewares/checkPasswordConditions.js'
+//import isAdmin from '../../middlewares/isAdmin.js'
+
+//import createHashPassword from '../../middlewares/createHashPassword.js'
+//import readHashPassword from '../../middlewares/readHashPassword.js'  
+
+import isOnline from '../../middlewares/isOnline.js'
 
 const sessionsRouter = Router()
 
-sessionsRouter.post('/login', isValidData, isValidUser, isValidPassword, async (request, response, next) => {
+sessionsRouter.post('/login', isValidData, passport.authenticate('login', { session: false }), async (request, response, next) => {
     try {
 
-        const { email, password } = request.body
-        const user = await usersManager.readByEmail(email)
+        // const { email } = request.body
+        // const user = await usersManager.readByEmail(email)
 
-        console.log('El user que viene al login: ', user);
+        console.log('request session on login', request.session);
+
+        return response.json({
+            statusCode: 200,
+            //token: request.user.token, descomentar esta linea con token
+            message: 'You are logged in!'
+        })         
         
-        if(user?.password === password){
-            request.session.email = email
-            request.session.photo = user.photo
-            request.session.role = user.role
-            request.session.user_id = user._id
-            request.session.online = true
-            return response.json({
-                statusCode: 200,
-                message: 'You are logged in!'
-            }) 
-        } 
-        else
-        {
-            return response.json({
-                statusCode: 401,
-                message: 'Bad auth on login!'
-            })
-        }
     } catch (error) {
         return next(error)
     }
 })
 
-sessionsRouter.post('/register', isValidData, isAnEmail, isValidEmail, async (request, response, next ) => {
+//Sigo usando isValidData porque passport no se esta ejecutando si los campos email o password estan vacios
+sessionsRouter.post('/register', isValidData, passport.authenticate('register', { session: false }), async (request, response, next ) => {
+
     try {
-        const data = request.body
-        const newUser = await usersManager.create(data)
-
-        if(newUser) {
-            return response.json({
-                statusCode: 201,
-                message: '¡New user registered'
-            })
-        }
+        return response.json({
+            statusCode: 201,
+            message: '¡User registered!'
+        }) 
+        
     } catch (error) {
         return next(error)
     }
 })
 
-sessionsRouter.get('/isOnline', async (request, response, next) => {
+sessionsRouter.get('/isOnline', isOnline, async (request, response, next) => {
     try {
         if (request.session.online) {
             return response.json({
@@ -82,7 +75,7 @@ sessionsRouter.get('/isOnline', async (request, response, next) => {
 sessionsRouter.post('/logout', async (request, response, next) => {
 
     try {
-        if(request.session) {
+        if(request.session.online) {
             request.session.destroy()
             return response.json({
                 statusCode: 200,
@@ -94,6 +87,23 @@ sessionsRouter.post('/logout', async (request, response, next) => {
                 message: '¡Bad auth on logout!'
             })
         }        
+    } catch (error) {
+        return next(error)
+    }
+})
+
+sessionsRouter.get('/google', passport.authenticate('google', { scope: [ 'email', 'profile' ]}))
+
+sessionsRouter.get('/google/callback', passport.authenticate('google', {session: false, failureRedirect: '/login' }), 
+    (request, response, next ) => {
+    try {
+
+        return response.json({
+            session: request.session,
+            statusCode: 200,
+            message: 'Logged in with Google!'
+        })
+
     } catch (error) {
         return next(error)
     }

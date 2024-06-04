@@ -6,7 +6,6 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import fileStore from 'session-file-store'
 import MongoStore from 'connect-mongo'
-
 import socketCallback from './src/websocket/index.socket.js'
 import chatSocketCallback from './src/websocket/chat.socket.js'
 
@@ -15,7 +14,6 @@ import morgan from 'morgan'
 import indexRouter from './src/routers/index.router.js'
 import errorHandler from './src/middlewares/errorHandler.js'
 import pathHandler from './src/middlewares/pathHandler.js'
-import MongoStore from 'connect-mongo'
 
 import { engine } from 'express-handlebars'
 import __dirname from './utils.js'

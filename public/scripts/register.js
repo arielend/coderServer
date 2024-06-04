@@ -1,13 +1,12 @@
 document.getElementById('btn_register').addEventListener('click', async (e) => {
 
-    console.log('click on register');
-
     e.preventDefault()
 
     const data = JSON.stringify({
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        photo: document.getElementById('photo_url').value
+        email: document.getElementById('email').value === "" ? undefined : document.getElementById('email').value,
+        username: document.getElementById('username').value === "" ? undefined : document.getElementById('username').value,
+        password: document.getElementById('password').value === "" ? undefined : document.getElementById('password').value,
+        photo: document.getElementById('photo_url').value === "" ? undefined : document.getElementById('photo_url').value
     })
 
     const fetchOptions = {
@@ -38,7 +37,7 @@ document.getElementById('btn_register').addEventListener('click', async (e) => {
         Swal.fire({
             title: response.message,
             icon: "error",
-            timer: 2000,
+            timer: 2500,
             timerProgressBar: true,
             confirmButtonColor: "#ff3b3c",
         })
