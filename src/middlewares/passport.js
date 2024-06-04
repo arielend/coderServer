@@ -1,6 +1,8 @@
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { Strategy as GoogleStratey } from 'passport-google-oauth2' 
+import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt'
+
 import usersManager from '../data/mongo/managers/usersManager.js'
 import { createHash, verifyHash } from '../utils/hash.js'
 import { createToken } from '../utils/token.js'
@@ -68,16 +70,16 @@ passport.use(
             try {
 
                 //Verificamos que el usuario exista
-                const user = await usersManager.readByEmail(email)
+                const registeredUser = await usersManager.readByEmail(email)
 
-                if(!user) {
+                if(!registeredUser) {
                     const error = new Error('¡Bad auth on login!')
                     error.statusCode = 401
                     return done(error)
                 }
 
                 //Verificamos la contraseña
-                const verify = verifyHash(password, user.password)
+                const verify = verifyHash(password, registeredUser.password)
 
                 if(!verify) {
                     const error = new Error('¡Invalid credentials!')
@@ -86,25 +88,30 @@ passport.use(
                 }
                 
                 //En caso de usar session
-                request.session.email = email
-                request.session.username = user.username
-                request.session.bio = user.bio
-                request.session.photo = user.photo
-                request.session.role = user.role
-                request.session.user_id = user._id
-                request.session.online = true
+                // request.session.email = email
+                // request.session.username = user.username
+                // request.session.bio = user.bio
+                // request.session.photo = user.photo
+                // request.session.role = user.role
+                // request.session.user_id = user._id
+                // request.session.online = true
 
                 //En caso de usar token
-                // const data = {
-                //     email,
-                //     username: user.username,
-                //     bio: user.bio,
-                //     _id: user._id,
-                //     role: user.role,
-                //     isOnline: true,
-                // }
-                // const token = createToken(data)
-                // user.token = token
+                const data = {
+                    email,
+                    username: registeredUser.username,
+                    photo: registeredUser.photo,
+                    bio: registeredUser.bio,
+                    _id: registeredUser._id,
+                    role: registeredUser.role,
+                    online: true,
+                }
+                const token = createToken(data)
+                const user = {}
+                user.token = token
+
+                // console.log(user);
+                // console.log(user.token);
 
                 return done(null, user)
                 
@@ -151,6 +158,27 @@ passport.use('google',
                 return done(null, user)
             } catch (error) {
                 return done(error)
+            }
+        }
+    )
+)
+
+//Estrategias de JWT
+passport.use(
+    'jwt', new JWTStrategy(
+        {
+            jwtFromRequest: ExtractJwt.fromExtractors([(request) => request?.signedCookies.token]),
+            secretOrKey: process.env.SECRET_JWT
+        },
+        (user, done) => {
+            try {                
+                if(user){
+                    return done(null, user)
+                } else {
+                    return response.status403()
+                }
+            } catch (error) {
+                return done(error)   
             }
         }
     )

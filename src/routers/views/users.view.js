@@ -1,33 +1,24 @@
-import { Router } from 'express'
+import CustomRouter from '../CustomRouter.js'
 import usersManager from '../../data/mongo/managers/usersManager.js'
-import isOnline from '../../middlewares/isOnline.js'
-const usersRouter = Router()
+import passport from '../../middlewares/passport.js'
 
-usersRouter.get('/', isOnline, async (request, response, next) => {
-    try {        
-        return response.render('userProfile', {layout: 'main', user: request.session})        
+class UsersRouter extends CustomRouter {
+
+    init() {
+        this.read('/', ['CUSTOMER', 'ADMIN'], passport.authenticate('jwt', { session: false }), read)        
+    }
+}
+
+async function read (request, response, next) {
+    try {
+        if (response.statusCode == 403) {
+            return response.redirect('/')
+        }    
+        return response.render('userProfile', {title: "CoderServer | My account", layout: 'main', user: request.user})        
     } catch (error) {
         return next(error)
     }
-})
+}
 
-usersRouter.get('/register', async (request, response, next) => {
-
-    try {
-        const users = await usersManager.read()
-        return response.render('register', { users })        
-    } catch (error) {
-        next(error)
-    }
-})
-
-usersRouter.get('/real', async (request, response, next) => {
-    try {
-        return response.render('userProfile')
-    } catch (error) {
-        return next(error)
-        
-    }
-})
-
-export default usersRouter
+const usersRouter = new UsersRouter()
+export default usersRouter.getRouter()

@@ -1,15 +1,21 @@
-import { Router } from 'express'
+import CustomRouter from '../CustomRouter.js'
 
-const registerRouter = Router()
+class RegisterRouter extends CustomRouter {
 
-registerRouter.get('/', async (request, response, next) => {
+    init() {
+        this.read('/', ['PUBLIC'], read)
 
+    }
+}
+
+async function read (request, response, next) {
+    
     try {
         return response.render('register', {layout: 'loginLayout', title: 'CoderServer | Register'})        
     } catch (error) {
         next(error)
-    }
+    }    
+}
 
-})
-
-export default registerRouter
+const registerRouter = new RegisterRouter()
+export default registerRouter.getRouter()

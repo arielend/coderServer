@@ -1,58 +1,26 @@
-import { Router } from 'express'
+import CustomRouter from '../CustomRouter.js'
+
 import cartsManager from '../../data/mongo/managers/cartsManager.js'
+import passport from '../../middlewares/passport.js'
+import isAuthenticated from '../../middlewares/isAuthenticated.js'
 
-const cartsRouter = Router()
+class CartsRouter extends CustomRouter {
 
-cartsRouter.get('/', paginate)
-cartsRouter.get('/:id', paginate)
-cartsRouter.post('/', create)
-cartsRouter.put('/:id', update)
-cartsRouter.delete('/', destroy)
-
-// async function read( request, response, next ) {
-
-//     try {
-//         //const { user_id } = request.params
-
-//         const sortAndPaginate = {}
-//         request.query.limit && (sortAndPaginate.limit = request.query.limit)
-//         request.query.page && (sortAndPaginate.page = request.query.page)
-//         request.query.prevPage && (sortAndPaginate.prevPage = request.query.prevPage)
-//         request.query.nextPage && (sortAndPaginate.nextPage = request.query.nextPage )
-
-//         const filter = {user_id}
-
-//         const result = await cartsManager.paginate({filter, sortAndPaginate})
-
-//         const userCarts = result.docs.map( cart => cart.toObject())
-
-//         console.log('Lo que llega a carts api: ', userCarts);
-//         let page = result.page
-//         let prevPage = result.prevPage
-//         let nextPage = result.nextPage        
-        
-//         if (allCarts.length !== 0) {
-//             return response.render('carts', {userCarts, page, prevPage, nextPage} )
-//             // return response.json({
-//             //     statusCode: 200,
-//             //     succes: true,
-//             //     response: allCarts
-//             // })
-//         } else {
-//             const error = new Error('No carts to show.')
-//             error.statusCode = 404
-//             throw error
-//         }
-//     } catch (error) {
-//         return next(error)
-//     }
-// }
+    init() {
+        this.paginate('/', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), paginate)
+        this.paginate('/:id', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), paginate)
+        this.create('/', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), create)
+        this.update('/:id', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), update)
+        this.destroy('/:id', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), destroy)
+        this.destroyMany('/', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), destroyMany )
+    }
+}
 
 async function paginate (request, response, next) {
 
     try {
 
-        const user = request.session
+        const user_id = request.user._id
 
         const sortAndPaginate = {}
         request.query.limit && (sortAndPaginate.limit = request.query.limit)
@@ -60,13 +28,12 @@ async function paginate (request, response, next) {
         request.query.prevPage && (sortAndPaginate.prevPage = request.query.prevPage)
         request.query.nextPage && (sortAndPaginate.nextPage = request.query.nextPage )
 
-        const filter = {}
-        request.params.id && (user.user_id)
-
+        const filter = { user_id }
+        
         const result = await cartsManager.paginate({filter, sortAndPaginate})
         const userCarts = result.docs.map( cart => cart.toObject())
 
-        let pagination = {
+        let paginationInfo = {
             page: result.page,
             prevPage: result.prevPage,
             nextPage: result.nextPage,
@@ -74,32 +41,15 @@ async function paginate (request, response, next) {
         }
 
         if (userCarts.length !== 0) {
-            return response.render('carts', {userCarts, pagination})
-            // return response.json({
-            //     statusCode: 200,
-            //     userCarts,
-            //     pagination
-            // })
+            return response.render('carts', {userCarts, paginationInfo})
+            // return response.status200(userCarts)
         }
         else{
-            return response.json({
-                statusCode: 400,
-                message: 'No carts to show'
-            })
+            return response.status404()
         }
 
-        // return response.json({
-        //     statusCode: 200,
-        //     response: allProducts.docs,
-        //     paginate:{
-        //         page: allProducts.page,
-        //         totalPages: allProducts.totalPages,
-        //         limit: allProducts.limit,
-        //         prevPage: allProducts.prevPage,
-        //         nextPage: allProducts.nextPage
-        //     }
-        // })
-        
+        //return response.paginate(userCarts, paginationInfo)
+
     } catch (error) {
         return next(error)
     }
@@ -114,16 +64,10 @@ async function readOne ( request, response, next ) {
         const foundCart = await cartsManager.readOne(id, next)
 
         if (foundCart) {
-            return response.json({
-                statusCode: 200,
-                succes: true,
-                response: foundCart
-            })
+            return response.status200(foundCart)
 
         } else {
-            const error = new Error(`Cart id ${id} not found`)
-            error.statusCode = 404
-            throw error
+            return response.status404()
         }
 
     } catch (error) {
@@ -136,14 +80,13 @@ async function create (request, response, next) {
     try {
 
         const data = request.body
+        data.user_id = request.user._id
         const cart = await cartsManager.create(data, next)
 
-        return response.json({
-            statusCode: 201,
-            succes: true,
-            message: `Cart created with ID ${cart.id}`
-        })
-        
+        if(cart) {
+            return response.status201(`Cart created with ID ${cart.id}`)
+        }
+
     } catch (error) {
         return next(error)
     }
@@ -158,11 +101,7 @@ async function update (request, response, next) {
         const updatedCart = await cartsManager.update(id, data, next)
 
         if(updatedCart) {
-            return response.json({
-                statusCode: 200,
-                succes: true,
-                response: updatedCart
-            })
+            return response.status200(updatedCart)
         }        
         
     } catch (error) {
@@ -174,19 +113,12 @@ async function destroy (request, response, next) {
     try {
 
         const { _id } = request.body
-
         const deletedCart = await cartsManager.destroy({_id})
 
         if (!deletedCart) {
-            const error = new Error(`Cart id ${id} not found`)
-            error.statusCode = 404
-            throw error
+            return response.status404()
         } else {
-            return response.json({
-                statusCode: 200,
-                succes: true,
-                message: `Cart ID ${_id} succesfully deleted.`
-            })
+            return response.status204(`Cart ID ${_id} succesfully deleted.`)
         }
         
     } catch (error) {
@@ -194,4 +126,22 @@ async function destroy (request, response, next) {
     }
 }
 
-export default cartsRouter
+async function destroyMany (request, response, next) {
+    try {
+        const { _id } = request.user
+        const deletedItems = await cartsManager.destroyMany(_id)
+
+        if (!deletedItems) {
+            return response.status404()
+        } else {
+            return response.status204('Cleaning up your cart!')
+        }
+    
+    } catch (error) {
+        return next(error)
+    }
+}
+
+const cartsRouter = new CartsRouter()
+
+export default cartsRouter.getRouter()

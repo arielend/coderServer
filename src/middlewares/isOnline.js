@@ -1,9 +1,17 @@
 function isOnline (request, response, next) {
     try {
-        if (request.session.online) {
+        const user = {}
+        user.online = false
+
+        if (request.signedCookies.user){
+
+            
             return next()
-        } else {
-            response.redirect('/')
+        }
+        else {
+            const error = new Error ('Bad auth!')
+            error.statusCode = 401
+            throw error
         }
     } catch (error) {
         return next(error)

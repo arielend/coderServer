@@ -1,38 +1,39 @@
-import { Router } from 'express'
-import { Types } from 'mongoose'
+import CustomRouter from '../CustomRouter.js'
+
 import productsManager from '../../data/mongo/managers/productsManager.js'
+import passport from '../../middlewares/passport.js'
 
-const homeRouter = Router()
+class HomeRouter extends CustomRouter {
 
-homeRouter.get('/', async (request, response, next) => {
+    init() {
+        this.read('/', ['PUBLIC'], passport.authenticate('jwt', { session: false }), read)
+    }
+}
 
-    const user = request.session;
-
+async function read (request, response, next) {
+    
+    const user = request.user
+    
     try {
-        if(user.online) {
-
-            const filter = {}
-            const sortAndPaginate = { limit: 6 }
-
-            const result = await productsManager.paginate({filter, sortAndPaginate})
-            let products = result.docs.map( product => product.toObject())
-
-            const pagination = {
-                page: result.page,
-                prevPage: result.prevPage,
-                nextPage: result.nextPage,
-                totalPages: result.totalPages
-            }
-            
-            return response.render('index', {layout: 'main', title: 'CoderServer | Home ', products, pagination, user})
-        }
-        else {            
-            return response.render('login', {layout: 'loginLayout', title: 'CoderServer | Login'})
-        }
+        
+        const filter = {}
+        const sortAndPaginate = { limit: 6 }
+        
+        const result = await productsManager.paginate({filter, sortAndPaginate})
+        let products = result.docs.map( product => product.toObject())
+        
+        const pagination = {
+            page: result.page,
+            prevPage: result.prevPage,
+            nextPage: result.nextPage,
+            totalPages: result.totalPages
+        }            
+        return response.render('index', {layout: 'main', title: 'CoderServer | Home ', products, pagination, user})
+        
     } catch (error) {
         next(error)
     }
+}
 
-})
-
-export default homeRouter
+const homeRouter = new HomeRouter()
+export default homeRouter.getRouter()

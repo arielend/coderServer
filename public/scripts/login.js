@@ -28,8 +28,8 @@ async function login () {
 
     if(response.statusCode === 200 ) {
 
-        setTimeout(()=>{
-            location.replace('/')
+        setTimeout(()=>{            
+            return location.replace('/')            
         }, 1500)
 
         Swal.fire({

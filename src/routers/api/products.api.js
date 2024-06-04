@@ -1,16 +1,22 @@
-import { Router } from 'express'
+import CustomRouter from '../CustomRouter.js'
+
 import productsManager from '../../data/mongo/managers/productsManager.js'
 import uploader from '../../middlewares/multer.js'
 import isPhoto from '../../middlewares/isPhoto.js'
 import productFieldsValidate from '../../middlewares/productFieldsValidate.js'
+import passport from '../../middlewares/passport.js'
 
-const productsRouter = Router()
+class ProductsRouter extends CustomRouter {
 
-productsRouter.get('/', paginate)
-productsRouter.get('/:id', readOne)
-productsRouter.post('/', uploader.single('photo'), isPhoto, productFieldsValidate, create)
-productsRouter.put('/:id', update)
-productsRouter.delete('/:id', destroy)
+    init() {
+        //this.read('/', ['PUBLIC'], read)
+        this.paginate('/', ['PUBLIC'], passport.authenticate('jwt', { session: false }), paginate)
+        this.readOne('/:id', ['PUBLIC'], passport.authenticate('jwt', { session: false }), readOne)
+        this.create('/', ['ADMIN'], passport.authenticate('jwt', { session: false }), uploader.single('photo'), isPhoto, productFieldsValidate, create)
+        this.update('/:id', ['ADMIN'], passport.authenticate('jwt', { session: false }), update)
+        this.destroy('/:id', ['ADMIN'], passport.authenticate('jwt', { session: false }), destroy)
+    }
+}
 
 async function read( request, response, next ) {
 
@@ -18,16 +24,12 @@ async function read( request, response, next ) {
         const { category } = request.query
         const allProducts = category ? await productsManager.read(category) : await productsManager.read()
 
-        if (allProducts.length !== 0) {
-            return response.json({
-                statusCode: 200,
-                succes: true,
-                response: allProducts
-            })
-        } else {
-            const error = new Error('No products to show.')
-            error.statusCode = 404
-            throw error
+        if(allProducts.length !== 0) {
+            return response.status200(allProducts)
+        }
+        else 
+        {
+            return response.status400()
         }
     } catch (error) {
         return next(error)
@@ -35,10 +37,14 @@ async function read( request, response, next ) {
 }
 
 async function paginate (request, response, next) {
-    
-    try {
-        const user = request.session
 
+    console.log('paginando productos en api')
+    console.log('Que llega en requestuser')
+
+
+    const user = request.user
+
+    try {
         const sortAndPaginate = {}
         request.query.limit && (sortAndPaginate.limit = request.query.limit)
         request.query.page && (sortAndPaginate.page = request.query.page)
@@ -54,13 +60,12 @@ async function paginate (request, response, next) {
         //Defino el objeto pagination con las propiedades de paginate
         let pagination = {}
         pagination.page = result.page
+        pagination.totalDocs = result.totalDocs
         pagination.totalPages = result.totalPages
         pagination.prevPage = result.prevPage
         pagination.nextPage = result.nextPage
 
-        console.log('Esto es pagination en api products: ', pagination)
-
-        return response.render('products', {products, pagination, user} )
+        return response.render('products', {title: "CoderServer | Products" , products, pagination, user} )
         
     } catch (error) {
         return next(error)
@@ -72,20 +77,14 @@ async function readOne ( request, response, next ) {
     try {
 
         const { id } = request.params
-
         const foundProduct = await productsManager.readOne(id, next)
 
         if (foundProduct) {
-            return response.json({
-                statusCode: 200,
-                succes: true,
-                response: foundProduct
-            })
-
-        } else {
-            const error = new Error(`Product id ${id} not found`)
-            error.statusCode = 404
-            throw error
+            return response.status200(foundProduct)
+        } 
+        else
+        {
+            return response.status404()
         }
 
     } catch (error) {
@@ -100,12 +99,8 @@ async function create (request, response, next) {
         const data = request.body
         const product = await productsManager.create(data, next)
 
-        return response.json({
-            statusCode: 201,
-            succes: true,
-            message: `Product created with ID ${product.id}`
-        })
-        
+        return response.status201(`Product created with ID ${product.id}`)
+
     } catch (error) {
         return next(error)
     }
@@ -120,11 +115,7 @@ async function update (request, response, next) {
         const updatedProduct = await productsManager.update(id, data, next)
 
         if(updatedProduct) {
-            return response.json({
-                statusCode: 200,
-                succes: true,
-                response: updatedProduct
-            })
+            return response.status200(updatedProduct)
         }        
         
     } catch (error) {
@@ -139,16 +130,12 @@ async function destroy (request, response, next) {
         const foundProduct = await productsManager.readOne(id, next)
 
         if (!foundProduct) {
-            const error = new Error(`Product id ${id} not found`)
-            error.statusCode = 404
-            throw error
+            return response.status404()
         } else {
             const deletedProduct = await productsManager.destroy(id)
-            return response.json({
-                statusCode: 200,
-                succes: true,
-                message: `Product ID ${id} succesfully deleted.`
-            })
+            if(deletedProduct){
+                return response.status204(`Product ID ${id} succesfully deleted.`)
+            }
         }
         
     } catch (error) {
@@ -156,4 +143,6 @@ async function destroy (request, response, next) {
     }
 }
 
-export default productsRouter
+const productsRouter = new ProductsRouter()
+
+export default productsRouter.getRouter()

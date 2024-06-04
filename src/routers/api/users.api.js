@@ -1,122 +1,47 @@
-import { Router } from 'express'
+import CustomRouter from '../CustomRouter.js'
+
 import usersManager from '../../data/mongo/managers/usersManager.js'
+import passport from '../../middlewares/passport.js'
 
-const usersRouter = Router();
+class UsersRouter extends CustomRouter {
 
+	init() {
+		this.readOne('/:id', passport.authenticate('jwt', { session: false }), readOne)
+		this.update('/:id', passport.authenticate('jwt', { session: false }), update)
+	}
+}
 
-usersRouter.get('/', read)
-usersRouter.get('/paginate', paginate)
-usersRouter.get('/:id', readOne)
-usersRouter.post('/', create)
-usersRouter.put('/:id', update)
-usersRouter.delete('/:id', destroy)
+async function readOne(request, response, next) {
+	try {
 
-async function create(req, res, next) {
-    try {
-      const data = req.body;
-      const users = await usersManager.create(data);
-      return res.json({
-        statusCode: 201,
-        message: "CREATED USER: " + users.id,
-      });
-    } catch (error) {
-      return next(error);
-    }
-  }
-  
-  async function read(req, res, next) {
-    try {
-      const { rol } = req.query;
-      const all = await usersManager.read(rol);
-      if (all.length > 0) {
-        return res.json({
-          statusCode: 200,
-          response: all,
-        });
-      } else {
-        const error = new Error("Not found");
-        error.statusCode = 404;
-        throw error;
-      }
-    } catch (error) {
-      return next(error);
-    }
-  }
-  
-  async function paginate(req, res, next) {
-    try {
-      const filter = {}
-      const opts = {}
-      if (req.query.limit) {
-        opts.limit = req.query.limit
-      }
-      if (req.query.page) {
-        opts.page = req.query.page
-      }
-      const all = await usersManager.paginate({filter, opts})
-      return res.json({
-        statusCode: 200,
-        response: all.docs,
-        info: {
-          page: all.page,
-          totalPages: all.totalPages,
-          limit: all.limit,
-          prevPage: all.prevPage,
-          nextPage: all.nextPage,
-        }
-      })
-    } catch (error) {
-      return next(error)
-    }
-  }
+		const { _id } = request.user
+		const foundUser = await usersManager.readOne(_id)
 
-  async function readOne(request, response, next) {
-    try {
+		if (foundUser) {
+			return response.status200(foundUser)
+		} else {
+			return response.status404()
+		}
+	} catch (error) {
+		return next(error)
+	}
+}
 
-      const { user_id } = request.session;
-      const foundUser = await usersManager.readOne(user_id);
+async function update(request, response, next) {
+	try {
+		const { _id } = request.user
+		const data = request.body
+		const updateUser = await usersManager.update(_id, data)
+		if(updateUser){
+			return response.status200(`User id ${_id} updated!`)
+		} else {
+			return response.status404()
+		}
+	} catch (error) {
+		return next(error);
+	}
+}
 
-      if (foundUser) {
-        return response.json({
-          statusCode: 200,
-          response: foundUser
-        })
-      } else {
-        const error = new Error("Not found!");
-        error.statusCode = 404;
-        throw error;
-      }
-    } catch (error) {
-      return next(error);
-    }
-  }
-  
-  async function update(req, res, next) {
-    try {
-      const { id } = req.params;
-      const data = req.body;
-      const updateUser = await usersManager.update(id, data);
-      return res.json({
-        statusCode: 200,
-        response: updateUser,
-      });
-    } catch (error) {
-      return next(error);
-    }
-  }
-  
-  async function destroy(req, res, next) {
-    try {
-      const { id } = req.params;
-      const deleteUser = await usersManager.destroy(id);
-      return res.json({
-        statusCode: 200,
-        response: deleteUser,
-      });
-    } catch (error) {
-      return next(error);
-    }
-  }
-  
+const usersRouter = new UsersRouter()
 
-export default usersRouter
+export default usersRouter.getRouter()
