@@ -38,10 +38,6 @@ async function read( request, response, next ) {
 
 async function paginate (request, response, next) {
 
-    console.log('paginando productos en api')
-    console.log('Que llega en requestuser')
-
-
     const user = request.user
 
     try {

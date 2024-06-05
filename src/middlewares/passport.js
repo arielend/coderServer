@@ -167,11 +167,11 @@ passport.use('google',
 passport.use(
     'jwt', new JWTStrategy(
         {
-            jwtFromRequest: ExtractJwt.fromExtractors([(request) => request?.signedCookies.token]),
+            jwtFromRequest: ExtractJwt.fromExtractors([(request) => request.signedCookies.token]),
             secretOrKey: process.env.SECRET_JWT
         },
         (user, done) => {
-            try {                
+            try {
                 if(user){
                     return done(null, user)
                 } else {

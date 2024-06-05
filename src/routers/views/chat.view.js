@@ -1,16 +1,16 @@
+import isOnline from "../../middlewares/isOnline.js"
 import CustomRouter from "../CustomRouter.js"
 
 class ChatRouter extends CustomRouter {
 
     init() {
-        this.read('/', ['PUBLIC'], read)
+        this.read('/', ['PUBLIC'], isOnline, read)
     }
 }
 
-async function read (request, response, next) {
-    
+async function read (request, response, next) {    
     try {
-        const user = request.session
+        const user = request.user
         return response.render('chat', {title: 'Coderserver | Chat', user})        
     } catch (error) {
         next(error)

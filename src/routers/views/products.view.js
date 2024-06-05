@@ -1,20 +1,18 @@
 import CustomRouter from '../CustomRouter.js'
 import productsManager from '../../data/mongo/managers/productsManager.js'
-import passport from '../../middlewares/passport.js'
+import isOnline from '../../middlewares/isOnline.js'
 
 
 class ProductsRouter extends CustomRouter {
 
     init() {
-        this.paginate('/', ['PUBLIC'], passport.authenticate('jwt', { session: false }), paginate)
-        this.readOne('/:id', ['PUBLIC'], passport.authenticate('jwt', { session: false }), readOne)
+        this.paginate('/', ['PUBLIC'], isOnline, paginate)
+        this.readOne('/:id', ['PUBLIC'], isOnline, readOne)
     }
 }
 
 async function paginate (request, response, next) {
 
-    console.log('paginando productos en view')
-    
     try {
         const user = request.user
         
