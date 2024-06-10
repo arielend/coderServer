@@ -3,11 +3,9 @@ import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
 import cookieParser from 'cookie-parser'
-import session from 'express-session'
-import fileStore from 'session-file-store'
-import MongoStore from 'connect-mongo'
 import socketCallback from './src/websocket/index.socket.js'
 import chatSocketCallback from './src/websocket/chat.socket.js'
+import cors from 'cors'
 
 import dbConnect from './src/utils/dbConnection.js'
 import morgan from 'morgan'
@@ -16,7 +14,6 @@ import errorHandler from './src/middlewares/errorHandler.js'
 import pathHandler from './src/middlewares/pathHandler.js'
 
 import { engine } from 'express-handlebars'
-import ExpressHandlebars from 'express-handlebars'
 import Handlebars from 'handlebars'
 
 import __dirname from './utils.js'
@@ -69,25 +66,7 @@ server.use(express.json())
 server.use(express.static(__dirname + '/public'))
 server.use(cookieParser(process.env.SECRET_COOKIE))
 server.use(morgan("dev"))
-//const FileStore = sessionFilestore(session)
-server.use(
-    session({
-        // Solo usar un store ( Local / Mongo )
-        // store: new FileStore({
-        //     path: './src/data/fs/files/sessions',
-        //     ttl: 3600,
-        //     retries: 2
-        // }),
-        store: new MongoStore({
-            mongoUrl: process.env.MONGO_URI,
-            ttl: 3600
-        }),
-        secret: process.env.SECRET_SESSION,
-        resave: true,
-        saveUninitialized: true,
-        //cookie: { maxAge: 360000 }
-    })
-)
+server.use(cors({ origin: true, credentials: true }))
 
 // Router
 server.use('/', indexRouter)

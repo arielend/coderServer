@@ -15,7 +15,7 @@ const deleteCartItem = async (id) => {
     let response = await fetch(url, fetchOptions)
     response = await response.json()
 
-    if(response.statusCode === 200 ) {
+    if(response.statusCode === 204 ) {
 
         setTimeout(()=>{
             location.replace('/carts')
@@ -51,6 +51,9 @@ const clearCart = async () => {
 
     let response = await fetch(url, fetchOptions)
     response = await response.json()
+
+    console.log('Que trae response despues de limpiar el carrito: ', response);
+
 
     if(response.statusCode === 204 ) {
 

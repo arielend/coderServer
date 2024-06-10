@@ -16,7 +16,7 @@ class Manager {
         }
     }
 
-    async read (filter) {
+    async read () {
         try {
             const allItems = await this.Model.find({filter}).lean()
             return allItems            
@@ -126,9 +126,9 @@ class Manager {
         }
     }
 
-    async destroyMany (id) {
+    async destroyMany ({user_id}) {
         try {
-            const itemsDeleted = await this.Model.deleteMany({user_id: id}).lean()
+            const itemsDeleted = await this.Model.deleteMany({user_id}).lean()
             return itemsDeleted
         } catch (error) {
             console.log(error)
