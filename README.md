@@ -81,3 +81,14 @@ Rutas de prueba:
 - Listado de productos con query de categorías (sin productos que listar) -> http://localhost:8080/api/products?category=keyboards
 - Listado de productos con param de id http://localhost:8080/api/products/15fcdbb6fa80edff6bd9726c
 - Listado de productos con param de id (inexistente) http://localhost:8080/api/products/soyUnIdInexistente
+
+## Sprint 9
+Durante el desarrollo del Sprint 9 se refactorizó la estructura del sistema de carpetas para adaptarlas al patrón de Diseño MVC (Model - View -Controller). La carpeta destinada a la persistencia de datos mantiene el nombre de data y será modificada en el próximo Sprint; la misma tiene agregadas las persistencias de FileSystem, Memory y Mongo.
+
+Se creo la carpeta de controladores con los archivos correspondientes a al controlador de Carts, Users, Sessions y Products. Mientras que para los constroladores de Carts y Products se utilizaron funciones, para el de Sessions y Users se utilizaron clases.
+
+Se creo la carpeta Services para la impementación de servicios que conecten la lógica de negocio manejada por los controladores con la persistencia manejada por el manager de Mongo. Solo se implementaron servicios para los controladores de Carts, Products y Users, quedando pendiente la implementación del servicio para Sessions. Al momento, el acceso a la persistencia por parte del control de Sessions se siguen haciendo con conexión directa entre el Controller y la persistencia en Mongo.
+
+Las rutas se encuentran funncionando para todas las api, pero queda pendiente configurar las peticiones a la api para el renderizado (Vista) de los productos filtrados por categoría (El filtrado de la api funciona correctamente).
+
+Las rutas se encuentran protegidas. El acceso es público a la página de inicio, a los productos y a las páginas de login y register. La navegación del navbar proteje el acceso a las rutas de Cart y User Profile. El detalle de productos se muestra a todos los usuario pero solo los usuarios registrados verán el boton para agregar un producto al carrito. 
