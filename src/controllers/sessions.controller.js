@@ -1,8 +1,10 @@
+import { readByEmailService, updateService } from '../services/users.service.js'
+
 class SessionsController {
 
     async login (request, response, next ) {
         try {        
-            return response.cookie('token', request.user.token, {signed: true}).json({
+            return response.cookie('token', request.user.token, {signed: true, httpOnly: true, secure: false, sameSite: 'strict'}).json({
                 statusCode: 200,
                 message: 'You are logged in!'
             })         
@@ -19,6 +21,33 @@ class SessionsController {
                 message: '¡User registered!'
             }) 
             
+        } catch (error) {
+            return next(error)
+        }    
+    }
+
+    async verify (request, response, next) {
+        try {
+
+            const { email, verifyCode } = request.body
+            const one = await readByEmailService(email)
+
+            if(!one) {
+                return response.error404()
+            }
+            else{
+                const { _id } = one
+                const verified = (verifyCode === one.verifyCode)
+
+                if(verified) {
+                    await updateService({
+                        id: _id,
+                        data: {verified}
+                    })
+
+                    return response.message200('User verified!')                     
+                }
+            }
         } catch (error) {
             return next(error)
         }
@@ -76,4 +105,4 @@ class SessionsController {
 }
 
 const sessionsController = new SessionsController()
-export const { login, register, online, logout, google } = sessionsController
+export const { login, register, verify, online, logout, google } = sessionsController

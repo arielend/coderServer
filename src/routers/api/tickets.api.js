@@ -1,8 +1,8 @@
 import CustomRouter from '../CustomRouter.js'
 import { Types } from 'mongoose'
 
-import cartsManager from '../../data/mongo/managers/cartsManager.js'
-import ticketsManager from '../../data/mongo/managers/ticketsManager.js'
+import cartsManager from '../../DAO/mongo/managers/cartsManager.js'
+import ticketsManager from '../../DAO/mongo/managers/ticketsManager.js'
 import passport from '../../middlewares/passport.js'
 
 class TicketsRouter extends CustomRouter {
@@ -74,7 +74,7 @@ async function create (request, response, next) {
         await cartsManager.destroyMany(_id)
         const lastTicket = await ticketsManager.readLastByUser(_id)
 
-        return response.status201(`Ticket ${lastTicket._id} created at ${lastTicket.date}!`)        
+        return response.message201(`Ticket ${lastTicket._id} created at ${lastTicket.date}!`)        
     } catch (error) {
         return next(error)
     }
@@ -87,10 +87,10 @@ async function read (request, response, next ) {
         const userTickets = await ticketsManager.read(filter)        
         
         if(userTickets.length > 0){
-            return response.status200(userTickets)
+            return response.response200(userTickets)
         }
         else{
-            return response.status404()
+            return response.error404()
         }
         
     } catch (error) {
@@ -105,10 +105,10 @@ async function readOne (request, response, next ) {
         const ticket = await ticketsManager.readOne(ticket_id)
 
         if(ticket){
-            return response.status200(ticket)
+            return response.response200(ticket)
         }
         else{
-            return response.status404()
+            return response.error404()
         }
         
     } catch (error) {

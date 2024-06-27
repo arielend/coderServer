@@ -1,5 +1,7 @@
 document.getElementById('btn_register').addEventListener('click', async (e) => {
 
+    console.log('a registrarse');
+
     e.preventDefault()
 
     const data = JSON.stringify({

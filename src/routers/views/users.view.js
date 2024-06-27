@@ -1,5 +1,5 @@
 import CustomRouter from '../CustomRouter.js'
-import usersManager from '../../data/mongo/managers/usersManager.js'
+import usersManager from '../../DAO/mongo/managers/usersManager.js'
 import passport from '../../middlewares/passport.js'
 
 class UsersRouter extends CustomRouter {

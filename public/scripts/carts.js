@@ -52,9 +52,6 @@ const clearCart = async () => {
     let response = await fetch(url, fetchOptions)
     response = await response.json()
 
-    console.log('Que trae response despues de limpiar el carrito: ', response);
-
-
     if(response.statusCode === 204 ) {
 
         setTimeout(()=>{

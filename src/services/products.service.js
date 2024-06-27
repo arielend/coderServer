@@ -1,14 +1,15 @@
 import Service from './service.js'
-import productsManager from '../data/mongo/managers/productsManager.js'
+import productsRepository from '../repositories/products.repository.js'
 
-const productsService = new Service(productsManager)
+const productsService = new Service(productsRepository)
 export const {
     createService,
     destroyService,
     paginateService,
     readOneService,
     readService,
-    updateService,
-    readLastInsertionService,
-    readLastUserInsertionService
+    updateService,    
+    readLastService,
+    readLastByUserService,    
+    destroyManyService
 } = productsService

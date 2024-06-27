@@ -1,16 +1,15 @@
 import Service from '../services/service.js'
-import cartsManager from '../data/mongo/managers/cartsManager.js'
+import cartsRepository from '../repositories/carts.repository.js'
 
-const cartsService = new Service(cartsManager)
+const cartsService = new Service(cartsRepository)
 export const { 
     createService,
     destroyService,
     paginateService,
-    readLastInsertionService,
-    readLastUserInsertionService,
+    readLastService,
+    readLastByUserService,
     readService,
     readOneService,
     updateService,
     destroyManyService
-    
 } = cartsService

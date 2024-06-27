@@ -11,5 +11,4 @@ class UsersRouter extends CustomRouter {
 }
 
 const usersRouter = new UsersRouter()
-
 export default usersRouter.getRouter()

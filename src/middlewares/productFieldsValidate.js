@@ -1,7 +1,6 @@
 function productFieldsValidate (request, _response, next) {
     try {
 
-        console.log(request.body);
         const { title, category, photo, price, stock } = request.body
 
         if(Object.keys(request.body).length ===0) {

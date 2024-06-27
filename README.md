@@ -92,3 +92,5 @@ Se creo la carpeta Services para la impementación de servicios que conecten la 
 Las rutas se encuentran funncionando para todas las api, pero queda pendiente configurar las peticiones a la api para el renderizado (Vista) de los productos filtrados por categoría (El filtrado de la api funciona correctamente).
 
 Las rutas se encuentran protegidas. El acceso es público a la página de inicio, a los productos y a las páginas de login y register. La navegación del navbar proteje el acceso a las rutas de Cart y User Profile. El detalle de productos se muestra a todos los usuario pero solo los usuarios registrados verán el boton para agregar un producto al carrito. 
+
+## Challenge 3

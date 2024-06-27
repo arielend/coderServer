@@ -1,6 +1,6 @@
 import CustomRouter from '../CustomRouter.js'
 
-import cartsManager from '../../data/mongo/managers/cartsManager.js'
+import cartsManager from '../../DAO/mongo/managers/cartsManager.js'
 import passport from '../../middlewares/passport.js'
 
 class CartsRouter extends CustomRouter {

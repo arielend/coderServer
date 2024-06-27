@@ -29,7 +29,7 @@ async function paginate (request, response, next) {
             // return response.status200(userCarts)
         }
         else{
-            return response.status404()
+            return response.error404()
         }
 
         //return response.paginate(userCarts, paginationInfo)
@@ -48,10 +48,10 @@ async function readOne ( request, response, next ) {
         const foundCart = await readOneService(id, next)
 
         if (foundCart) {
-            return response.status200(foundCart)
+            return response.response200(foundCart)
 
         } else {
-            return response.status404()
+            return response.error404()
         }
 
     } catch (error) {
@@ -68,7 +68,7 @@ async function create (request, response, next) {
         const cart = await createService(data, next)
 
         if(cart) {
-            return response.status201(`Cart created with ID ${cart.id}`)
+            return response.message201(`Cart created with ID ${cart.id}`)
         }
 
     } catch (error) {
@@ -85,7 +85,7 @@ async function update (request, response, next) {
         const updatedCart = await updateService(id, data, next)
 
         if(updatedCart) {
-            return response.status200(updatedCart)
+            return response.response200(updatedCart)
         }        
         
     } catch (error) {
@@ -100,9 +100,9 @@ async function destroy (request, response, next) {
         const deletedCart = await destroyService({uuser_id: _id})
 
         if (!deletedCart) {
-            return response.status404()
+            return response.error404()
         } else {
-            return response.status204(`Cart ID ${_id} succesfully deleted.`)
+            return response.message204(`Cart ID ${_id} succesfully deleted.`)
         }
         
     } catch (error) {
@@ -112,14 +112,13 @@ async function destroy (request, response, next) {
 
 async function destroyMany (request, response, next) {
     try {
-        console.log('Entre al controller de Cart');
         const { _id } = request.user
         const deletedItems = await destroyManyService({user_id: _id})
 
         if (!deletedItems) {
-            return response.status404()
+            return response.error404()
         } else {
-            return response.status204('Cleaning up your cart!')
+            return response.message204('Cleaning up your cart!')
         }
     
     } catch (error) {

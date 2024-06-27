@@ -3,7 +3,7 @@ import passport from '../../middlewares/passport.js'
 import passporCB from '../../middlewares/passportCB.js'
 import isValidData from '../../middlewares/isValidData.js'
 
-import { login, register, online, logout, google } from '../../controllers/sessions.controller.js'
+import { login, register, online, logout, google, verify } from '../../controllers/sessions.controller.js'
 
 class SessionsRouter extends CustomRouter {
 
@@ -19,6 +19,8 @@ class SessionsRouter extends CustomRouter {
         this.read('/google', ['PUBLIC'], passport.authenticate('google', { scope: [ 'email', 'profile' ]}))
 
         this.read('/google/callback', ['PUBLIC'], passport.authenticate('google', {session: false, failureRedirect: '/login' }), google)
+
+        this.create('/verify', ['PUBLIC'], verify)
     }
 }
 

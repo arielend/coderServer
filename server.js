@@ -1,4 +1,4 @@
-import 'dotenv/config.js'
+import environment from './src/utils/env.util.js'
 import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
@@ -7,7 +7,6 @@ import socketCallback from './src/websocket/index.socket.js'
 import chatSocketCallback from './src/websocket/chat.socket.js'
 import cors from 'cors'
 
-import dbConnect from './src/utils/dbConnection.js'
 import morgan from 'morgan'
 import indexRouter from './src/routers/index.router.js'
 import errorHandler from './src/middlewares/errorHandler.js'
@@ -17,13 +16,13 @@ import { engine } from 'express-handlebars'
 import Handlebars from 'handlebars'
 
 import __dirname from './utils.js'
+import argsUtil from './src/utils/args.util.js'
 
 // Server
 const server = express()
-const port = 8080
+const port = environment.PORT || argsUtil.port
 const ready = async () => { 
     console.log(`Server ready on http://localhost:${port}/`)
-    await dbConnect()
 }
 
 const nodeServer = createServer(server)
@@ -64,9 +63,9 @@ Handlebars.registerHelper('calculateTotal', function(userCarts) {
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.static(__dirname + '/public'))
-server.use(cookieParser(process.env.SECRET_COOKIE))
+server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(morgan("dev"))
-server.use(cors({ origin: true, credentials: true }))
+server.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 
 // Router
 server.use('/', indexRouter)
@@ -74,3 +73,10 @@ server.use('/', indexRouter)
 //Error and Path handling
 server.use(errorHandler)
 server.use(pathHandler)
+
+// process.on('exit', (code)=>{
+//     console.log('Cerrando un proceso')
+//     console.log(code)
+// })
+
+// process.exit()

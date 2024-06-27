@@ -22,7 +22,6 @@
 <script>  
     const socket = io();
     socket.on('users', data => {
-        console.log(data)
         let template = ``
         template = data.map(each=>`
         <div class="card m-2" style="width: 18rem; height: 30rem; ">

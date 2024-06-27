@@ -1,19 +1,13 @@
 class Service {
 
-    constructor(manager) {
-        this.manager = manager
+    constructor(repository) {
+        this.repository = repository
     }
 
     createService = async (data) => {
         try {
-            const one = await this.manager.create(data)
-            if(one){
-                return one
-            }
-            else{
-                const error = new Error('Error while creating item.')
-                error.statusCode = 500
-            }
+            const one = await this.repository.create(data)
+            return one            
         } catch (error) {
             throw error
         }
@@ -21,14 +15,8 @@ class Service {
 
     readService = async () => {
         try {
-            const many = await this.manager.read()
-            if(many){
-                return many
-            }
-            else{
-                const error = new Error('Not found.')
-                error.statusCode = 404
-            }
+            const many = await this.repository.read()
+            return many            
         } catch (error) {
             throw error
         }
@@ -36,14 +24,8 @@ class Service {
 
     readOneService = async (id) => {
         try {
-            const one = await this.manager.readOne(id)
-            if(one){
-                return one
-            }
-            else{
-                const error = new Error('Not found.')
-                error.statusCode = 404
-            }
+            const one = await this.repository.readOne(id)
+            return one            
         } catch (error) {
             throw error
         }
@@ -51,14 +33,8 @@ class Service {
 
     paginateService = async ({filter, sortAndPaginate}) => {
         try {
-            const some = await this.manager.paginate({ filter, sortAndPaginate })
-            if(some){
-                return some
-            }
-            else{
-                const error = new Error('Not found.')
-                error.statusCode = 404
-            }
+            const some = await this.repository.paginate({ filter, sortAndPaginate })
+            return some            
         } catch (error) {
             throw error
         }
@@ -66,14 +42,8 @@ class Service {
 
     updateService = async ({id, data}) => {
         try {
-            const one = await this.manager.update({id, data})
-            if(one) {
-                return one
-            } 
-            else {
-                const error = new Error('Error while updating.')
-                error.statusCode = 500
-            }
+            const one = await this.repository.update({id, data})
+            return one
         } catch (error) {
             throw error
         }
@@ -81,45 +51,35 @@ class Service {
 
     destroyService = async (id) => {
         try {
-            const one = this.manager.destroy(id)
-            if(one) {
-                return one
-            }
-            else {
-                const error = new Error('Error while deleting.')
-                error.statusCode = 500
-            }
+            const one = this.repository.destroy(id)
+            return one            
         } catch (error) {
             throw error
         }
     }
 
-    readLastUserInsertionService = async (user_id) => {
+    readLastByUserService = async (user_id) => {
         try {
-            const last = await this.manager.readLastByUser(user_id)
-            if(last) {
-                return last
-            }
-            else {
-                const error = new Error('Not found.')
-                error.statusCode = 404
-            }
+            const last = await this.repository.readLastByUser(user_id)
+            return last
         } catch (error) {
             throw error
         }
     }
 
-    readLastInsertionService = async () => {
+    readLastService = async () => {
         try {
-            const last = await this.manager.readLast()
-            if(last) {
-                return last
-            }
-            else {
-                const error = new Error('Not found.')
-                error.statusCode = 404
-            }
-            
+            const last = await this.repository.readLast()
+            return last            
+        } catch (error) {
+            throw error
+        }
+    }
+
+    readByEmailService = async (email) => {
+        try {
+            const one = await this.repository.readByEmail(email)
+            return one            
         } catch (error) {
             throw error
         }
@@ -127,15 +87,8 @@ class Service {
 
     destroyManyService = async ({user_id}) => {
         try {
-            const itemsDeleted = await this.manager.destroyMany({user_id})
-            console.log('Esto es idems deleted en el service: ', itemsDeleted)
-            if(itemsDeleted) {
-                return itemsDeleted
-            }
-            else {
-                const error = new Error('Not found.')
-                error.statusCode = 404
-            }
+            const itemsDeleted = await this.repository.destroyMany({user_id})
+            return itemsDeleted
         } catch (error) {
             throw error
         }

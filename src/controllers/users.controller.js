@@ -8,9 +8,9 @@ class UsersController {
 			const foundUser = await readOneService(_id)
 
 			if (foundUser) {
-				return response.status200(foundUser)
+				return response.response200(foundUser)
 			} else {
-				return response.status404()
+				return response.error404()
 			}
 		} catch (error) {
 			return next(error)
@@ -23,9 +23,9 @@ class UsersController {
 			const data = request.body
 			const updateUser = await updateService(_id, data)
 			if(updateUser){
-				return response.status200(`User id ${_id} updated!`)
+				return response.response200(updateUser)
 			} else {
-				return response.status404()
+				return response.error404()
 			}
 		} catch (error) {
 			return next(error);

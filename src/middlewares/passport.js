@@ -2,10 +2,11 @@ import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { Strategy as GoogleStratey } from 'passport-google-oauth2' 
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt'
-
-import usersManager from '../data/mongo/managers/usersManager.js'
 import { createHash, verifyHash } from '../utils/hash.js'
 import { createToken } from '../utils/token.js'
+import sendEmail from '../utils/mailing.util.js'
+
+import { createService, readByEmailService } from '../services/users.service.js'
 
 //ESTRATEGIAS LOCALES
 passport.use(
@@ -14,10 +15,6 @@ passport.use(
         { passReqToCallback: true, usernameField: "email" },
         async (request, email, password, done) => {
             try {
-
-                //La validación de campos requeridos del formulario de registro
-                //se realiza por fuera de passport porque passport no se ejecuta si los mismos
-                //estan vacios
 
                 //Validamos el formato del mail
                 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
@@ -40,18 +37,35 @@ passport.use(
                 }
 
                 //Verificamos que el email este disponible
-                const registeredEmail = await usersManager.readByEmail(email)
+                const registeredEmail = await readByEmailService(email)
+
+                console.log('mail registrado:', registeredEmail);
 
                 if(registeredEmail) {
                     const error = new Error('Bad auth on register!')
                     error.statusCode = 401
                     return done(error)
                 }
-
+                
                 //Hasheamos el password
                 const hashPassword = createHash(password)
                 request.body.password = hashPassword
-                const user = await usersManager.create(request.body)
+
+                const user = await createService(request.body)
+
+                const emailSent = await sendEmail({
+                    email,
+                    name: user.username,
+                    verifyCode: user.verifyCode,
+                    template: `
+                    <h1>This is your verification code</h1>
+                    <h4>Enter the code below in the verification page</h4>
+                    <a href="http://localhost:5173/verify">Verification page</a>
+                    <h2 style="color: green">${user.verifyCode}</h2>
+                    `
+                })
+
+                
 
                 return done(null, user)
 
@@ -70,7 +84,7 @@ passport.use(
             try {
 
                 //Verificamos que el usuario exista
-                const registeredUser = await usersManager.readByEmail(email)
+                const registeredUser = await readByEmailService(email)
 
                 if(!registeredUser) {
                     const error = new Error('¡Bad auth on login!')
@@ -80,23 +94,13 @@ passport.use(
 
                 //Verificamos la contraseña
                 const verify = verifyHash(password, registeredUser.password)
-
                 if(!verify) {
                     const error = new Error('¡Invalid credentials!')
                     error.statusCode = 401
                     return done(error)
                 }
-                
-                //En caso de usar session
-                // request.session.email = email
-                // request.session.username = user.username
-                // request.session.bio = user.bio
-                // request.session.photo = user.photo
-                // request.session.role = user.role
-                // request.session.user_id = user._id
-                // request.session.online = true
 
-                //En caso de usar token
+                //Uso de token
                 const data = {
                     email,
                     username: registeredUser.username,
@@ -108,10 +112,7 @@ passport.use(
                 }
                 const token = createToken(data)
                 const user = {}
-                user.token = token
-
-                // console.log(user);
-                // console.log(user.token);
+                user.token = token                
 
                 return done(null, user)
                 
@@ -135,7 +136,7 @@ passport.use('google',
             try {
 
                 const { id, picture, displayName } = profile
-                let user = await usersManager.readByEmail(id)
+                let user = await readByEmailService(id)
 
                 if(!user) {
                     user = {
@@ -145,7 +146,7 @@ passport.use('google',
                         password: createHash(id),
                         photo: picture
                     }
-                    user = await usersManager.create(user)
+                    user = await createService(user)
                 }
 
                 request.session.email = user.email
@@ -175,7 +176,7 @@ passport.use(
                 if(user){
                     return done(null, user)
                 } else {
-                    return response.status403()
+                    return response.error403()
                 }
             } catch (error) {
                 return done(error)   

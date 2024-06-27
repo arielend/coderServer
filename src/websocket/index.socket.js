@@ -1,6 +1,6 @@
 //import { io } from '../../server.js'
-import productsManager from '../data/mongo/managers/productsManager.js'
-import usersManager from '../data/mongo/managers/usersManager.js'
+import productsManager from '../DAO/mongo/managers/productsManager.js'
+import usersManager from '../DAO/mongo/managers/usersManager.js'
 
 async function socketCallback (socket) {
 

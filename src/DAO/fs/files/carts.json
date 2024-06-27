@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "25c258a7b9366fb9b370d0d1",
+        "createdAt": "2024-06-26T19:25:55.791Z",
+        "updatedAt": "2024-06-26T19:25:55.791Z",
+        "user_id": "664e4ceb07b003768f90c85e",
+        "product_id": "662d874f54f22855463f3099",
+        "cart_status": "saved"
+    },
+    {
+        "_id": "bff48c0f01c1a6337917e524",
+        "createdAt": "2024-06-26T19:27:16.463Z",
+        "updatedAt": "2024-06-26T19:27:16.463Z",
+        "user_id": "664e4ceb07b003768f90c85e",
+        "product_id": "662d874f54f22855463f3099",
+        "cart_status": "saved"
+    },
+    {
+        "_id": "6a6ccf78baa46286d3879dff",
+        "createdAt": "2024-06-26T19:27:20.328Z",
+        "updatedAt": "2024-06-26T19:27:20.328Z",
+        "user_id": "664e4ceb07b003768f90c85e",
+        "product_id": "662d874f54f22855463f3099",
+        "cart_status": "saved"
+    }
+]

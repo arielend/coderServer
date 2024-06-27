@@ -1,7 +1,8 @@
-import { Router, request } from 'express'
+import { Router } from 'express'
 import { verifyToken } from '../utils/token.js'
-import usersManager from '../data/mongo/managers/usersManager.js'
+import dao from '../DAO/dao.factory.js'
 
+const { usersManager } = dao
 class CustomRouter {
 
     //Construir las instancias del enrutador
@@ -28,68 +29,75 @@ class CustomRouter {
         })
     }
 
-    response = (request, response, next) => {
+    response = (req, res, next) => {
 
-        response.status200 = (payload) => {
-            return response.json({
+        res.response200 = (payload) => {
+            return res.json({
                 statusCode: 200,
                 response: payload
             }) 
         }
+
+        res.message200 = (message) => {
+            return res.json({
+                statusCode: 200,
+                message
+            }) 
+        }
         
 
-        response.paginate = (response, paginationInfo ) => {
-            return response.json({
+        res.paginate = (response, paginationInfo ) => {
+            return res.json({
                 statusCode: 200,
                 paginationInfo,
                 response
             })
         }
         
-        response.status201 = (message) => {
-            return response.json({
+        res.message201 = (message) => {
+            return res.json({
                 statusCode: 201,
                 message
             })
         }
 
-        response.status204 = (message) => {
-            return response.json({
+        res.message204 = (message) => {
+            return res.json({
                 statusCode: 204,
                 message
             })
         }
         
-        response.status400 = () => {
-            return response.json({
+        res.error400 = () => {
+            return res.json({
                 statusCode: 400,
                 message: 'Bad request!'
             })
         }
 
-        response.status401 = () => {
-            return response.json({
+        res.error401 = () => {
+            return res.json({
                 statusCode: 401,
                 mensaje: "Bad auth!"
             })
         }
 
-        response.status403 = () => {
-            return response.json({
+        res.error403 = () => {
+            return res.json({
                 statusCode: 403,
                 mensaje: "Forbidden!"
             })
         }
 
-        response.status404 = () => {
-            return response.json({
+        res.error404 = () => {
+            return res.json({
                 statusCode: 404,
                 message: "Not found!"
             })
         }
 
-        response.status500 = (error) => {
-            return response.json({
+        res.error500 = (error) => {
+            return res.json({
                 statusCode: 500,
                 message: error.message
             })
@@ -110,16 +118,17 @@ class CustomRouter {
 
                 if((policies.includes('ADMIN') && role === 'admin') || (policies.includes('CUSTOMER') && role === 'customer')){
                     const user = await usersManager.readByEmail(email)
-                    delete user.password
+
+                    user?.password && delete user.password
                     request.user = user
                     return next()
                 }
                 else{
-                    return response.status403()
+                    return response.error403()
                 }
             }
             else{
-                return response.status401()
+                return response.error401()
             }
         }
     }
