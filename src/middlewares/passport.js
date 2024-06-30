@@ -87,31 +87,35 @@ passport.use(
                 const registeredUser = await readByEmailService(email)
 
                 if(!registeredUser) {
-                    const error = new Error('¡Bad auth on login!')
+                    const error = new Error('Bad auth on login!')
                     error.statusCode = 401
+                    return done(error)
+                }
+
+                if(registeredUser.verified != true){
+                    const error = new Error('The user is not verified!')
+                    error.statusCode == 403
                     return done(error)
                 }
 
                 //Verificamos la contraseña
                 const verify = verifyHash(password, registeredUser.password)
                 if(!verify) {
-                    const error = new Error('¡Invalid credentials!')
+                    const error = new Error('Invalid credentials!')
                     error.statusCode = 401
                     return done(error)
                 }
 
                 //Uso de token
+                //Solo envío los datos que necesita el token 
                 const data = {
                     email,
                     username: registeredUser.username,
-                    photo: registeredUser.photo,
-                    bio: registeredUser.bio,
-                    _id: registeredUser._id,
                     role: registeredUser.role,
                     online: true,
                 }
                 const token = createToken(data)
-                const user = {}
+                const user = data
                 user.token = token                
 
                 return done(null, user)
@@ -172,6 +176,7 @@ passport.use(
             secretOrKey: process.env.SECRET_JWT
         },
         (user, done) => {
+
             try {
                 if(user){
                     return done(null, user)

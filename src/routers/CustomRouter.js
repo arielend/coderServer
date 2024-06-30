@@ -113,6 +113,7 @@ class CustomRouter {
         }
         else{
             const token = request.signedCookies.token
+            
             if(token){
                 const { role, email } = verifyToken(token)
 
