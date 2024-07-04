@@ -6,6 +6,9 @@ import { createHash, verifyHash } from '../utils/hash.js'
 import { createToken } from '../utils/token.js'
 import sendEmail from '../utils/mailing.util.js'
 
+import CustomError from '../utils/errors/CustomError.js'
+import errors from '../utils/errors/errors.js'
+
 import { createService, readByEmailService } from '../services/users.service.js'
 
 //ESTRATEGIAS LOCALES
@@ -21,8 +24,7 @@ passport.use(
                 const emailFormat = emailRegex.test(email)
 
                 if( !emailFormat ) {
-                    const error = new Error('¡It looks like something is wrong with the email format!')
-                    error.statusCode = 400
+                    const error = CustomError.new(errors.emailFormat)
                     return done(error)
                 }
 
@@ -31,8 +33,7 @@ passport.use(
                 const passwordFormat = passwordRegex.test(password)
 
                 if( !passwordFormat ) {
-                    const error = new Error('¡The password must be between 6 and 8 characters and at least one letter and one number!')
-                    error.statusCode = 400
+                    const error = CustomError.new(errors.passFormat)
                     return done(error)
                 }
 
@@ -42,8 +43,7 @@ passport.use(
                 console.log('mail registrado:', registeredEmail);
 
                 if(registeredEmail) {
-                    const error = new Error('Bad auth on register!')
-                    error.statusCode = 401
+                    const error = CustomError.new(errors.auth)
                     return done(error)
                 }
                 
@@ -87,22 +87,19 @@ passport.use(
                 const registeredUser = await readByEmailService(email)
 
                 if(!registeredUser) {
-                    const error = new Error('Bad auth on login!')
-                    error.statusCode = 401
+                    const error = CustomError.new(errors.auth)
                     return done(error)
                 }
 
                 if(registeredUser.verified != true){
-                    const error = new Error('The user is not verified!')
-                    error.statusCode == 403
+                    const error = CustomError.new(errors.notVerified)
                     return done(error)
                 }
 
                 //Verificamos la contraseña
                 const verify = verifyHash(password, registeredUser.password)
                 if(!verify) {
-                    const error = new Error('Invalid credentials!')
-                    error.statusCode = 401
+                    const error = CustomError.new(errors.credentials)
                     return done(error)
                 }
 

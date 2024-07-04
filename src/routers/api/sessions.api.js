@@ -14,7 +14,7 @@ class SessionsRouter extends CustomRouter {
 
         this.read('/online', ['ADMIN', 'CUSTOMER'], passporCB('jwt'), online)
 
-        this.create('/signout', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), signout)
+        this.create('/signout', ['ADMIN', 'CUSTOMER'], signout)
         
         this.read('/google', ['PUBLIC'], passport.authenticate('google', { scope: [ 'email', 'profile' ]}))
 

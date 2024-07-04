@@ -128,7 +128,7 @@ class Manager {
         }
     }
 
-    async aggregate(pipeline) {
+    async aggregate(pipeline) {        
         const error = new Error('Aggregate operation not supported for FileManager!')
         error.statusCode = 500
         throw error

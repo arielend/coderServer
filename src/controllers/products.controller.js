@@ -28,33 +28,16 @@ class ProductsController {
             request.query.prevPage && (sortAndPaginate.prevPage = request.query.prevPage)
             request.query.nextPage && (sortAndPaginate.nextPage = request.query.nextPage )
 
-            const filter = {}
-            request.query.category && (filter.category = request.query.category)
+            let filter = {}
 
+            if(request.query.filter){
+                filter = JSON.parse(request.query.filter)
+            }
+            
             const result = await paginateService({filter, sortAndPaginate})
 
-            // let products = await result.docs.map( product => product.toObject())
+            return response.response200(result)
 
-            // //Defino el objeto pagination con las propiedades de paginate
-            // let pagination = {}
-            // pagination.page = result.page
-            // pagination.totalDocs = result.totalDocs
-            // pagination.totalPages = result.totalPages
-            // pagination.prevPage = result.prevPage
-            // pagination.nextPage = result.nextPage
-
-            // const data = {products, pagination}
-            // return response.json({
-            //     statusCode: 200,
-            //     response: data
-            // })
-
-            //Para react
-            return result
-
-            //Para handlebars
-            //return response.response200(result)
-            
         } catch (error) {
             return next(error)
         }

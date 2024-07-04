@@ -1,6 +1,5 @@
 function errorHandler (error, _request, response, next) {
 
-    console.error('An error has ocurred: ', error)
     if (response.headersSent) {
         return next(error)
     }

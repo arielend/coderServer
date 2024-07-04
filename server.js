@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import socketCallback from './src/websocket/index.socket.js'
 import chatSocketCallback from './src/websocket/chat.socket.js'
 import cors from 'cors'
+import compression from 'express-compression'
 
 import morgan from 'morgan'
 import indexRouter from './src/routers/index.router.js'
@@ -17,6 +18,7 @@ import Handlebars from 'handlebars'
 
 import __dirname from './utils.js'
 import argsUtil from './src/utils/args.util.js'
+import { brotliCompressSync } from 'zlib'
 
 // Server
 const server = express()
@@ -66,6 +68,9 @@ server.use(express.static(__dirname + '/public'))
 server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(morgan("dev"))
 server.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+server.use(compression({
+    brotli:{ enabled: true, zlib:{}}
+}))
 
 // Router
 server.use('/', indexRouter)

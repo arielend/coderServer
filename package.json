@@ -7,9 +7,9 @@
   "scripts": {
     "start": "node ./server.js --port 8080 --env production --pers mongo",
     "dev": "nodemon ./server.js --port 8080 --env development --pers mongo",
-    "test": "nodemon ./server.js --port 8081 --env testing --pers memory",
-    "argv": "nodemon ./server.js --port 9000 --env production --pers memory",
-    "fs": "nodemon ./server.js --port 8083 --env test --pers fs"
+    "test": "node ./server.js --port 8081 --env testing --pers memory",
+    "fs": "node ./server.js --port 8083 --env test --pers fs",
+    "mocks": "node ./src/mocks/mocks.js"
   },
   "keywords": [],
   "author": "Ariel Endrizzi",
@@ -22,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-compression": "^1.0.2",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
     "handlebars": "^4.7.8",
@@ -39,6 +40,7 @@
     "socket.io": "^4.7.5"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "nodemon": "^3.1.0"
   }
 }
