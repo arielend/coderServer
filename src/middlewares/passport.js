@@ -58,10 +58,14 @@ passport.use(
                     name: user.username,
                     verifyCode: user.verifyCode,
                     template: `
-                    <h1>This is your verification code</h1>
-                    <h4>Enter the code below in the verification page</h4>
-                    <a href="http://localhost:5173/verify">Verification page</a>
-                    <h2 style="color: green">${user.verifyCode}</h2>
+                    <img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2Femail_header.png?alt=media&token=43729bba-93a2-4df6-8f0d-72e7fd688ef5' alt='email header'/>
+                    <h1 style='text-align: center; width: 600px;'>This is your verification code</h1>
+                    <h4 style='text-align: center; width: 600px;'>Enter the code below in the verification page</h4>
+                    <a style='text-align: center; font-weight: bold;' href="http://localhost:5173/verify">Verification page</a>
+                    <div style='width: 600px; max-width: 600px;'> 
+                    <h2 style="width: 500px; margin: 5px auto; color: black; background-color: #EAFF6A; border-radius: 50% 20% / 10% 40%; text-align:center; padding: 8px 30px">${user.verifyCode}</h2>
+                    </div>
+                    <img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2Femail_footer.png?alt=media&token=53ad8bb6-dedf-4e87-a76d-de228b482920' alt='email footer'/>
                     `
                 })
 

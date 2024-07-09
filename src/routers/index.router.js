@@ -11,5 +11,4 @@ class IndexRouter extends CustomRouter {
 }
 
 const indexRouter = new IndexRouter()
-
 export default indexRouter.getRouter()

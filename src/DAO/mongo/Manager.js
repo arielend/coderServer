@@ -87,7 +87,7 @@ class Manager {
     }
 
     async readByEmail (email) {
-        
+
         try {
             const one = await this.Model.findOne({email}).lean()
             return one
