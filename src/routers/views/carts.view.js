@@ -1,21 +1,33 @@
-import { Router } from 'express'
-import cartsManager from '../../data/mongo/managers/cartsManager.js'
-import isOnline from '../../middlewares/isOnline.js'
+import CustomRouter from '../CustomRouter.js'
 
-const cartsRouter = Router()
+import cartsManager from '../../DAO/mongo/managers/cartsManager.js'
+import passport from '../../middlewares/passport.js'
 
-cartsRouter.get('/', isOnline, async (request, response, next) => {
+class CartsRouter extends CustomRouter {
 
-    const user = request.session
-    const { user_id } = request.session 
+    init(){
+        this.read('/', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), read)
+    }
+}
 
+const cartsRouter = new CartsRouter()
+export default cartsRouter.getRouter()
+
+async function read (request, response, next ){
     try {
-        const userCarts = await cartsManager.read({user_id})        
-        return response.render('carts', {user, userCarts})
+    
+        if (response.statusCode == 403) {
+            return response.redirect('/')
+        }
+    
+        const user = request.user
+        const { _id } = request.user
+        
+        const result = await cartsManager.paginate({_id})
+        const userCarts = result.docs.map( cart => cart.toObject())        
+        
+        return response.render('carts', {title: "CoderServer | Carts", user, userCarts})
     } catch (error) {
         next(error)
     }
-
-})
-
-export default cartsRouter
+}

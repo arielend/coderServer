@@ -1,15 +1,21 @@
-import { Router } from 'express'
+import CustomRouter from '../CustomRouter.js'
 
-const notesRouter = Router()
+class NotesRouter extends CustomRouter {
 
-notesRouter.get('/', async (request, response, next) => {
+    init() {
+        this.read('/', read)
+    }
+}
 
+async function read (request, response, next) {
+    
     try {
         return response.render('notes')        
     } catch (error) {
         next(error)
     }
+    
+}
 
-})
-
-export default notesRouter
+const notesRouter = new NotesRouter()
+export default notesRouter.getRouter()

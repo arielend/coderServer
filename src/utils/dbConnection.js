@@ -1,11 +1,11 @@
 import { connect } from 'mongoose'
+import environment from './env.util.js'
 
 const dbConnect = async () => {
     try {
-        await connect(process.env.MONGO_URI)
-        console.log('Connected to Mongo Database.')
+        await connect(environment.MONGO_URI)        
     } catch (error) {
-        console.log(error)
+        throw error
     }
 }
 

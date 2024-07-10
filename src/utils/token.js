@@ -7,7 +7,7 @@ const createToken = (data) => {
 }
 
 const verifyToken = (token) => {
-    const data = verifyToken(token, process.env.SECRET_JWT)
+    const data = jwt.verify(token, process.env.SECRET_JWT)
     return data
 }
 

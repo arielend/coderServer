@@ -1,38 +1,37 @@
-import { Router } from 'express'
-import { Types } from 'mongoose'
-import productsManager from '../../data/mongo/managers/productsManager.js'
+import CustomRouter from '../CustomRouter.js'
+import { paginate } from '../../controllers/products.controller.js'
+import isOnline from '../../middlewares/isOnline.js'
 
-const homeRouter = Router()
+class HomeRouter extends CustomRouter {
 
-homeRouter.get('/', async (request, response, next) => {
+    init() {
+        this.read('/', ['PUBLIC'], isOnline, async (req, res, next) => {
+            const user = req.user
+            console.log('user en home: ', user);
 
-    const user = request.session;
+            if (user.online) {
 
-    try {
-        if(user.online) {
+                const result = await paginate(req, res, next)
 
-            const filter = {}
-            const sortAndPaginate = { limit: 6 }
 
-            const result = await productsManager.paginate({filter, sortAndPaginate})
-            let products = result.docs.map( product => product.toObject())
+                // let products = result.docs.map(product => product.toObject())
+                let products = result.docs               
 
-            const pagination = {
-                page: result.page,
-                prevPage: result.prevPage,
-                nextPage: result.nextPage,
-                totalPages: result.totalPages
+                const pagination = {
+                    page: result.page,
+                    prevPage: result.prevPage,
+                    nextPage: result.nextPage,
+                    totalPages: result.totalPages
+                }
+
+                return res.render('index', { layout: 'main', title: 'CoderServer | Home ', products, pagination, user })
             }
-            
-            return response.render('index', {layout: 'main', title: 'CoderServer | Home ', products, pagination, user})
-        }
-        else {            
-            return response.render('login', {layout: 'loginLayout', title: 'CoderServer | Login'})
-        }
-    } catch (error) {
-        next(error)
+            else {
+                return res.render('login', { layout: 'loginLayout', title: 'CoderServer | Login' })
+            }
+        })
     }
+}
 
-})
-
-export default homeRouter
+const homeRouter = new HomeRouter()
+export default homeRouter.getRouter()

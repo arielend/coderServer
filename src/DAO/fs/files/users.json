@@ -1,0 +1,239 @@
+[
+    {
+        "id": "cf9e1165e3963ce3410795e7",
+        "photo": "https://pm1.aminoapps.com/6637/361eba430f7f17bb5720563a53932839699b6963_hq.jpg",
+        "email": "willie@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "90f5a220800ff6c2f5650b8a",
+        "photo": "https://i.blogs.es/387576/mrburns/1366_2000.png",
+        "email": "monty@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "116d1ef1752241fa55ed611b",
+        "photo": "https://qph.cf2.quoracdn.net/main-qimg-ff2dbaa8b67e2c9c4fb6e0255a5a031d-lq",
+        "email": "timothy@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "c3c1184ffebc13bec91b3dee",
+        "photo": "https://i.pinimg.com/564x/75/a7/80/75a7801776d1e4d548f1bd5a46654eee.jpg",
+        "email": "moe@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "581a07c97576049b925dae69",
+        "photo": "https://i.pinimg.com/736x/94/27/22/9427226f2f1d58de41b6ab0cf7ed51d9.jpg",
+        "email": "waylon@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "83f7c6bbf7934efcb815a010",
+        "photo": "https://www.giantbomb.com/a/uploads/square_medium/0/598/192280-comic_book_guy_13018.jpg",
+        "email": "jeff@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "f54c295012d77ae2f8159edf",
+        "photo": "https://pbs.twimg.com/profile_images/1012362101510160384/EjayQ10E_400x400.jpg",
+        "email": "naty@abc.com",
+        "password": "6HKartTb}-dXNQS",
+        "rol": "customer"
+    },
+    {
+        "id": "cf9e1165e3963ce3410795e7",
+        "photo": "./photo1.jpg",
+        "email": "abc@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "90f5a220800ff6c2f5650b8a",
+        "photo": "./photo2.jpg",
+        "email": "def@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "116d1ef1752241fa55ed611b",
+        "photo": "./photo3.jpg",
+        "email": "ghi@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "c3c1184ffebc13bec91b3dee",
+        "photo": "./photo4.jpg",
+        "email": "jkl@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "581a07c97576049b925dae69",
+        "photo": "./photo5.jpg",
+        "email": "mno@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "83f7c6bbf7934efcb815a010",
+        "photo": "./photo6.jpg",
+        "email": "pqr@abc.com",
+        "password": "abc123",
+        "rol": "customer"
+    },
+    {
+        "id": "184db5b049e355e159a681aa",
+        "email": "elon@gmail.com",
+        "password": "1234ab",
+        "photo": ""
+    },
+    {
+        "id": "184db5b049e355e159a681aa",
+        "email": "naty@gmail.com",
+        "password": "hola123",
+        "photo": ""
+    },
+    {
+        "id": "d5d0812c39e71fb9f9266374",
+        "email": "tito@gmail.com",
+        "password": "hola123",
+        "photo": ""
+    },
+    {
+        "id": "061f21a34ee2e9cc916d0469",
+        "email": "pepe@gmail.com",
+        "password": "hola123",
+        "photo": ""
+    },
+    {
+        "_id": "39e6f8f4b865be00aba16e60",
+        "createdAt": "2024-06-22T21:38:35.795Z",
+        "updatedAt": "2024-06-22T21:38:35.795Z",
+        "email": "ariel@mail.com",
+        "username": "No name",
+        "password": "$2b$10$bg7eZYlchot14zczLxucfujBvsCcGF5iJa0e2RD1o1OmLrNaeyrpG",
+        "role": "admin",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "35898c20ee527eefe0da9009",
+        "createdAt": "2024-06-22T21:46:22.873Z",
+        "updatedAt": "2024-06-22T21:46:22.873Z",
+        "email": "ariel@mail.com.ar",
+        "username": "No name",
+        "password": "$2b$10$9cTuVYGM0PZLWU/KmPWKeuQ6gDWbu7yOZ6f4tL72DG7gQS4IXDAAO",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "76346b5e4111c01b4bca95c1",
+        "createdAt": "2024-06-22T21:50:26.265Z",
+        "updatedAt": "2024-06-22T21:50:26.265Z",
+        "email": "ariel@mail.com.eu",
+        "username": "No name",
+        "password": "$2b$10$EJWisE5gp2NXrL1j0PT3u.hf0PgqHbGk909Ah62DUJe7WmAm9LiAC",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "74648561b4d27372e380cb2e",
+        "createdAt": "2024-06-22T21:51:48.822Z",
+        "updatedAt": "2024-06-22T21:51:48.822Z",
+        "email": "ariel@mail.com.pe",
+        "username": "No name",
+        "password": "$2b$10$CenNCjAo2NTiLas2AgmdUOpZw8CUG/ykqNZqIzWWRFxbFfrHsy2n2",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "8cbe534d0c6a2c31f7ef7772",
+        "createdAt": "2024-06-26T20:05:29.736Z",
+        "updatedAt": "2024-06-26T20:05:29.736Z",
+        "email": "elon@mail.com",
+        "username": "elon",
+        "password": "$2b$10$mrmnh/aBrqc/1uJZksw05.sZsuSH0LiTlozsn9aQpT1V9TzftmXBO",
+        "verified": false,
+        "verifyCode": "f32219b3e99d6fb74d6ab4d9",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "6dcd9fe790cf7d0a81a2e964",
+        "createdAt": "2024-06-26T20:05:38.436Z",
+        "updatedAt": "2024-06-26T20:05:38.436Z",
+        "email": "elon@mail.com.ar",
+        "username": "elon",
+        "password": "$2b$10$a8DvLpu1ngpucA7o4DCl3OIbICo1Q/o.1.29EfkdGOH1HM/QR70Kq",
+        "verified": false,
+        "verifyCode": "da42e6610a7298b072592470",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "7f9b5ad29bd2ed04442db07f",
+        "createdAt": "2024-06-26T20:06:27.409Z",
+        "updatedAt": "2024-06-26T20:06:27.409Z",
+        "email": "elon@mail.com.pe",
+        "username": "elon",
+        "password": "$2b$10$q3xdqXHOMwkeyKp4Aqt4le.Uoj8uw9tOwqXeT9zazm7tCNwxySk52",
+        "verified": false,
+        "verifyCode": "6243e7103eba303a2b3f3985",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "80be45110700e6dab717692c",
+        "createdAt": "2024-06-26T20:06:41.060Z",
+        "updatedAt": "2024-06-26T20:06:41.060Z",
+        "email": "elon@mail.com.peru",
+        "username": "elon",
+        "password": "$2b$10$aJHj9VgYKpOTC6FZFhNyL.enLVj9aDopLrmg0328S.8yzYLATn4ru",
+        "verified": false,
+        "verifyCode": "32157007bb364f1b409d351a",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "ada547ca44d8d1bf2825c64d",
+        "createdAt": "2024-06-26T20:08:23.815Z",
+        "updatedAt": "2024-06-26T20:08:23.815Z",
+        "email": "chapulin@mail.com",
+        "username": "elon",
+        "password": "$2b$10$DZLNfbucpaHNcO3Y9X9zeuHA8JgDdjF.mTMhvbKhObVNaLiFuQhFK",
+        "verified": false,
+        "verifyCode": "303e9bcacdc751b8b7fbfd11",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    },
+    {
+        "_id": "174fe6e25fdc01a7ecf7c5f5",
+        "createdAt": "2024-06-26T20:14:07.048Z",
+        "updatedAt": "2024-06-26T20:14:07.048Z",
+        "email": "chapu@mail.com",
+        "username": "No name",
+        "password": "$2b$10$.mTmLkw53.KK1RXPtLcuO.onkbgW4baD2Z9SnnzdfoINUZAjezu9K",
+        "verified": false,
+        "verifyCode": "5ff7baa8d5ba1ac306f80cd1",
+        "role": "customer",
+        "bio": "You can write here something interesting about you!",
+        "photo": "/images/no_profile_photo.svg"
+    }
+]
