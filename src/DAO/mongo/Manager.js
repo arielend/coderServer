@@ -23,8 +23,9 @@ class Manager {
     }
 
     async readOne (id) {
+
         try {
-            const one = await this.Model.findOne({id})
+            const one = await this.Model.findOne({_id:id})
             return one            
         } catch (error) {
             throw error            
@@ -33,7 +34,7 @@ class Manager {
 
     async destroy (id) {
         try {
-            const one = await this.Model.findOneAndDelete(id).lean()
+            const one = await this.Model.findOneAndDelete({_id:id}).lean()
             return one            
         } catch (error) {            
             throw error            
@@ -42,7 +43,7 @@ class Manager {
 
     async update ({id, data}) {
         try {
-            const one = await this.Model.findByIdAndUpdate(id, data, { new: true}).lean()
+            const one = await this.Model.findByIdAndUpdate({_id:id}, data, { new: true}).lean()
             return one            
         } catch (error) {            
             throw error            

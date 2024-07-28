@@ -1,0 +1,92 @@
+components:
+  schemas: 
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        username:
+          type: string
+          description: name or account alias
+        bio:
+          type: string
+          description: user optional biography
+        password:
+          type: string
+          description: account access password
+        verified:
+          type: boolean
+          description: account verification status
+        verifyCode:
+          type: string
+          description: account verification code
+        photo:
+          type: string
+          description: profile picture or avatar url
+        role:
+          type: string
+          description: user account role
+      example:
+        email: arielendrizzi@gmail.com
+        username: arielend
+        bio: i'm an ordinary user
+        password: hola1234
+        verified: true
+        verifyCode: abcdef0123456789
+        photo: https://myprofilephoto/arielend
+        role: admin
+      responses:
+        Response200:
+          type: object
+          properties:
+            statusCode:
+              type: integer
+              format: int64
+              description: Codigo de estado correspondiente a una solicitud exitosa
+            response:
+              type: object
+              description: Objeto con los datos del recurso solicitado
+        Message200:
+          type: object
+          properties:
+            statusCode:
+              type: integer
+              format: int64
+              description: Codigo de estado correspondiente a una solicitud exitosa
+            message:
+              type: string
+              description: Texto con mensaje que informa el exito de la operación
+        Paginate:
+          type: object
+          properties:
+            statusCode:
+              type: integer
+              format: int64
+              description: Codigo de estado correspondiente a una solicitud exitosa
+            paginationInfo:
+              type: object
+              description: Objeto con los datos de paginacion
+            response:
+              type: object
+              description: Objeto con los datos paginados del recurso solicitado
+        Message201:
+          type: object
+          properties:
+            statusCode:
+              type: integer
+              format: int64
+              description: Codigo de estado correspondiente a una solicitud de creacion exitosa
+            message:
+              type: string
+              description: Texto que informa la creacion exitosa de un recurso
+        Message204:
+          type: object
+          properties:
+            statusCode:
+              type: integer
+              format: int64
+              description: Codigo de estado correspondiente a una operación exitosa pero que no devuelve ningun otro dato
+            message:
+              type: string
+              description: Texto que informa la creacion exitosa de un recurso

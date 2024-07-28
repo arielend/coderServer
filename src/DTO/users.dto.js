@@ -3,8 +3,6 @@ import crypto from 'crypto'
 
 const persistence = argsUtil.pers
 
-console.log('La persistencia en users dto: ', persistence)
-
 class UsersDTO {
 
     constructor(data) {

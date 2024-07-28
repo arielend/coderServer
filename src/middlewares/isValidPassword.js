@@ -1,4 +1,4 @@
-async function checkPasswordConditions (request, _response, next) {
+async function isValidPassword (request, _response, next) {
     try {
 
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,8}$/;
@@ -18,4 +18,4 @@ async function checkPasswordConditions (request, _response, next) {
     }
 }
 
-export default checkPasswordConditions
+export default isValidPassword

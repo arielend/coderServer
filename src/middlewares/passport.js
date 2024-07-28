@@ -40,8 +40,6 @@ passport.use(
                 //Verificamos que el email este disponible
                 const registeredEmail = await readByEmailService(email)
 
-                console.log('mail registrado:', registeredEmail);
-
                 if(registeredEmail) {
                     const error = CustomError.new(errors.auth)
                     return done(error)
@@ -55,7 +53,7 @@ passport.use(
 
                 const emailSent = await sendEmail({
                     email,
-                    name: user.username,
+                    subject: `Hi, ${user.username.toUpperCase()}. Activate your account!`,
                     verifyCode: user.verifyCode,
                     template: `
                     <img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2Femail_header.png?alt=media&token=43729bba-93a2-4df6-8f0d-72e7fd688ef5' alt='email header'/>

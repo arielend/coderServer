@@ -1,50 +1,48 @@
-import environment from './src/utils/env.util.js'
+//Módulos nativos de Node.js
+import { cpus } from 'os'
+import cluster from 'cluster'
+
+//Módulos de terceros
 import express from 'express'
-import { createServer } from 'http'
-import { Server } from 'socket.io'
 import cookieParser from 'cookie-parser'
-import socketCallback from './src/websocket/index.socket.js'
-import chatSocketCallback from './src/websocket/chat.socket.js'
 import cors from 'cors'
 import compression from 'express-compression'
+import swaggerJSDoc from 'swagger-jsdoc'
+import { setup, serve } from 'swagger-ui-express'
+import { engine } from 'express-handlebars' //Eliminar una vez concluido el front con react
+import Handlebars from 'handlebars' //Eliminar una vez concluido el front con react
 
+//Módulos locales
+import environment from './src/utils/env.util.js'
 import Winston from './src/middlewares/winston.js'
 import indexRouter from './src/routers/index.router.js'
 import errorHandler from './src/middlewares/errorHandler.js'
 import pathHandler from './src/middlewares/pathHandler.js'
-
-import { engine } from 'express-handlebars'
-import Handlebars from 'handlebars'
-
 import __dirname from './utils.js'
 import argsUtil from './src/utils/args.util.js'
-import { brotliCompressSync } from 'zlib'
+import swaggerOptions from './src/utils/swagger.js'
 
-// Server
+//Configuración del Server
 const server = express()
 const port = environment.PORT || argsUtil.port
 const ready = async () => { 
     console.log(`Server ready on http://localhost:${port}/`)
 }
 
-const nodeServer = createServer(server)
-const io = new Server(nodeServer)
+//Clustering
+const numOfProc = cpus().length
+if(cluster.isPrimary){
+    console.log('Primary process.')
+    for (let i = 1; i <= numOfProc; i++) {
+        cluster.fork()        
+    }
+}
+else {
+    console.log(`Worker proccess: ${process.pid}.`)
+    server.listen(port, ready)
+}
 
-nodeServer.listen(port, ready)
-
-io.on('connection', socketCallback)
-
-//SOCKET NAMESPACES
-//Realtime products Namespace
-const productsNamespace = io.of('/products')
-productsNamespace.on('connection', socketCallback)
-
-//Chat Namespace
-const chatNamespace = io.of('/chat')
-chatNamespace.on('connection', chatSocketCallback)
-
-//Export del servidor de socket
-export { io }
+const specs = swaggerJSDoc(swaggerOptions)
 
 // Templates engine (Handlebars)
 server.engine('handlebars', engine())
@@ -68,6 +66,7 @@ server.use(express.static(__dirname + '/public'))
 server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(Winston)
 server.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+server.use("/api/docs", serve, setup(specs))
 server.use(compression({
     brotli:{ enabled: true, zlib:{}}
 }))
@@ -78,10 +77,3 @@ server.use('/', indexRouter)
 //Error and Path handling
 server.use(errorHandler)
 server.use(pathHandler)
-
-// process.on('exit', (code)=>{
-//     console.log('Cerrando un proceso')
-//     console.log(code)
-// })
-
-// process.exit()

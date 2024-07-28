@@ -9,7 +9,8 @@ const schema = new Schema({
     photo: { type: String },
     // category: { type: String, enum: ['technology', 'graphics_cards', 'motherboards', 'processors', 'ram_memory', 'storage_drives', 'keyboards', 'mice'], index: true },
     category: { type: String, index: true },
-    rate: { type: Number, enum:[ 0, 1, 2, 3, 4, 5 ] },
+    description: { type: String },
+    rating: { type: Number, enum:[ 0, 1, 2, 3, 4, 5 ] },
     price: { type: Number },
     stock: { type: Number }
 

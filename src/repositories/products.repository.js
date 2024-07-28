@@ -28,6 +28,7 @@ class ProductsRepository {
     }
 
     readOne = async (id) => {
+
         try {
             const one = await this.manager.readOne(id)
             return one

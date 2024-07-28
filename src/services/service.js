@@ -23,6 +23,7 @@ class Service {
     }
 
     readOneService = async (id) => {
+
         try {
             const one = await this.repository.readOne(id)
             return one            

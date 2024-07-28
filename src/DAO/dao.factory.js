@@ -4,6 +4,7 @@ import dbConnect from '../utils/dbConnection.js'
 const persistence = argsUtil.pers
 
 let dao = {}
+//console.log('La persistencia en uso es: ', persistence)
 
 switch(persistence){
     case 'fs':
