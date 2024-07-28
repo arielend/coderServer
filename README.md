@@ -82,6 +82,7 @@ Rutas de prueba:
 - Listado de productos con param de id http://localhost:8080/api/products/15fcdbb6fa80edff6bd9726c
 - Listado de productos con param de id (inexistente) http://localhost:8080/api/products/soyUnIdInexistente
 
+
 ## Sprint 9
 Durante el desarrollo del Sprint 9 se refactorizó la estructura del sistema de carpetas para adaptarlas al patrón de Diseño MVC (Model - View -Controller). La carpeta destinada a la persistencia de datos mantiene el nombre de data y será modificada en el próximo Sprint; la misma tiene agregadas las persistencias de FileSystem, Memory y Mongo.
 
@@ -92,5 +93,24 @@ Se creo la carpeta Services para la impementación de servicios que conecten la 
 Las rutas se encuentran funncionando para todas las api, pero queda pendiente configurar las peticiones a la api para el renderizado (Vista) de los productos filtrados por categoría (El filtrado de la api funciona correctamente).
 
 Las rutas se encuentran protegidas. El acceso es público a la página de inicio, a los productos y a las páginas de login y register. La navegación del navbar proteje el acceso a las rutas de Cart y User Profile. El detalle de productos se muestra a todos los usuario pero solo los usuarios registrados verán el boton para agregar un producto al carrito. 
+
+
+## Sprint 11
+Se implemento logger con Winston. Se definieron 4 niveles de log: HTTP, INFO, ERROR y FATAL; configurando colores para los mensajes en blanco, azul, amarillo y rojo. Para el entorno de desarrollo se configuró un logger a partir del nivel HTTP, el cual registra logs a través de la Consola. Para el entorno de Producción se configuró un logger que registra logs desde el nivel HTTP en Consola y a partir del nivel ERROR también en un archivo denominado productionErrors.log. 
+Para probar los loggers se creo un enrutador loggerRouter, definido en la ruta http://localhost:puerto/api/logger.
+
+### Endpoints del tipo GET para el entorno de Desarrollo:
+- http://localhost:9000/api/logger/http
+- http://localhost:9000/api/logger/info
+- http://localhost:9000/api/logger/error
+- http://localhost:9000/api/logger/fatal
+
+### Endpoints del tipo GET para el entorno de Producción:
+- http://localhost:8080/api/logger/http
+- http://localhost:8080/api/logger/info
+- http://localhost:8080/api/logger/error
+- http://localhost:8080/api/logger/fatal
+
+Para cualquier otro entorno se implementa por default un logger que registra logs a partir del nivel HTTP en Consola y a partir del nivel ERROR en un archivo denominado defaultErrors.log  
 
 ## Challenge 3

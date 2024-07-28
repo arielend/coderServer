@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { verifyToken } from '../utils/token.js'
 import dao from '../DAO/dao.factory.js'
+import Winston from '../utils/winston.util.js'
 
 const { usersManager } = dao
 class CustomRouter {
@@ -30,6 +31,8 @@ class CustomRouter {
     }
 
     response = (req, res, next) => {
+
+        const logErrorMessage = `Verb: ${req.method} - URL: ${req.url} - Date: ${new Date().toLocaleString()} - Message: `
 
         res.response200 = (payload) => {
             return res.json({
@@ -69,13 +72,15 @@ class CustomRouter {
         }
         
         res.error400 = () => {
+            Winston.ERROR(logErrorMessage + '400: Bad request!')
             return res.json({
                 statusCode: 400,
-                message: 'Bad request!'
+                message: srtMessage + 'Bad request!'
             })
         }
 
         res.error401 = () => {
+            Winston.ERROR(logErrorMessage + '401: Bad auth!')
             return res.json({
                 statusCode: 401,
                 mensaje: "Bad auth!"
@@ -83,6 +88,7 @@ class CustomRouter {
         }
 
         res.error403 = () => {
+            Winston.ERROR(logErrorMessage + '403: Forbidden!')
             return res.json({
                 statusCode: 403,
                 mensaje: "Forbidden!"
@@ -90,6 +96,7 @@ class CustomRouter {
         }
 
         res.error404 = () => {
+            Winston.ERROR(logErrorMessage + '404: Not found!')
             return res.json({
                 statusCode: 404,
                 message: "Not found!"
@@ -97,9 +104,17 @@ class CustomRouter {
         }
 
         res.error500 = (error) => {
+            Winston.ERROR(logErrorMessage + error)
             return res.json({
                 statusCode: 500,
                 message: error.message
+            })
+        }
+
+        res.errorLog = (message) => {
+            return res.json({
+                statusCode: 500,
+                message
             })
         }
 
@@ -113,6 +128,7 @@ class CustomRouter {
         }
         else{
             const token = request.signedCookies.token
+            
             if(token){
                 const { role, email } = verifyToken(token)
 

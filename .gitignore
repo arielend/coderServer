@@ -6,4 +6,6 @@ functions/
 .env.dev
 utils.js
 
+todo.txt
+
 createProducts.js

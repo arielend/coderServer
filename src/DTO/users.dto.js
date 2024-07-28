@@ -18,7 +18,7 @@ class UsersDTO {
         this.email = data.email
         this.username = data.username || 'No name'
         this.password = data.password
-        this.verified = false
+        this.verified = data.verified || false
         this.verifyCode = data.verifyCode || crypto.randomBytes(12).toString('hex')
         this.role = data.role || 'customer'
         this.bio = data.bio || 'You can write here something interesting about you!'

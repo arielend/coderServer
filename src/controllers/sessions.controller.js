@@ -3,12 +3,36 @@ import { readByEmailService, updateService } from '../services/users.service.js'
 class SessionsController {
 
     async login (request, response, next ) {
-        try {        
-            return response.cookie('token', request.user.token, {signed: true, httpOnly: true, secure: false, sameSite: 'strict'}).json({
-                statusCode: 200,
-                message: 'You are logged in!'
-            })         
+        try {
+
+            const userData = request.user
             
+            response.cookie('token', request.user.token, {
+                signed: true,
+                httpOnly: true,
+                secure: false,
+                sameSite: 'strict',
+                maxAge: 60 * 60 * 1000 // 1 hora de vida
+            }
+            )
+
+            const user = {
+                email: userData.email,
+                username: userData.username,
+                photo: userData.photo,
+                bio: userData.bio,
+                role: userData.role,
+                online: userData.online 
+            }
+
+            response.cookie('user', JSON.stringify(user),{
+                httpOnly: false,
+                secure: false,
+                sameSite: 'strict',
+                maxAge: 60 * 60 * 1000 // 1 hora de vida
+            })
+
+            return response.message200('You are loggedd in!')
         } catch (error) {
             return next(error)
         }
@@ -73,9 +97,10 @@ class SessionsController {
         }
     }
     
-    logout (request, response, next ) {
+    signout (request, response, next ) {
+
         try {
-            if(request.user.online) {
+            if(request.body.user.online) {
                 return response.clearCookie('token').json({
                     statusCode: 200,
                     message: '¡Signing out!'
@@ -105,4 +130,4 @@ class SessionsController {
 }
 
 const sessionsController = new SessionsController()
-export const { login, register, verify, online, logout, google } = sessionsController
+export const { login, register, verify, online, signout, google } = sessionsController

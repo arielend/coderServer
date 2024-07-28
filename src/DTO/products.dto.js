@@ -18,6 +18,7 @@ class ProductsDTO {
         this.title = data.title
         this.photo = data.photo || 'https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2Fno_photo.svg?alt=media&token=47b00a66-1149-4a27-9e1e-97ccbcef838b'
         this.category = data.category || 'technology'
+        this.rate = data.rate || 5
         this.price = data.price || 1
         this.stock = data.stock || 1
     }

@@ -107,6 +107,7 @@ class UsersRepository {
     }
 
     readByEmail = async (email) => {
+        
         try {
             const one = await this.manager.readByEmail(email)
             return one            

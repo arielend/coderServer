@@ -6,6 +6,9 @@ import { createHash, verifyHash } from '../utils/hash.js'
 import { createToken } from '../utils/token.js'
 import sendEmail from '../utils/mailing.util.js'
 
+import CustomError from '../utils/errors/CustomError.js'
+import errors from '../utils/errors/errors.js'
+
 import { createService, readByEmailService } from '../services/users.service.js'
 
 //ESTRATEGIAS LOCALES
@@ -21,8 +24,7 @@ passport.use(
                 const emailFormat = emailRegex.test(email)
 
                 if( !emailFormat ) {
-                    const error = new Error('¡It looks like something is wrong with the email format!')
-                    error.statusCode = 400
+                    const error = CustomError.new(errors.emailFormat)
                     return done(error)
                 }
 
@@ -31,8 +33,7 @@ passport.use(
                 const passwordFormat = passwordRegex.test(password)
 
                 if( !passwordFormat ) {
-                    const error = new Error('¡The password must be between 6 and 8 characters and at least one letter and one number!')
-                    error.statusCode = 400
+                    const error = CustomError.new(errors.passFormat)
                     return done(error)
                 }
 
@@ -42,8 +43,7 @@ passport.use(
                 console.log('mail registrado:', registeredEmail);
 
                 if(registeredEmail) {
-                    const error = new Error('Bad auth on register!')
-                    error.statusCode = 401
+                    const error = CustomError.new(errors.auth)
                     return done(error)
                 }
                 
@@ -58,10 +58,14 @@ passport.use(
                     name: user.username,
                     verifyCode: user.verifyCode,
                     template: `
-                    <h1>This is your verification code</h1>
-                    <h4>Enter the code below in the verification page</h4>
-                    <a href="http://localhost:5173/verify">Verification page</a>
-                    <h2 style="color: green">${user.verifyCode}</h2>
+                    <img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2Femail_header.png?alt=media&token=43729bba-93a2-4df6-8f0d-72e7fd688ef5' alt='email header'/>
+                    <h1 style='text-align: center; width: 600px;'>This is your verification code</h1>
+                    <h4 style='text-align: center; width: 600px;'>Enter the code below in the verification page</h4>
+                    <a style='text-align: center; font-weight: bold;' href="http://localhost:5173/verify">Verification page</a>
+                    <div style='width: 600px; max-width: 600px;'> 
+                    <h2 style="width: 500px; margin: 5px auto; color: black; background-color: #EAFF6A; border-radius: 50% 20% / 10% 40%; text-align:center; padding: 8px 30px">${user.verifyCode}</h2>
+                    </div>
+                    <img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2Femail_footer.png?alt=media&token=53ad8bb6-dedf-4e87-a76d-de228b482920' alt='email footer'/>
                     `
                 })
 
@@ -87,31 +91,32 @@ passport.use(
                 const registeredUser = await readByEmailService(email)
 
                 if(!registeredUser) {
-                    const error = new Error('¡Bad auth on login!')
-                    error.statusCode = 401
+                    const error = CustomError.new(errors.auth)
+                    return done(error)
+                }
+
+                if(registeredUser.verified != true){
+                    const error = CustomError.new(errors.notVerified)
                     return done(error)
                 }
 
                 //Verificamos la contraseña
                 const verify = verifyHash(password, registeredUser.password)
                 if(!verify) {
-                    const error = new Error('¡Invalid credentials!')
-                    error.statusCode = 401
+                    const error = CustomError.new(errors.credentials)
                     return done(error)
                 }
 
                 //Uso de token
+                //Solo envío los datos que necesita el token 
                 const data = {
                     email,
                     username: registeredUser.username,
-                    photo: registeredUser.photo,
-                    bio: registeredUser.bio,
-                    _id: registeredUser._id,
                     role: registeredUser.role,
                     online: true,
                 }
                 const token = createToken(data)
-                const user = {}
+                const user = data
                 user.token = token                
 
                 return done(null, user)
@@ -172,6 +177,7 @@ passport.use(
             secretOrKey: process.env.SECRET_JWT
         },
         (user, done) => {
+
             try {
                 if(user){
                     return done(null, user)

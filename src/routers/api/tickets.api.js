@@ -3,14 +3,13 @@ import { Types } from 'mongoose'
 
 import cartsManager from '../../DAO/mongo/managers/cartsManager.js'
 import ticketsManager from '../../DAO/mongo/managers/ticketsManager.js'
-import passport from '../../middlewares/passport.js'
 
 class TicketsRouter extends CustomRouter {
 
     init() {
-        this.create('/', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), create)
-        this.read('/', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), read)
-        this.readOne('/:id', ['ADMIN', 'CUSTOMER'], passport.authenticate('jwt', { session: false }), readOne)
+        this.create('/', ['ADMIN', 'CUSTOMER'], create)
+        this.read('/', ['ADMIN', 'CUSTOMER'], read)
+        this.readOne('/:id', ['ADMIN', 'CUSTOMER'], readOne)
     }
 }
 const ticketsRouter = new TicketsRouter()

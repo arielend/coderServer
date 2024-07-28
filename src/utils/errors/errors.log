@@ -1,0 +1,5 @@
+[33mERROR[39m: Verb: GET - URL: /test/simple - Message: Assignment to constant variable. - Date: 8/7/2024, 17:02:18.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: User nos verified - Date: 8/7/2024, 23:44:45.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: User nos verified - Date: 8/7/2024, 23:47:51.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Bad auth! - Date: 8/7/2024, 23:52:30.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Bad auth! - Date: 8/7/2024, 23:54:16.

@@ -1,9 +1,13 @@
-function errorHandler (error, _request, response, next) {
+import Winston from '../utils/winston.util.js'
 
-    console.error('An error has ocurred: ', error)
+function errorHandler (error, request, response, next) {
+
     if (response.headersSent) {
         return next(error)
     }
+
+    const message = `Verb: ${request.method} - URL: ${request.url} - Message: ${error.message} - Date: ${new Date().toLocaleString()}.`
+    Winston.ERROR(message)
 
     return response.json({
         statusCode: error.statusCode || 500,

@@ -5,6 +5,8 @@ import productsRouter from './products.api.js'
 import usersRouter from './users.api.js'
 import ticketsRouter from './tickets.api.js'
 import sessionsRouter from './sessions.api.js'
+import testRouter from './test.api.js'
+import loggerRouter from './loggers.api.js'
 
 class ApiRouter extends CustomRouter {
 
@@ -14,6 +16,8 @@ class ApiRouter extends CustomRouter {
         this.use('/users', usersRouter)
         this.use('/tickets', ticketsRouter)
         this.use('/sessions', sessionsRouter)
+        this.use('/test', testRouter)
+        this.use('/logger', loggerRouter)
     }
 }
 
