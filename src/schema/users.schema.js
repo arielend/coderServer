@@ -30,11 +30,11 @@ const validUsersSchema = Joi.object({
         .required()
         .min(8)
         .max(12)
-        .pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).$/)
+        .pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$/)
         .messages({
             "any.required": "Password field is required.",
             "string.empty": "Password can't be an empty string.",
-            "string.pattern": "The password must have at least one lowercase character, one uppercase character, and one numeric character.",
+            "string.pattern.base": "The password must have at least one lowercase character, one uppercase character, and one numeric character.",
             "string.min": "Password field must have at least 8 characters.",
             "string.max": "Password field must be up to 12 characters."
         }),

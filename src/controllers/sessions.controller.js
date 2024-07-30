@@ -138,7 +138,7 @@ class SessionsController {
                         data: {password: hashPassword}
                     })
 
-                    return response.message200('Password changed. Please login!')                     
+                    return response.message204('Password changed. Please login!')                     
                 }
             }
 

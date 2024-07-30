@@ -12,7 +12,7 @@ class ProductsController {
             }
             else 
             {
-                return response.error400()
+                return response.error404()
             }
         } catch (error) {
             return next(error)
@@ -36,7 +36,7 @@ class ProductsController {
             
             const result = await paginateService({filter, sortAndPaginate})
 
-            return response.response200(result)
+            return response.paginate(result)
 
         } catch (error) {
             return next(error)

@@ -32,3 +32,457 @@ components:
         rating: 5
         price: 399.99
         stock: 6
+    ProductUpdate:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: An string that represent the product object id
+        price:
+          type: number
+          description: product price expressed with decimal notation
+        stock:
+          type: number
+          description: product available stock
+      example:
+        _id: abcdef0123456789
+        price: 399.99
+        stock: 6
+  responses:
+    Response200one:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: object
+          description: An object that represents a product
+      example:
+        statusCode: 200
+        response:
+          title: ROG Swift OLED PG32UCDM          
+          photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fmonitor%20ROG%20Swift%20OLED%20PG32UCDM.webp?alt=media&token=2354e4cc-cfb1-42b2-85dd-7b0de1e70b1d
+          category: monitors
+          description: ROG Swift OLED PG32UCDM gaming monitor ― 32-inch (31.5 inch viewable) 4K (3840 x 2160) QD-OLED panel, 240 Hz, 0.03 ms (GTG), G-SYNC compatible, custom heatsink, graphene film, uniform brightness, 99% DCI-P3, True 10-bit, 90 W Type-C, and ASUS DisplayWidget Center
+          rating: 5
+          price: 399.99
+          stock: 6      
+    Response200many:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: array
+          description: An array of products
+      example:
+        statusCode: 200
+        response:
+          - title: ROG Swift OLED PG32UCDM
+            photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fmonitor%20ROG%20Swift%20OLED%20PG32UCDM.webp?alt=media&token=2354e4cc-cfb1-42b2-85dd-7b0de1e70b1d
+            category: monitors
+            description: ROG Swift OLED PG32UCDM gaming monitor ― 32-inch (31.5 inch viewable) 4K (3840 x 2160) QD-OLED panel, 240 Hz, 0.03 ms (GTG), G-SYNC compatible, custom heatsink, graphene film, uniform brightness, 99% DCI-P3, True 10-bit, 90 W Type-C, and ASUS DisplayWidget Center
+            rating: 5
+            price: 399.99
+            stock: 6
+          - title: ROG Strix SQ7 Gen4 SSD 1TB
+            photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fstorage%20ROG%20Strix%20SQ7%20Gen4%20SSD%201TB.webp?alt=media&token=71309098-ca80-4715-a93e-b1eb57fcd457
+            category: storage
+            description: 1 TB M.2 PCIe Gen 4 NVMe , internal solid state drive with DRAM buffering and large SLC cache, up to 7000 MB/s maximum file transfer speed, compatible with PC and PlayStation 5, TCG Opal and AES 256-bit encryption, plus NTI Backup Now EZ software
+            rating: 5
+            price: 129.99
+            stock: 2
+          - title: ROG STRIX 1200W Platinum
+            photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fpsu%20ROG%20STRIX%201200W%20Platinum.webp?alt=media&token=4da87bce-a020-4638-b9fb-7b04b4888adf
+            category: psu
+            description: ROG Strix 1200W Platinum is a cool and quiet PSU with stable power delivery, engineered for efficiency with GaN MOSFET and intelligent stabilizer in striking style
+            rating: 4
+            price: 139.99
+            stock: 6
+    Message200:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has been successful
+      example:
+        statusCode: 200
+        message: Added to favorite!
+    Paginate:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: object
+          properties:
+            docs:
+              type: array
+              items:
+                $ref: '#/components/schemas/Product'
+              description: An array of paginated products
+            totalDocs:
+              type: integer
+              description: Indicates the total number of elements returned by the query
+            offset:
+              type: integer
+              description: Indicates the number of pages skipped in the total page count
+            limit:
+              type: integer
+              description: Indicates the number of elements included in each page
+            totalPages:
+              type: integer
+              description: Indicates the total number of pages returned by the query
+            page:
+              type: integer
+              description: Indicates the current number page
+            hasPrevPage:
+              type: boolean
+              description: Indicates if a previous page exists
+            hasNextPage:
+              type: boolean
+              description: Indicates if a subsequent page exists
+            prevPage:
+              type: integer
+              nullable: true
+              description: Indicates the previous page number
+            nextPage:
+              type: integer
+              nullable: true
+              description: Indicates the next page number
+      example:
+        statusCode: 200
+        response:
+          docs:
+            - title: ROG Swift OLED PG32UCDM
+              photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fmonitor%20ROG%20Swift%20OLED%20PG32UCDM.webp?alt=media&token=2354e4cc-cfb1-42b2-85dd-7b0de1e70b1d
+              category: monitors
+              description: ROG Swift OLED PG32UCDM gaming monitor ― 32-inch (31.5 inch viewable) 4K (3840 x 2160) QD-OLED panel, 240 Hz, 0.03 ms (GTG), G-SYNC compatible, custom heatsink, graphene film, uniform brightness, 99% DCI-P3, True 10-bit, 90 W Type-C, and ASUS DisplayWidget Center
+              rating: 5
+              price: 399.99
+              stock: 6
+            - title: ROG Strix SQ7 Gen4 SSD 1TB
+              photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fstorage%20ROG%20Strix%20SQ7%20Gen4%20SSD%201TB.webp?alt=media&token=71309098-ca80-4715-a93e-b1eb57fcd457
+              category: storage
+              description: 1 TB M.2 PCIe Gen 4 NVMe , internal solid state drive with DRAM buffering and large SLC cache, up to 7000 MB/s maximum file transfer speed, compatible with PC and PlayStation 5, TCG Opal and AES 256-bit encryption, plus NTI Backup Now EZ software
+              rating: 5
+              price: 129.99
+              stock: 2
+            - title: ROG STRIX 1200W Platinum
+              photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fpsu%20ROG%20STRIX%201200W%20Platinum.webp?alt=media&token=4da87bce-a020-4638-b9fb-7b04b4888adf
+              category: psu
+              description: ROG Strix 1200W Platinum is a cool and quiet PSU with stable power delivery, engineered for efficiency with GaN MOSFET and intelligent stabilizer in striking style
+              rating: 4
+              price: 139.99
+              stock: 6 
+          totalDocs: 30
+          offset: 0
+          limit: 3
+          totalPages: 10
+          page: 1
+          hasPrevPage: false
+          hasNextPage: true
+          prevPage: null
+          nextPage: 2        
+    Message201:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested has created a resource successfully
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has created a product successfully
+      example:
+        statusCode: 201
+        message: Product created!
+    Message204:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successfully and not return any other info
+        message:
+          type: string
+          description: Text displaying a message informing that a product has been updated
+      example:
+        statusCode: 204
+        message: Product updated!
+    Error400:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested cannot or will not be processed due to an apparent client error
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation cannot be processed due to an apparent client error
+      example:
+        statusCode: 400
+        message: Bad request!
+    Error401:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to an authentication error
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to an authentication error
+      example:
+        statusCode: 401
+        message: Bad auth!
+    Error403:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to user not having the necessary permissions for a resource
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to user not having the necessary permissions for a resource
+      example:
+        statusCode: 403
+        message: Forbidden!
+    Error404:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the requested resource is not available at the moment
+        message:
+          type: string
+          description: Text displaying a message informing that the requested product is not available at the moment
+      example:
+        statusCode: 404
+        message: Not found!
+    Error500:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates an unexpected internal condition was encountered and no more specific message is suitable
+        message:
+          type: string
+          description: Text displaying a message informing that an unexpected internal condition was encountered
+      example:
+        statusCode: 500
+        message: Fatal error!
+paths:
+  /api/products:
+    post:
+      summary: Route to create a product
+      tags:
+        - Product
+      security:
+        - CookieAuth: []
+      requestBody:
+        required: true
+        description: Data to create a new product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        201:
+          description: Success at product creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message201'
+        400:
+          description: Request can be proccessed due to a client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        403:
+          description: Request refused tryng to create a product due to user permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error403'
+        500:
+          description: Request can't be procesed due to an internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+    get:
+      summary: Route that allow to get paginated products
+      tags:
+        - Product      
+      responses:
+        200:
+          description: Success response at products request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Paginate'
+        400:
+          description: Request can be proccessed due to a client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        404:
+          description: Request has been processed but not product has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+        500:
+          description: Request can't be procesed due to an internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+  /api/products/{id}:
+    get:
+      summary: Get a product by id
+      tags:
+        - Product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique identifier of the product to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success response at unique product request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/response200one'
+        400:
+          description: Request can be proccessed due to a client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        404:
+          description: Request has been processed but not product has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+        500:
+          description: Request can't be procesed due to an internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+    delete:
+      summary: Delete a product by id
+      tags:
+        - Product
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique identifier of the product to delete
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success response at a product elimination request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message200'
+        400:
+          description: Request can be proccessed due to a client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        403:
+          description: Request refused tryng to delete a product due to user permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error403'
+        404:
+          description: Request has been processed but not product has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+        500:
+          description: Request can't be procesed due to an internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+    put:
+      summary: Update a product by id
+      tags:
+        - ProductUpdate
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        description: Data to update the product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdate'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique identifier of the product to update
+          schema:
+            type: string
+      responses:
+        204:
+          description: Success response at a product update request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message204'
+        400:
+          description: Request can be proccessed due to a client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        403:
+          description: Request refused tryng to update a product due to user permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error403'
+        404:
+          description: Request has been processed but not product has been found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+        500:
+          description: Request can't be procesed due to an internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'

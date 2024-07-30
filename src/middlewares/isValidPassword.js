@@ -1,12 +1,12 @@
 async function isValidPassword (request, _response, next) {
     try {
 
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,8}$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$/;
         const { password } = request.body
         const passwordFormat = passwordRegex.test(password)
 
         if( !passwordFormat ) {
-            const error = new Error('¡The password must be between 6 and 8 characters and at least one letter and one number!')
+            const error = new Error('¡The password must be between 6 and 12 characters and at least one lowercase character, one uppercase character, and one numeric character!')
             error.statusCode = 400
             throw error
         }
