@@ -7,8 +7,6 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import compression from 'express-compression'
-import swaggerJSDoc from 'swagger-jsdoc'
-import { setup, serve } from 'swagger-ui-express'
 import { engine } from 'express-handlebars' //Eliminar una vez concluido el front con react
 import Handlebars from 'handlebars' //Eliminar una vez concluido el front con react
 
@@ -20,7 +18,6 @@ import errorHandler from './src/middlewares/errorHandler.js'
 import pathHandler from './src/middlewares/pathHandler.js'
 import __dirname from './utils.js'
 import argsUtil from './src/utils/args.util.js'
-import swaggerOptions from './src/utils/swagger.js'
 
 //Configuración del Server
 const server = express()
@@ -41,8 +38,6 @@ else {
     console.log(`Worker proccess: ${process.pid}.`)
     server.listen(port, ready)
 }
-
-const specs = swaggerJSDoc(swaggerOptions)
 
 // Templates engine (Handlebars)
 server.engine('handlebars', engine())
@@ -66,7 +61,6 @@ server.use(express.static(__dirname + '/public'))
 server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(Winston)
 server.use(cors({ origin: 'http://localhost:5173', credentials: true }))
-server.use("/api/docs", serve, setup(specs))
 server.use(compression({
     brotli:{ enabled: true, zlib:{}}
 }))
