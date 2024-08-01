@@ -59,6 +59,16 @@ Handlebars.registerHelper('calculateTotal', function(userCarts) {
     return total.toFixed(2)
 })
 
+// Configuro Helpers de Handlebars
+Handlebars.registerHelper('multiply', (a, b) => {return a * b})
+Handlebars.registerHelper('calculateTotal', function(userCarts) {
+    let total = 0
+    userCarts.forEach(item => {
+        total += item.product_id.price * item.product_quantity
+    })
+    return total.toFixed(2)
+})
+
 // Middlewares
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
@@ -77,3 +87,10 @@ server.use('/', indexRouter)
 //Error and Path handling
 server.use(errorHandler)
 server.use(pathHandler)
+
+// process.on('exit', (code)=>{
+//     console.log('Cerrando un proceso')
+//     console.log(code)
+// })
+
+// process.exit()

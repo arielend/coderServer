@@ -14,7 +14,6 @@ let logger = {}
 
 switch(environment){
     case 'development':
-        //console.log('Using Development logger.')
         logger = createLogger({
             levels,
             format: colorize(),
@@ -28,7 +27,7 @@ switch(environment){
     break
 
     case 'production':
-        //console.log('Using Production logger.')
+        
         logger = createLogger({
             levels,
             format: colorize(),
@@ -47,7 +46,7 @@ switch(environment){
     break
 
     default:
-        //console.log('Default logger.')
+        
         logger.transports = [
             new Console({ 
                 level: 'HTTP',

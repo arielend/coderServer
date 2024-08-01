@@ -49,9 +49,10 @@ class CustomRouter {
         }
         
 
-        res.paginate = (response) => {
+        res.paginate = (response, paginationInfo ) => {
             return res.json({
                 statusCode: 200,
+                paginationInfo,
                 response
             })
         }
