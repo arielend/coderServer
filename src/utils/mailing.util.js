@@ -6,8 +6,6 @@ const { GOOGLE_EMAIL, GOOGLE_PASSWORD } = environment
 
 async function sendEmail (data) {
 
-    console.log('El mail que llega a la función: ', data.email);
-
     try {
         const transport = createTransport({
             host: 'smtp.gmail.com',
@@ -23,7 +21,7 @@ async function sendEmail (data) {
         const emailSent = await transport.sendMail({
             from: `CoderServer Store <${GOOGLE_EMAIL}>`,
             to: data.email,
-            subject: `Hi, ${data.name.toUpperCase()}. Activate your account!`,
+            subject: data.subject,
             html: data.template,
             // attachments:[
             //     {

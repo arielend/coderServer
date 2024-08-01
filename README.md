@@ -82,7 +82,6 @@ Rutas de prueba:
 - Listado de productos con param de id http://localhost:8080/api/products/15fcdbb6fa80edff6bd9726c
 - Listado de productos con param de id (inexistente) http://localhost:8080/api/products/soyUnIdInexistente
 
-
 ## Sprint 9
 Durante el desarrollo del Sprint 9 se refactorizó la estructura del sistema de carpetas para adaptarlas al patrón de Diseño MVC (Model - View -Controller). La carpeta destinada a la persistencia de datos mantiene el nombre de data y será modificada en el próximo Sprint; la misma tiene agregadas las persistencias de FileSystem, Memory y Mongo.
 
