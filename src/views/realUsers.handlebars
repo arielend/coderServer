@@ -1,0 +1,45 @@
+<h1 class="bg-info text-center p-2 text-light">COMPUMUNDOHIPERMEGARED</h1>
+<section class="d-flex">
+    <article class="d-flex flex-column align-items-center w-50">
+        <h1 class="text-center">REGISTER FORM</h1>
+        <form action="" class="d-flex flex-column w-50">
+            <input class="m-2" type="email" name="email" id="email" placeholder="E-MAIL">
+            <input class="m-2" type="password" name="password" id="password" placeholder="PASSWORD">
+            <input class="m-2" type="text" name="photo" id="photo" placeholder="PHOTO">
+            <input class="m-2" type="button" id= "register" value="REGISTER">
+        </form>
+        <div class="card m-2" style="width: 18rem;">
+            <img style='width: 10rem, height:auto w-50' src="https://i.pinimg.com/originals/85/08/df/8508df8fc7d31021566318397c155933.jpg" class="card-img-top" alt="Homero">
+            <div class="card-body">
+                <h4 class="card-title text-center">Homero Simpson</h4>
+                <h5 class="card-title text-center">Vice Presidente JR</h5>
+            </div>
+        </div>
+    </article>
+    <article id="users" class="d-flex flex-wrap"></article>
+</section>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>  
+    const socket = io();
+    socket.on('users', data => {
+        let template = ``
+        template = data.map(each=>`
+        <div class="card m-2" style="width: 18rem; height: 30rem; ">
+            <img style='height:10rem w-50' src="${each.photo}" class="card-img-top; object-fit-cover" alt="${each.id}">
+            <div class="card-body">
+                <h5 class="card-title text-center">${each.email}</h5>
+            </div>
+        </div>
+        `
+        ).join("")
+        document.querySelector("#users").innerHTML = template
+    })
+
+    document.querySelector('#register').addEventListener("click", (event)=>{
+        const email = document.querySelector("#email").value
+        const password = document.querySelector("#password").value
+        const photo = document.querySelector("#photo").value
+        socket.emit("register", {email, password, photo})
+    })
+
+</script>

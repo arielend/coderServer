@@ -1,0 +1,368 @@
+components:
+  schemas: 
+    UserRegistration:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        username:
+          type: string
+          description: name or account alias
+        bio:
+          type: string
+          description: user optional biography
+        password:
+          type: string
+          description: account access password
+        verified:
+          type: boolean
+          description: account verification status
+        verifyCode:
+          type: string
+          description: account verification code
+        photo:
+          type: string
+          description: profile picture or avatar url
+        role:
+          type: string
+          description: user account role
+      example:
+        email: arielendrizzi@gmail.com
+        username: arielend
+        bio: I'm an ordinary user
+        password: Hola1234
+        verified: true
+        verifyCode: abcdef0123456789
+        photo: https://myprofilephoto/arielend
+        role: admin
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        password:
+          type: string
+          description: account access password        
+      example:
+        email: arielendrizzi78@gmail.com
+        password: Hola1234
+    UserPasswordSave:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        verifyCode:
+          type: string
+          description: account verification code
+        password:
+          type: string
+          description: account access password        
+      example:
+        email: arielendrizzi78@gmail.com
+        verifyCode: 53afb8700bed3a055b734b94
+        password: Hola1234
+  responses:
+    Response200one:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: object
+          description: An object that represents the required resource
+      example:
+        statusCode: 200
+        response:
+          email: arielendrizzi@gmail.com
+          username: arielend
+          bio: I'm not an ordinary user
+          password: Hola1234
+          verified: true
+          verifyCode: 53afb8700bed3a055b734b94
+          photo: https://myprofilephoto/arielend
+          role: admin
+    Response200many:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: array
+          description: An array of users
+      example:
+        statusCode: 200
+        response:
+          email: arielendrizzi@gmail.com
+          username: arielend
+          bio: i'm not an ordinary user
+          password: hola1234
+          verified: true
+          verifyCode: abcdef0123456789
+          photo: https://myprofilephoto/arielend
+          role: admin
+    Message200:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has been successful
+      example:
+        statusCode: 200
+        message: Verified user!
+    Paginate:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        paginationInfo:
+          type: object
+          description: An object that represents the paging information
+        response:
+          type: array
+          description: A paginated array of the required resource
+      example:
+        statusCode: 200
+        paginationInfo:
+          page: 1
+          prevPage: null
+          nextPage: 2
+          limit: 10
+          totalDocs: 500
+        response:
+          - email: arielendrizzi@gmail.com
+            username: arielend
+            role: admin
+          - email: pedrosantos@gmail.com
+            username: pedrosantos
+            role: customer
+          - email: juanchela@gmail.com
+            username: juanchela
+            role: customer
+    Message201:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested has created a resource successfully
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has created a resource successfully
+      example:
+        statusCode: 201
+        message: User registered!
+    Message204:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successfully and not return any other info
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has been successful
+      example:
+        statusCode: 204
+        message: Password changed. Please login!
+    Error400:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested cannot or will not be processed due to an apparent client error
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation cannot be processed due to an apparent client error
+      example:
+        statusCode: 400
+        message: Bad request!
+    Error401:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to an authentication error
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to an authentication error
+      example:
+        statusCode: 401
+        message: Bad auth!
+    Error403:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to user not having the necessary permissions for a resource
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to user not having the necessary permissions for a resource
+      example:
+        statusCode: 403
+        message: Forbidden!
+    Error404:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the requested resource is not available at the moment
+        message:
+          type: string
+          description: Text displaying a message informing that the requested resource is not available at the moment
+      example:
+        statusCode: 404
+        message: Not found!
+    Error500:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates an unexpected internal condition was encountered and no more specific message is suitable
+        message:
+          type: string
+          description: Text displaying a message informing that an unexpected internal condition was encountered
+      example:
+        statusCode: 500
+        message: Fatal error!
+paths:
+  /api/sessions/register:
+    post:
+      summary: Route that allow to create an user with role customer
+      tags:
+        - UserRegistration
+      requestBody:
+        required: true
+        description: Data to create a new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        201:
+          description: Success at user creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message201'
+        400:
+          description: Client error at register attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+  /api/sessions/login:
+    post:
+      summary: Route that allow an user to login
+      tags:
+        - UserLogin
+      requestBody:
+        required: true
+        description: Data to login
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        200:
+          description: Success at login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message200'
+        400:
+          description: Client error at login attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        404:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+  /api/sessions/password:
+    post:
+      summary: Route to request a password reset code
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Data to reset user password
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        200:
+          description: Reset code sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message200'
+        404:
+          description: Email not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+    put:
+      summary: Route to update the user password
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Data to update user account password
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPasswordSave'
+      responses:
+        204:
+          description: Password updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message204'
+        400:
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Invalida credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        404:
+          description: Email not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'

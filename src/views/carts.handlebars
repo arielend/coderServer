@@ -1,0 +1,56 @@
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+        <div class="d-flex flex-column justify-content-center col-md-8">
+            <div class="w-75 mx-auto">
+                <h4 class="cart-title">Products in Cart</h4>
+            </div>
+
+            {{#if userCarts }}
+                {{#each userCarts}}                            
+                    <div class="cart-item">                            
+                        <img src={{this.product_id.photo}} width="70">
+                        <div class="cart-item-details">
+                            <h2>{{this.product_id.title}}</h2>
+                            <div class="d-flex justify-content-evenly">
+                                <span class="cart-item-price">Price: <b>${{this.product_id.price}}</b></span>
+                                <span class="cart-item-quantity">Quantity: <b>{{this.product_quantity}}</b> u.</span>
+                                <span style="color: aliceblue;" class="text-white">Subtotal: $ {{multiply this.product_quantity this.product_id.price}} </span>
+                                
+                            </div>
+                        </div>
+                        <div class="cart-item-delete">
+                            <button id="btn_cartDelete" onclick="deleteCartItem('{{this._id}}')" style="background-color: transparent; border: none;">
+                                <img src="/images/trash_icon.svg" alt="Delete" title="Delete">
+                            </button>
+                        </div>
+                    </div>
+                {{/each}}
+
+                <div class="cart-total">
+                    <span>Total: <b class="text-white"> ${{calculateTotal userCarts}} </b> </span>
+                </div>
+
+                <div class="d-flex gap-2 align-items-center mt-3 p-2 bg-black rounded">
+                    <input type="text" class="form-control border-1 border-secondary " placeholder="discount code/gift card">
+                    <button class="customButton2" type="button">Apply</button>
+                </div>
+                <div class="d-flex justify-content-center align-items-center gap-3 mt-3 p-2 bg-black rounded">
+                    <button id="btn_proceedPay" onclick="proceedPay('{{user._id}}')" class="customButton2" type="button">Proceed to Pay</button>
+                    <a href="/products" class="customButton2" >Continue shopping!<a>
+                    <button id="btn_clearCart" onclick="clearCart()" class="customButton2" type="button"><b>Clear cart</b></button>
+                </div>
+
+            {{else}}
+                <div class="d-flex flex-column justify-content-center align-items-center p-4 gap-4 bg-white" style="min-height: 400px;">
+                    <h2>It look'a like your cart is empty!</h2>
+                    <h3> A great chance to put some cool stuffs inside! </h3>
+                    <a href="/products" class="customButton" >GO SHOPPING</a>
+                </div>
+            {{/if}}
+            
+            
+        </div>
+    </div>
+</div>
+
+<script src="/scripts/carts.js"></script>

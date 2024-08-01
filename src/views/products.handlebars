@@ -1,0 +1,104 @@
+<button class="btn btn:hover hover-shadow" style="background-color:#EAFF6A;" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+    View our categories
+</button>
+
+{{!-- Sidebar product cotegories --}}
+<div class="offcanvas offcanvas-start bg-black" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header d-flex justify-content-between">
+        <h5 class="offcanvas-title text-white" id="staticBackdropLabel">CODERSERVER</h5>
+        <button class="border-0 bg-black" data-bs-dismiss="offcanvas" aria-label="Close"> X
+            <img src="/images/close_icon.svg" alt="Close icon" style="height: 35px;"/>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-black text-white">
+                <a href='/api/products?category=mice' class="d-flex align-items-center gap-4 text-decoration-none text-white" title="keyboards">
+                    <img style='height: 45px' src="/images/mice_icon.png" alt="Mice icon" />
+                    Mice
+                </a>
+            </li>
+
+            <li class="list-group-item bg-black text-white">
+                <a href='/api/products?category=keyboards' class="d-flex align-items-center gap-4 text-decoration-none text-white" title="keyboards">
+                    <img style='height: 45px' src="/images/keyboards_icon.png" alt="" />
+                    Keyboards
+                </a>
+            </li>
+
+            <li class="list-group-item bg-black text-white">
+                <a href='/api/products?category=storage_drives' class="d-flex align-items-center gap-4 text-decoration-none text-white" title="keyboards">
+                    <img style='height: 45px' src="/images/drives_icon.png" alt="" />
+                    Storage drives
+                </a>
+            </li>
+
+            <li class="list-group-item bg-black text-white">
+                <a href='/api/products?category=motherboards' class="d-flex align-items-center gap-4 text-decoration-none text-white" title="keyboards">
+                    <img style='height: 45px' src="/images/motherboards_icon.png" alt="" />
+                    Motherboards
+                </a>
+            </li>
+
+            <li class="list-group-item bg-black text-white">
+                <a href='/api/products?category=ram_memory' class="d-flex align-items-center gap-4 text-decoration-none text-white" title="keyboards">
+                    <img style='height: 45px' src="/images/ramMemories_icon.png" alt="" />
+                    Ram memory
+                </a>
+            </li>
+
+            <li class="list-group-item bg-black text-white">
+                <a href='/api/products?category=graphics_cards' class="d-flex align-items-center gap-4 text-decoration-none text-white" title="keyboards">
+                    <img style='height: 45px' src="/images/graphicsCards_icon.png" alt="" />
+                    Graphics cards
+                </a>
+            </li>
+
+            <li class="list-group-item bg-black text-white">
+                <a href='/api/products?category=processors' class="d-flex align-items-center gap-4 text-decoration-none text-white" title="keyboards">
+                    <img style='height: 45px' src="/images/processors_icon.png" alt="" />
+                    Processors
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class='d-flex justify-content-center flex-wrap'>
+    {{#each products}}
+        <div class="item-card">
+            <h4 class="card-title">{{title}}</h4>
+            <div class="card-body">
+                <img class="photo" src="{{photo}}"/>
+                <div class="card-icons">
+                    <button>
+                        <img class="icon" src="/images/isFav_icon.svg" alt="fav icon"/>
+                    </button>
+                    <button>
+                        <img class="icon" src="/images/share_icon.svg" alt="fav icon"/>
+                    </button>
+                </div>
+            </div>
+            <p class="price">$ {{price}}</p>
+            <a href="/products/{{this._id}}" class="button link">View Details</a>
+        </div>
+    {{/each}}
+</div>
+
+<div class="d-flex justify-content-center items-center gap-3 m-4 py-2" style="background-color: #EAFF6A;">
+    {{#if pagination.prevPage}}
+        <a class="border-0 bg-transparent p-0 pointer" href="/api/products?limit=6&page={{pagination.prevPage}}">
+            <img src="/images/prev_icon.svg" alt="go back arrow" style="height: 2rem;">
+        </a>
+    {{/if}}
+
+    <span class="rounded text-center" style="height: 2rem; width: 2rem; background-color: #0B1215; color: #EAFF6A; font-weight: bold; font-size: 1.2rem;">{{pagination.page}}</span>
+
+    {{#if pagination.nextPage}}
+        <a class="border-0 bg-transparent p-0 pointer" href="/api/products?limit=6&page={{pagination.nextPage}}">
+            <img src="/images/next_icon.svg" alt="go ahead arrow" style="height: 2rem;">
+        </a>
+    {{/if}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

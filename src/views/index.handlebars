@@ -1,0 +1,77 @@
+<div class="d-flex flex-column justify-content-center align-items-center row-gap-4 px-4 mt-2 mb-4">
+    <h4 class="mb-1">Explore our categories</h4>
+    <div>
+        <a href='/api/products?category=mice' title="mices" style="text-decoration: none;">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/mice_icon.png" alt="" />
+        </a>
+
+        <a href='/api/products?category=keyboards' title="keyboards" style="text-decoration: none;">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/keyboards_icon.png" alt="" />
+        </a>
+
+        <a href='/api/products?category=storage_drives' title="storage" style="text-decoration: none;">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/drives_icon.png" alt="" />
+        </a>
+
+        <a href='/api/products?category=motherboards' title="motherboards" style="text-decoration: none;">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/motherboards_icon.png" alt="" />
+        </a>
+
+        <a href='/api/products?category=ram_memory' title="ram memories" style="text-decoration: none;">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/ramMemories_icon.png" alt="" />
+        </a>
+
+        <a href='/api/products?category=graphics_cards' title="graphics cards" style="text-decoration: none;">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/graphicsCards_icon.png" alt="" />
+        </a>
+
+        <a href='/api/products?category=processors' title="processors" style="text-decoration: none;">
+            <img class='bg-secondary-subtle rounded rounded-3 me-4' style='height: 70px' src="/images/processors_icon.png" alt="" />
+        </a>
+
+    </div>
+    
+</div>
+
+<div class='d-flex justify-content-center flex-wrap'>
+    {{#each products}}       
+
+        <div class="item-card">
+            <h4 class="card-title">{{title}}</h4>
+            <div class="card-body">
+                <img class="photo" src="{{photo}}"/>
+                <div class="card-icons">
+                    <button>
+                        <img class="icon" src="/images/isFav_icon.svg" alt="fav icon"/>
+                    </button>
+                    <button>
+                        <img class="icon" src="/images/share_icon.svg" alt="fav icon"/>
+                    </button>
+                </div>
+            </div>
+            <p class="price">$ {{price}}</p>
+            <a href="/products/{{this._id}}" class="button link">View Details</a>
+        </div>
+
+
+
+
+    {{/each}}
+</div>
+
+<div class="d-flex justify-content-center items-center gap-3 m-4 py-2" style="background-color: #EAFF6A;">
+    {{#if pagination.prevPage}}
+        <a class="border-0 bg-transparent p-0 pointer" href="/api/products?limit=6&page={{pagination.prevPage}}">
+            <img src="/images/prev_icon.svg" alt="go back arrow" style="height: 2rem;">
+        </a>
+    {{/if}}
+
+    <span class="rounded text-center" style="height: 2rem; width: 2rem; background-color: #0B1215; color: #EAFF6A; font-weight: bold; font-size: 1.2rem;">{{pagination.page}}</span>
+    
+    {{#if pagination.nextPage}}
+        <a class="border-0 bg-transparent p-0 pointer" href="/api/products?limit=6&page={{pagination.nextPage}}">
+            <img src="/images/next_icon.svg" alt="go ahead arrow" style="height: 2rem;">
+        </a>
+    {{/if}}
+</div>
+

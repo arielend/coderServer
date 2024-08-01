@@ -1,0 +1,11 @@
+node_modules/
+practice/
+functions/
+.env
+.env.test
+.env.dev
+utils.js
+
+todo.txt
+
+createProducts.js
