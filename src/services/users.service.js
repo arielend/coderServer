@@ -1,16 +1,11 @@
-import Service from '../services/service.js'
+import Service from './Service.js'
 import usersRepository from '../repositories/users.repository.js'
 
 const usersService = new Service(usersRepository)
-export const { 
+export const {
     createService,
-    destroyService,
-    paginateService,
-    readLastService,
-    readLastByUserService,
-    readService,
+    readByEmailService,
     readOneService,
     updateService,
-    destroyManyService,
-    readByEmailService
+    destroyService
 } = usersService

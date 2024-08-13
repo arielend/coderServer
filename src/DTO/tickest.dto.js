@@ -1,4 +1,4 @@
-import argsUtil from '../utils/args.util'
+import argsUtil from '../utils/args.util.js'
 import crypto from 'crypto'
 
 const persistence = argsUtil.pers

@@ -1,8 +1,8 @@
 import dao from '../DAO/dao.factory.js'
-import CartsDTO from '../DTO/carts.dto.js'
+import CartsDTO from '../DTO/carts.dot.js'
 const { cartsManager } = dao
 
-class CartsRepository {
+class ExampleRepository {
 
     constructor () {
         this.manager = cartsManager
@@ -18,10 +18,19 @@ class CartsRepository {
         }
     }
 
-    read = async (filter) => {
+    read = async (filter={}) => {
         try {
             const all = await this.manager.read(filter)
             return all            
+        } catch (error) {
+            throw error
+        }
+    }
+
+    readByEmail = async (email) => {
+        try {
+            const one = await this.manager.readByEmail(email)
+            return one
         } catch (error) {
             throw error
         }
@@ -101,5 +110,5 @@ class CartsRepository {
     }
 }
 
-const cartsRepository = new CartsRepository()
-export default cartsRepository
+const exampleRepository = new ExampleRepository()
+export default exampleRepository

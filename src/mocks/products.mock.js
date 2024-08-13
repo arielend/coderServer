@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 import '../utils/env.util.js'
-import dbConnect from '../utils/dbConnection.js'
+import dbConnect from '../utils/dbConnection.util.js'
 import productsRepository from '../repositories/products.repository.js'
 
 async function createProduct () {

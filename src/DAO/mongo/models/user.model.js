@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Types } from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate-v2'
 
 const collection = 'users'

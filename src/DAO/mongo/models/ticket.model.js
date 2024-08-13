@@ -4,7 +4,6 @@ import mongoosePaginate from 'mongoose-paginate-v2'
 const collection = 'tickets'
 
 const schema = new Schema({
-
     user_id: { type: Types.ObjectId, required: true, index: true, ref: 'users' },
     date: { type: Date, required: true },
     total: { type: Number, required: true },
@@ -24,11 +23,10 @@ schema.pre('findOne', function () {
 
 //plugin para formatear la fecha
 schema.virtual('formattedDate').get(function() {
-    return this.date.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' }).split('/').reverse().join('/');
-});
+    return this.date.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' }).split('/').reverse().join('/')
+})
 
 schema.plugin(mongoosePaginate)
-
 const TicketModel = model(collection, schema)
 
 export default TicketModel

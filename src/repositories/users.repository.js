@@ -12,16 +12,17 @@ class UsersRepository {
         try {
             data = new UsersDTO(data)
             const one = await this.manager.create(data)
-            return one            
+            return one
         } catch (error) {
             throw error
         }
     }
 
-    read = async () => {
+    readByEmail = async (email) => {
         try {
-            const all = await this.manager.read()
-            return all            
+            const one = await this.manager.readByEmail(email)
+            //console.log('Lo que devuelve one en readbyemail del repository: ', one);
+            return one
         } catch (error) {
             throw error
         }
@@ -36,35 +37,10 @@ class UsersRepository {
         }
     }
 
-    paginate = async ({filter, sortAndPaginate}) => {
+    update = async (id, data) => {
         try {
-            const some = await this.manager.paginate({ filter, sortAndPaginate })
-            return some
-        } catch (error) {
-            throw error
-        }
-    }
-
-    aggregate = async (pipeline) => {
-        try {
-            const aggregated = await this.manager.aggregate(pipeline)
-            return aggregated            
-        } catch (error) {
-            throw error            
-        }
-    }
-
-    update = async ({id, data}) => {
-        try {
-
-            const one = await this.manager.update({id, data})
-            if(one) {
-                return one
-            } 
-            else {
-                const error = new Error('Error while updating.')
-                error.statusCode = 500
-            }
+            const one = await this.manager.update(id, data)
+            return one            
         } catch (error) {
             throw error
         }
@@ -73,44 +49,7 @@ class UsersRepository {
     destroy = async (id) => {
         try {
             const one = this.manager.destroy(id)
-            return one            
-        } catch (error) {
-            throw error
-        }
-    }
-
-    readLastByUser = async (user_id) => {
-        try {
-            const last = await this.manager.readLastByUser(user_id)
-            return last            
-        } catch (error) {
-            throw error
-        }
-    }
-
-    readLast = async () => {
-        try {
-            const last = await this.manager.readLast()
-            return last
-        } catch (error) {
-            throw error
-        }
-    }
-
-    destroyMany = async ({user_id}) => {
-        try {
-            const itemsDeleted = await this.manager.destroyMany({user_id})
-            return itemsDeleted            
-        } catch (error) {
-            throw error
-        }
-    }
-
-    readByEmail = async (email) => {
-        
-        try {
-            const one = await this.manager.readByEmail(email)
-            return one            
+            return one
         } catch (error) {
             throw error
         }

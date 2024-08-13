@@ -1,15 +1,12 @@
-import Service from '../services/service.js'
+import Service from './Service.js'
 import cartsRepository from '../repositories/carts.repository.js'
 
 const cartsService = new Service(cartsRepository)
-export const { 
+export const {
     createService,
     destroyService,
-    paginateService,
-    readLastService,
-    readLastByUserService,
+    destroyManyService,
     readService,
     readOneService,
-    updateService,
-    destroyManyService
+    updateService
 } = cartsService

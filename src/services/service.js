@@ -1,21 +1,20 @@
 class Service {
-
-    constructor(repository) {
+    constructor(repository){
         this.repository = repository
     }
 
     createService = async (data) => {
         try {
             const one = await this.repository.create(data)
-            return one            
+            return one
         } catch (error) {
             throw error
         }
     }
 
-    readService = async () => {
+    readService = async (filter) => {
         try {
-            const many = await this.repository.read()
+            const many = await this.repository.read(filter)
             return many            
         } catch (error) {
             throw error
@@ -31,18 +30,18 @@ class Service {
         }
     }
 
-    paginateService = async ({filter, sortAndPaginate}) => {
+    paginateService = async (filter, options) => {
         try {
-            const some = await this.repository.paginate({ filter, sortAndPaginate })
-            return some            
+            const many = await this.repository.paginate(filter, options)
+            return many            
         } catch (error) {
             throw error
         }
     }
 
-    updateService = async ({id, data}) => {
+    updateService = async (id, data) => {
         try {
-            const one = await this.repository.update({id, data})
+            const one = await this.repository.update(id, data)
             return one
         } catch (error) {
             throw error
@@ -60,8 +59,8 @@ class Service {
 
     readLastByUserService = async (user_id) => {
         try {
-            const last = await this.repository.readLastByUser(user_id)
-            return last
+            const one = await this.repository.readLastByUser(user_id)
+            return one
         } catch (error) {
             throw error
         }
@@ -69,8 +68,8 @@ class Service {
 
     readLastService = async () => {
         try {
-            const last = await this.repository.readLast()
-            return last            
+            const one = await this.repository.readLast()
+            return one            
         } catch (error) {
             throw error
         }
@@ -79,16 +78,17 @@ class Service {
     readByEmailService = async (email) => {
         try {
             const one = await this.repository.readByEmail(email)
+            //console.log('Lo que devuelve one en readbyemail del service: ', one);
             return one            
         } catch (error) {
             throw error
         }
     }
 
-    destroyManyService = async ({user_id}) => {
+    destroyManyService = async (user_id) => {
         try {
-            const itemsDeleted = await this.repository.destroyMany({user_id})
-            return itemsDeleted
+            const many = await this.repository.destroyMany(user_id)
+            return many
         } catch (error) {
             throw error
         }

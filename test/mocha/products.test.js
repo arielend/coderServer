@@ -49,9 +49,9 @@ describe(
         it(
             'Product update: test that the modified value is different than original value',
             async () => {
-                const one = await productsManager.readOne({ _id:id })
+                const one = await productsManager.readOne(id)
                 const data = { title: 'AMD Ryzen 9 CPU'}
-                const response = await productsManager.update({ id, data })
+                const response = await productsManager.update(id, data)
                 assert.notEqual(one.title, response.title)
             }
         )
@@ -59,7 +59,7 @@ describe(
             'Product creation: product test creation deleted',
             async () => {
                 const response = await productsManager.destroy(id)
-                const one = await productsManager.readOne({ _id:id })
+                const one = await productsManager.readOne(id)
                 assert.strictEqual(one, null)
             }        
         )

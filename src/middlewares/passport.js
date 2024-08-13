@@ -1,9 +1,10 @@
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
-import { Strategy as GoogleStratey } from 'passport-google-oauth2' 
+import { Strategy as GoogleStrategy } from 'passport-google-oauth2'
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt'
-import { createHash, verifyHash } from '../utils/hash.js'
-import { createToken } from '../utils/token.js'
+
+import { createHash, verifyHash } from '../utils/hash.util.js'
+import { createToken } from '../utils/token.util.js'
 import sendEmail from '../utils/mailing.util.js'
 
 import CustomError from '../utils/errors/CustomError.js'
@@ -11,7 +12,6 @@ import errors from '../utils/errors/errors.js'
 
 import { createService, readByEmailService } from '../services/users.service.js'
 
-//ESTRATEGIAS LOCALES
 passport.use(
     "register",
     new LocalStrategy(
@@ -29,7 +29,7 @@ passport.use(
                 }
 
                 //Validamos los requerimientos minimos del password
-                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,8}$/;
+                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/;
                 const passwordFormat = passwordRegex.test(password)
 
                 if( !passwordFormat ) {
@@ -50,6 +50,7 @@ passport.use(
                 request.body.password = hashPassword
 
                 const user = await createService(request.body)
+                console.log('El password hasheado en passport luego de registrar usuario: ', user.password)
 
                 const emailSent = await sendEmail({
                     email,
@@ -65,9 +66,7 @@ passport.use(
                     </div>
                     <img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2Femail_footer.png?alt=media&token=53ad8bb6-dedf-4e87-a76d-de228b482920' alt='email footer'/>
                     `
-                })
-
-                
+                })               
 
                 return done(null, user)
 
@@ -87,6 +86,7 @@ passport.use(
 
                 //Verificamos que el usuario exista
                 const registeredUser = await readByEmailService(email)
+                //console.log('Lo que devuelve registeredUser en readbyemail de passport: ', registeredUser);
 
                 if(!registeredUser) {
                     const error = CustomError.new(errors.auth)
@@ -100,6 +100,7 @@ passport.use(
 
                 //Verificamos la contraseña
                 const verify = verifyHash(password, registeredUser.password)
+                //console.log('El verified: ', verify);
                 if(!verify) {
                     const error = CustomError.new(errors.credentials)
                     return done(error)
@@ -128,7 +129,7 @@ passport.use(
 
 //ESTRATEGIAS DE TERCEROS - GOOGLE
 passport.use('google',
-    new GoogleStratey(
+    new GoogleStrategy(
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,

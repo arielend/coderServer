@@ -1,8 +1,8 @@
 import { config } from 'dotenv'
-import argsUtil from './args.util.js'
+import args from './args.util.js'
 
-const { env } = argsUtil
-let path 
+const { env } = args
+let path
 
 switch(env) {
     case 'development':

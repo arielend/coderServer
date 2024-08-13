@@ -1,9 +1,10 @@
 import { Router } from 'express'
-import { verifyToken } from '../utils/token.js'
+import { verifyToken } from '../utils/token.util.js'
 import dao from '../DAO/dao.factory.js'
 import Winston from '../utils/winston.util.js'
 
 const { usersManager } = dao
+
 class CustomRouter {
 
     //Construir las instancias del enrutador
@@ -75,7 +76,7 @@ class CustomRouter {
             Winston.ERROR(logErrorMessage + '400: Bad request!')
             return res.json({
                 statusCode: 400,
-                message: srtMessage + 'Bad request!'
+                message: 'Bad request!'
             })
         }
 

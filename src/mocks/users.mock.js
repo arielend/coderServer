@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 import '../utils/env.util.js'
-import dbConnect from '../utils/dbConnection.js'
+import dbConnect from '../utils/dbConnection.util.js'
 import usersRepository from '../repositories/users.repository.js'
 import { createHash } from '../utils/hash.util.js'
 

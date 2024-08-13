@@ -1,8 +1,7 @@
-import argsUtil from '../utils/args.util.js'
-import dbConnect from '../utils/dbConnection.js'
+import args from '../utils/args.util.js'
+import dbConnect from '../utils/dbConnection.util.js'
 
-const persistence = argsUtil.pers
-
+const persistence = args.pers
 let dao = {}
 
 switch(persistence){

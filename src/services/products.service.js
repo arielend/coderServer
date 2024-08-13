@@ -1,4 +1,4 @@
-import Service from './service.js'
+import Service from './Service.js'
 import productsRepository from '../repositories/products.repository.js'
 
 const productsService = new Service(productsRepository)
@@ -7,9 +7,6 @@ export const {
     destroyService,
     paginateService,
     readOneService,
-    readService,
-    updateService,    
-    readLastService,
-    readLastByUserService,    
-    destroyManyService
+    updateService,
+    readLastService
 } = productsService

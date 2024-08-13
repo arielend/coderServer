@@ -18,19 +18,13 @@ async function sendEmail (data) {
         })
 
         await transport.verify()
+
         const emailSent = await transport.sendMail({
             from: `CoderServer Store <${GOOGLE_EMAIL}>`,
             to: data.email,
             subject: data.subject,
-            html: data.template,
-            // attachments:[
-            //     {
-            //         filename: 'header.svg',
-            //         path: __dirname+'/public/images/header_img.svg',
-            //         cid: 'coderserver'
-            //     }
-            // ]
-        })
+            html: data.template
+        })        
         
         return emailSent
     } catch (error) {

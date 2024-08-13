@@ -1,15 +1,14 @@
 import CustomRouter from '../CustomRouter.js'
-import { paginate, create, update, destroy, destroyMany } from '../../controllers/carts.controller.js'
+import { create, destroy, destroyMany, read, readOne, update } from '../../controllers/carts.controller.js'
 
 class CartsRouter extends CustomRouter {
-
-    init() {
-        this.paginate('/', ['ADMIN', 'CUSTOMER'], paginate)
-        this.paginate('/:id', ['ADMIN', 'CUSTOMER'], paginate)
-        this.create('/', ['ADMIN', 'CUSTOMER'], create)
-        this.update('/:id', ['ADMIN', 'CUSTOMER'], update)
+    init(){
+        this.create('/', ['PUBLIC'], create)
+        this.read('/', ['ADMIN', 'CUSTOMER'], read)
         this.destroy('/:id', ['ADMIN', 'CUSTOMER'], destroy)
-        this.destroyMany('/', ['ADMIN', 'CUSTOMER'], destroyMany )
+        this.readOne('/:id', ['ADMIN', 'CUSTOMER'], readOne)
+        this.update('/:id', ['ADMIN', 'CUSTOMER'], update)
+        this.destroyMany('/clear', ['ADMIN', 'CUSTOMER'], destroyMany)
     }
 }
 

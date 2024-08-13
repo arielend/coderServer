@@ -20,7 +20,7 @@ class UsersDTO {
         this.verifyCode = data.verifyCode || crypto.randomBytes(12).toString('hex')
         this.role = data.role || 'customer'
         this.bio = data.bio || 'You can write here something interesting about you!'
-        this.photo = data.photo || '/images/no_profile_photo.svg'
+        this.photo = data.photo || 'https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fno_profile_photo.svg?alt=media&token=3629a314-f68c-4db6-9478-0e8c66f80e44'
     }
 }
 

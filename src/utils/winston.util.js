@@ -1,7 +1,7 @@
 import { createLogger, format, addColors, transports } from 'winston'
-import argsUtil from '../utils/args.util.js'
+import args from '../utils/args.util.js'
 
-const environment = argsUtil.env
+const environment = args.env
 
 const { colorize, simple } = format
 const { Console, File } = transports

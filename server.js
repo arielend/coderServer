@@ -9,8 +9,6 @@ import cors from 'cors'
 import compression from 'express-compression'
 import swaggerJSDoc from 'swagger-jsdoc'
 import { setup, serve } from 'swagger-ui-express'
-import { engine } from 'express-handlebars' //Eliminar una vez concluido el front con react
-import Handlebars from 'handlebars' //Eliminar una vez concluido el front con react
 
 //Módulos locales
 import environment from './src/utils/env.util.js'
@@ -44,30 +42,6 @@ else {
 
 const specs = swaggerJSDoc(swaggerOptions)
 
-// Templates engine (Handlebars)
-server.engine('handlebars', engine())
-server.set('view engine', 'handlebars')
-server.set('views', __dirname + '/src/views')
-
-// Configuro Helpers de Handlebars
-Handlebars.registerHelper('multiply', (a, b) => {return a * b})
-Handlebars.registerHelper('calculateTotal', function(userCarts) {
-    let total = 0
-    userCarts.forEach(item => {
-        total += item.product_id.price * item.product_quantity
-    })
-    return total.toFixed(2)
-})
-
-// Configuro Helpers de Handlebars
-Handlebars.registerHelper('multiply', (a, b) => {return a * b})
-Handlebars.registerHelper('calculateTotal', function(userCarts) {
-    let total = 0
-    userCarts.forEach(item => {
-        total += item.product_id.price * item.product_quantity
-    })
-    return total.toFixed(2)
-})
 
 // Middlewares
 server.use(express.urlencoded({ extended: true }))
@@ -86,11 +60,4 @@ server.use('/', indexRouter)
 
 //Error and Path handling
 server.use(errorHandler)
-server.use(pathHandler)
-
-// process.on('exit', (code)=>{
-//     console.log('Cerrando un proceso')
-//     console.log(code)
-// })
-
-// process.exit()
+//server.use(pathHandler)

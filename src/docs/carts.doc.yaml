@@ -1,0 +1,33 @@
+components:
+  schemas:
+    Carts:
+      type: object
+      properties:
+        user_id:
+          type: object
+          description: identifies the user that placed the cart
+        product_id:
+          type: object
+          description: identifies the product added to cart
+        product_quantity:
+          type: number
+          description: sets the product quantity added to cart
+        cart_status:
+          type: string
+          description: describes the cart status
+      example:
+        user_id: abcdef0123456789
+        product_id: abcdef0123456789
+        product_quantity: 2
+        cart_status: saved
+  responses:
+    Response200one:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: object
+          description: an object thet represents the required resource

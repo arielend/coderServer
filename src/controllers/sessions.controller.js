@@ -1,15 +1,22 @@
 import crypto from 'crypto'
-import { readByEmailService, updateService } from '../services/users.service.js'
+import { readByEmailService, updateService, destroyService } from '../services/users.service.js'
 import sendEmail from '../utils/mailing.util.js'
-import { createHash } from '../utils/hash.js'
+import { createHash } from '../utils/hash.util.js'
 
 class SessionsController {
 
-    async login (request, response, next ) {
+    async register ( request, response, next ) {
         try {
+            return response.message201('User registered!')
+        } catch (error) {
+            return next(error)
+        }
+    }
 
+    async login ( request, response, next ) {
+        try {
             const userData = request.user
-            
+
             response.cookie('token', request.user.token, {
                 signed: true,
                 httpOnly: true,
@@ -40,39 +47,29 @@ class SessionsController {
             return next(error)
         }
     }
-    
-    async register ( request, response, next ) {
-        try {
-            return response.json({
-                statusCode: 201,
-                message: '¡User registered!'
-            }) 
-            
-        } catch (error) {
-            return next(error)
-        }    
-    }
 
-    async verify (request, response, next) {
+    async verify(request, response, next) {
         try {
 
             const { email, verifyCode } = request.body
             const one = await readByEmailService(email)
 
-            if(!one) {
+            console.log('one en el session controller: ', one);
+
+            if (!one) {
                 return response.error404()
             }
-            else{
+            else {
                 const { _id } = one
                 const verified = (verifyCode === one.verifyCode)
 
-                if(verified) {
+                if (verified) {
                     await updateService({
-                        id: _id,
-                        data: {verified}
+                        _id,
+                        data: { verified }
                     })
 
-                    return response.message200('User verified!')                     
+                    return response.message200('User verified!')
                 }
             }
         } catch (error) {
@@ -80,20 +77,20 @@ class SessionsController {
         }
     }
 
-    async resetPassword ( request, response, next ) {
+    async resetPassword(request, response, next) {
 
         const { email } = request.body
         const user = await readByEmailService(email)
 
-        if(!user) {
+        if (!user) {
             return response.error404()
         }
-        else{
+        else {
             const verifyCode = crypto.randomBytes(12).toString('hex')
 
             await updateService({
                 id: user._id,
-                data: {verifyCode}
+                data: { verifyCode }
             })
 
             await sendEmail({
@@ -116,29 +113,29 @@ class SessionsController {
         }
     }
 
-    async savePassword (request, response, next ){
+    async setPassword(request, response, next) {
         try {
             const { email, password, verifyCode } = request.body
-            const user = await readByEmailService(email)            
-            const hashPassword = createHash(password)            
+            const user = await readByEmailService(email)
+            const hashPassword = createHash(password)
 
-            if(!user){
+            if (!user) {
                 return response.error404()
             }
             else {
                 const { _id } = user
                 const verified = (verifyCode === user.verifyCode)
 
-                if(!verified) {
+                if (!verified) {
                     return response.error401()
                 }
                 else {
                     await updateService({
                         id: _id,
-                        data: {password: hashPassword}
+                        data: { password: hashPassword }
                     })
 
-                    return response.message204('Password changed. Please login!')                     
+                    return response.message204('Password changed. Please login!')
                 }
             }
 
@@ -146,31 +143,12 @@ class SessionsController {
             return next(error)
         }
     }
-    
-    async online ( request, response, next ) {
-        try {
-            if (request.user.online) {
-                return response.json({
-                    statusCode: 200,
-                    message: "¡User Online!",
-                    user_id: request.user._id
-    
-                })
-            } else {
-                return response.json({
-                    statusCode: 401,
-                    message: "¡Bath auth!"
-                })
-            }
-        } catch (error) {
-            return next(error)
-        }
-    }
-    
-    signout (request, response, next ) {
+
+    signout(request, response, next) {
 
         try {
-            if(request.body.user.online) {
+            console.log('El body como llega a logout: ', request.body)
+            if (request.body.user.online) {
                 return response.clearCookie('token').json({
                     statusCode: 200,
                     message: '¡Signing out!'
@@ -180,19 +158,17 @@ class SessionsController {
                     statusCode: 401,
                     message: '¡Bad auth on logout!'
                 })
-            }        
+            }
         } catch (error) {
             return next(error)
         }
     }
 
-    google (request, response, next) {
-        try {        
-            return response.json({
-                session: request.session,
-                statusCode: 200,
-                message: 'Logged in with Google!'
-            })        
+    async destroy (request, response, next) {
+        try {
+            const { id } = request.params
+            const one = await destroyService(id)
+            return response.message204('User deleted')            
         } catch (error) {
             return next(error)
         }
@@ -200,4 +176,12 @@ class SessionsController {
 }
 
 const sessionsController = new SessionsController()
-export const { login, register, verify, online, signout, google, resetPassword, savePassword } = sessionsController
+export const { 
+    resetPassword,
+    setPassword,
+    signout,
+    verify,
+    register,
+    login,
+    destroy
+} = sessionsController

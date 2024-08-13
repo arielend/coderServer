@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import environment from '../../src/utils/env.util.js'
 import dao from '../../src/DAO/dao.factory.js'
 
-const { usersManager } = dao
+const { usersManager , productsManager } = dao
 
 const requester = supertest(`http://localhost:${environment.PORT}/api`)
 
@@ -29,6 +29,7 @@ describe(
         }
 
         let token = undefined
+        let id = undefined
 
         it(
             'User register',
@@ -43,18 +44,57 @@ describe(
             async () => {
                 const response = await requester.post('/sessions/login').send(user)
                 const { _body, headers } = response
-                console.log('El body: ', _body)
-                console.log('Los headers: ', headers)
+                token = headers['set-cookie'][0].split(';')[0]
                 expect(_body.statusCode).to.be.equals(200)
             }
         )
         it(
-            'User delete',
+            'Product creation',
+            async () => {
+                const response = await requester.post('/products/').send(product).set('Cookie', token)
+                const { _body } = response
+                expect(_body.statusCode).to.be.equals(201)
+            }
+        )
+        it(
+            'Product deletion by admin user',
+            async () => {
+                const one = await productsManager.readLast()
+                id = one._id
+                console.log('El id del ultimo creado es: ', id)
+                const response = await requester.delete(`/products/${id}`).set('Cookie', token)
+                const { _body } = response
+                expect(_body.statusCode).to.be.equals(204)
+            }
+        )
+        it(
+            'Product deletion tried by an user not logged in',
+            async () => {
+                const one = await productsManager.readLast()
+                id = one._id
+                console.log('El id del ultimo creado es: ', id)
+                const response = await requester.delete(`/products/${id}`)
+                const { _body } = response
+                expect(_body.statusCode).to.be.equals(401)
+            }
+        )
+        it(
+            'User signout',
+            async () => {
+                const data = { user :{ online: true} }
+                const response = await requester.post('/sessions/signout').send(data).set("Cookie", token)
+                const { _body } = response
+                console.log('El body en test signout: ', _body)
+                expect(_body.statusCode).to.be.equals(200)
+            }
+        )
+        it(
+            'User deletion',
             async () => {
                 const one = await usersManager.readByEmail(user.email)
-                const response = await requester.delete('/users/' + one._id)
+                const response = await requester.delete('/sessions/' + one._id).set('Cookie', token)
                 const { _body } = response
-                expect(_body.statusCode).to.be.equals(200)
+                expect(_body.statusCode).to.be.equals(204)
             }
         )
     }
