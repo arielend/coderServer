@@ -3,8 +3,8 @@ import { readOne, update } from '../../controllers/users.controller.js'
 
 class UsersRouter extends CustomRouter {
     init(){
-        this.readOne('/:id', ['ADMIN', 'CUSTOMER'], readOne)
-        this.update('/:id', ['ADMIN', 'CUSTOMER'], update)
+        this.readOne('/:id', ['ADMIN', 'CUSTOMER', 'PREM'], readOne)
+        this.update('/', ['ADMIN', 'CUSTOMER', 'PREM'], update)
     }
 }
 

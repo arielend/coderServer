@@ -7,9 +7,9 @@ import ticketsManager from '../../DAO/mongo/managers/ticketsManager.js'
 class TicketsRouter extends CustomRouter {
 
     init() {
-        this.create('/', ['ADMIN', 'CUSTOMER'], create)
-        this.read('/', ['ADMIN', 'CUSTOMER'], read)
-        this.readOne('/:id', ['ADMIN', 'CUSTOMER'], readOne)
+        this.create('/', ['CUSTOMER', 'PREM'], create)
+        this.read('/', ['ADMIN', 'CUSTOMER', 'PREM'], read)
+        this.readOne('/:id', ['ADMIN', 'CUSTOMER', 'PREM'], readOne)
     }
 }
 const ticketsRouter = new TicketsRouter()

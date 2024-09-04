@@ -23,14 +23,13 @@ class SessionsController {
                 secure: false,
                 sameSite: 'strict',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
-            }
+                }
             )
 
             const user = {
                 email: userData.email,
                 username: userData.username,
-                photo: userData.photo,
-                bio: userData.bio,
+                _id: userData._id,
                 role: userData.role,
                 online: userData.online 
             }
@@ -52,23 +51,18 @@ class SessionsController {
         try {
 
             const { email, verifyCode } = request.body
-            const one = await readByEmailService(email)
-
-            console.log('one en el session controller: ', one);
+            const one = await readByEmailService(email)           
 
             if (!one) {
                 return response.error404()
             }
             else {
-                const { _id } = one
+                const id = one._id                
                 const verified = (verifyCode === one.verifyCode)
+                const data = { verified }
 
                 if (verified) {
-                    await updateService({
-                        _id,
-                        data: { verified }
-                    })
-
+                    await updateService(id, data)
                     return response.message200('User verified!')
                 }
             }
@@ -87,11 +81,13 @@ class SessionsController {
         }
         else {
             const verifyCode = crypto.randomBytes(12).toString('hex')
+            const id = user._id
+            const data = {
+                verifyCode,
+                verified: false
+            }
 
-            await updateService({
-                id: user._id,
-                data: { verifyCode }
-            })
+            await updateService(id, data)
 
             await sendEmail({
                 email: user.email,
@@ -123,18 +119,18 @@ class SessionsController {
                 return response.error404()
             }
             else {
-                const { _id } = user
+                const id = user._id
                 const verified = (verifyCode === user.verifyCode)
+                const data = { 
+                    password : hashPassword,
+                    verified: true
+                }
 
                 if (!verified) {
                     return response.error401()
                 }
                 else {
-                    await updateService({
-                        id: _id,
-                        data: { password: hashPassword }
-                    })
-
+                    await updateService(id, data)
                     return response.message204('Password changed. Please login!')
                 }
             }
@@ -145,18 +141,16 @@ class SessionsController {
     }
 
     signout(request, response, next) {
-
-        try {
-            console.log('El body como llega a logout: ', request.body)
-            if (request.body.user.online) {
-                return response.clearCookie('token').json({
+        try {            
+            if (request.user) {
+                return response.clearCookie('token').clearCookie('user').json({
                     statusCode: 200,
                     message: '¡Signing out!'
                 })
             } else {
                 return response.json({
-                    statusCode: 401,
-                    message: '¡Bad auth on logout!'
+                    statusCode: 400,
+                    message: '¡Bad request on logout!'
                 })
             }
         } catch (error) {

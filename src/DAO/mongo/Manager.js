@@ -17,7 +17,7 @@ class Manager {
 
     async read (filter) {
         try {
-            const many = await this.model.read(filter)
+            const many = await this.model.find(filter)
             return many
         } catch (error) {
             throw error
@@ -33,11 +33,18 @@ class Manager {
         }
     }
 
+    async readBySessionId (id) {
+        try {
+            const one = await this.model.findOne({session_id: id})
+            return one
+        } catch (error) {
+            
+        }
+    }
+
     async readByEmail(email) {
         try {
-            //console.log('El email como llega al readbyemail del manager: ', email)
-            const one = await this.model.findOne({email}).lean()
-            //console.log('Lo que devuelve one en readbyemail del manager: ', one);
+            const one = await this.model.findOne({email}).lean()            
             return one
         } catch (error) {
             throw error
@@ -53,9 +60,9 @@ class Manager {
         }
     }
 
-    async update(id, data) {
+    async update(id, data) {        
         try {
-            const one = await this.model.findByIdAndUpdate( {_id:id}, data, { new:true } )
+            const one = await this.model.findByIdAndUpdate( {_id:id}, data, { new:true } )            
             return one
         } catch (error) {
             throw error
@@ -71,9 +78,9 @@ class Manager {
         }
     }
 
-    async destroyMany(filter) {
+    async destroyMany(deleteArgs) {
         try {
-            const many = await this.model.deleteMany(filter)
+            const many = await this.model.deleteMany(deleteArgs)
             return many
         } catch (error) {
             throw error

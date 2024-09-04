@@ -57,6 +57,13 @@ class CustomRouter {
                 response
             })
         }
+
+        res.response201 = (payload) => {
+            return res.json({
+                statusCode: 201,
+                response: payload
+            }) 
+        }
         
         res.message201 = (message) => {
             return res.json({
@@ -84,7 +91,7 @@ class CustomRouter {
             Winston.ERROR(logErrorMessage + '401: Bad auth!')
             return res.json({
                 statusCode: 401,
-                mensaje: "Bad auth!"
+                message: "Bad auth!"
             })
         }
 
@@ -92,7 +99,7 @@ class CustomRouter {
             Winston.ERROR(logErrorMessage + '403: Forbidden!')
             return res.json({
                 statusCode: 403,
-                mensaje: "Forbidden!"
+                message: "Forbidden!"
             })
         }
 
@@ -125,18 +132,28 @@ class CustomRouter {
     policies = (policies) => async(request, response, next) => {
 
         if(policies.includes('PUBLIC')) {
+
+            if(request.signedCookies.token){
+                //Agrego el user._id y el role al objeto request
+                //para validar el usuario en rutas de acceso publico
+                const token = verifyToken(request.signedCookies.token)                
+                const { _id, role } = token
+                const user = { _id, role }
+                request.user = user
+            }
             return next()       
         }
         else{
             const token = request.signedCookies.token
-            
+
+            console.log('Que es token: ', token)
+
             if(token){
                 const { role, email } = verifyToken(token)
-
-                if((policies.includes('ADMIN') && role === 'admin') || (policies.includes('CUSTOMER') && role === 'customer')){
+                if((policies.includes('ADMIN') && role === 'admin') || (policies.includes('CUSTOMER') && role === 'customer') || (policies.includes('PREM') && role === 'prem')){
                     const user = await usersManager.readByEmail(email)
-
                     user?.password && delete user.password
+                    user?.verifyCode && delete user.verifyCode
                     request.user = user
                     return next()
                 }

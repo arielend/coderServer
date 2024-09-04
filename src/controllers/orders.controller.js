@@ -1,13 +1,11 @@
-import { 
-    createService,
-    destroyManyService,
-    destroyService,
+import {
+    createService, 
     readOneService,
     readService,
     updateService
-} from '../services/carts.service.js'
+} from '../services/orders.service.js'
 
-class CartsController {
+class OrdersController {
 
     async create ( request, response, next ) {
         try {
@@ -18,40 +16,7 @@ class CartsController {
                 return response.error404()
             }
             else{
-                return response.message201(`Cart created. ID: ${one._id}.`)
-            }
-        } catch (error) {
-            return next(error)
-        }
-    }
-
-    async destroyMany ( request, response, next ) {
-        try {
-            const { _id } = request.user
-            const deleteArgs = {
-                user_id: _id
-            }
-            const result = await destroyManyService(deleteArgs)            
-            if(result.deletedCount == 0){
-                return response.error404()
-            }
-            else{
-                return response.message204('Cleaning up your cart!')
-            }
-        } catch (error) {
-            return next(error)
-        }
-    }
-
-    async destroy ( request, response, next ) {
-        try {            
-            const { id } = request.params
-            const one = await destroyService(id)
-            if(!one){
-                return response.error404()
-            }
-            else{
-                return response.message204('Cart deleted!')
+                return response.message201(`Order saved. ID: ${one._id}.`)
             }
         } catch (error) {
             return next(error)
@@ -71,7 +36,7 @@ class CartsController {
         } catch (error) {
             return next(error)
         }
-    }
+    }    
 
     async read ( request, response, next ) {
         try {
@@ -99,7 +64,7 @@ class CartsController {
                 return response.error404()
             }
             else{
-                return response.message204('Cart updated!')
+                return response.message204('Order updated!')
             }            
         } catch (error) {
             return next(error)
@@ -107,12 +72,10 @@ class CartsController {
     }
 }
 
-const cartsController = new CartsController()
-export const { 
-    create,
-    destroyMany,
-    destroy,
+const ordersController = new OrdersController()
+export const {
+    create, 
     readOne,
     read,
     update
-} = cartsController
+} = ordersController

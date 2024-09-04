@@ -1,20 +1,24 @@
 components:
   schemas:
-    Product:
+    CreateProduct:
       type: object
       properties:
         title:
           type: string
           description: product title definition
-        photo:
-          type: string
-          description: product photo url
         category:
           type: string
           description: product category definition
+        photo:
+          type: string
+          description: product photo url
         description:
           type: string
           description: a simplified product description
+        supplier_id:
+          type: string
+          format: objectid
+          description: unique key that identifies the product supplier
         rating:
           type: number
           description: product rating on a five-star scale
@@ -24,30 +28,36 @@ components:
         stock:
           type: number
           description: product available stock
+      required:
+        - title
+        - category
+        - supplier_id
       example:
         title: ROG Swift OLED PG32UCDM          
-        photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fmonitor%20ROG%20Swift%20OLED%20PG32UCDM.webp?alt=media&token=2354e4cc-cfb1-42b2-85dd-7b0de1e70b1d
         category: monitors
+        photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fmonitor%20ROG%20Swift%20OLED%20PG32UCDM.webp?alt=media&token=2354e4cc-cfb1-42b2-85dd-7b0de1e70b1d
         description: ROG Swift OLED PG32UCDM gaming monitor ― 32-inch (31.5 inch viewable) 4K (3840 x 2160) QD-OLED panel, 240 Hz, 0.03 ms (GTG), G-SYNC compatible, custom heatsink, graphene film, uniform brightness, 99% DCI-P3, True 10-bit, 90 W Type-C, and ASUS DisplayWidget Center
+        supplier_id: 60d5ecb74f52a531fc110d4e
         rating: 5
         price: 399.99
         stock: 6
-    ProductUpdate:
+    UpdateProducts:
       type: object
       properties:
-        _id:
-          type: string
-          description: An string that represent the product object id
         price:
           type: number
-          description: product price expressed with decimal notation
+          description: updated price expressed with decimal notation
         stock:
           type: number
-          description: product available stock
-      example:
-        _id: abcdef0123456789
-        price: 399.99
-        stock: 6
+          description: updated product stock
+      example:        
+        price: 19.89
+        stock: 10
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: token 
   responses:
     Response200one:
       type: object
@@ -63,12 +73,13 @@ components:
         statusCode: 200
         response:
           title: ROG Swift OLED PG32UCDM          
-          photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fmonitor%20ROG%20Swift%20OLED%20PG32UCDM.webp?alt=media&token=2354e4cc-cfb1-42b2-85dd-7b0de1e70b1d
-          category: monitors
-          description: ROG Swift OLED PG32UCDM gaming monitor ― 32-inch (31.5 inch viewable) 4K (3840 x 2160) QD-OLED panel, 240 Hz, 0.03 ms (GTG), G-SYNC compatible, custom heatsink, graphene film, uniform brightness, 99% DCI-P3, True 10-bit, 90 W Type-C, and ASUS DisplayWidget Center
-          rating: 5
-          price: 399.99
-          stock: 6      
+        category: monitors
+        photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/products%2Fmonitor%20ROG%20Swift%20OLED%20PG32UCDM.webp?alt=media&token=2354e4cc-cfb1-42b2-85dd-7b0de1e70b1d
+        description: ROG Swift OLED PG32UCDM gaming monitor ― 32-inch (31.5 inch viewable) 4K (3840 x 2160) QD-OLED panel, 240 Hz, 0.03 ms (GTG), G-SYNC compatible, custom heatsink, graphene film, uniform brightness, 99% DCI-P3, True 10-bit, 90 W Type-C, and ASUS DisplayWidget Center
+        supplier_id: 60d5ecb74f52a531fc110d4e
+        rating: 5
+        price: 399.99
+        stock: 6
     Response200many:
       type: object
       properties:
@@ -288,18 +299,18 @@ components:
 paths:
   /api/products:
     post:
-      summary: Route to create a product
+      summary: Route that allow to create a product
       tags:
         - Product
       security:
-        - CookieAuth: []
+        - cookieAuth: []
       requestBody:
         required: true
         description: Data to create a new product
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
+              $ref: '#/components/schemas/CreateProduct'
       responses:
         201:
           description: Success at product creation
@@ -308,11 +319,17 @@ paths:
               schema:
                 $ref: '#/components/responses/Message201'
         400:
-          description: Request can be proccessed due to a client error
+          description: Request can not be proccessed due to a client error
           content:
             application/json:
               schema:
                 $ref: '#/components/responses/Error400'
+        401:
+          description: Client error at creating product attempt because of invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
         403:
           description: Request refused tryng to create a product due to user permission
           content:
@@ -374,7 +391,7 @@ paths:
               schema:
                 $ref: '#/components/responses/response200one'
         400:
-          description: Request can be proccessed due to a client error
+          description: Request can be proccessed due to a missing or incorrect required data
           content:
             application/json:
               schema:
@@ -438,7 +455,7 @@ paths:
     put:
       summary: Update a product by id
       tags:
-        - ProductUpdate
+        - Product
       security:
         - cookieAuth: []
       requestBody:

@@ -21,7 +21,6 @@ class UsersRepository {
     readByEmail = async (email) => {
         try {
             const one = await this.manager.readByEmail(email)
-            //console.log('Lo que devuelve one en readbyemail del repository: ', one);
             return one
         } catch (error) {
             throw error

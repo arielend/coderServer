@@ -47,7 +47,7 @@ class CartsRepository {
     }
 
     destroy = async (id) => {
-        try {
+        try {            
             const one = this.manager.destroy(id)
             return one
         } catch (error) {
@@ -91,9 +91,9 @@ class CartsRepository {
         }
     }
 
-    destroyMany = async (user_id) => {
+    destroyMany = async (deleteArgs) => {
         try {
-            const many = await this.manager.destroyMany(user_id)
+            const many = await this.manager.destroyMany(deleteArgs)            
             return many
         } catch (error) {
             throw error

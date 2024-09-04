@@ -36,6 +36,15 @@ class ProductsRepository {
         }
     }
 
+    read = async (filter) => {
+        try {
+            const many = await this.manager.read(filter)            
+            return many            
+        } catch (error) {
+            throw error
+        }
+    }
+
     readOne = async (id) => {
         try {
             const one = await this.manager.readOne(id)

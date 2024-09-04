@@ -23,8 +23,9 @@ import swaggerOptions from './src/utils/swagger.js'
 //Configuración del Server
 const server = express()
 const port = environment.PORT || argsUtil.port
+const url_base = environment.URL_BASE
 const ready = async () => { 
-    console.log(`Server ready on http://localhost:${port}/`)
+    console.log(`Server ready on ${url_base}:${port}/`)
 }
 
 //Clustering
@@ -42,14 +43,13 @@ else {
 
 const specs = swaggerJSDoc(swaggerOptions)
 
-
 // Middlewares
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.static(__dirname + '/public'))
 server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(Winston)
-server.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+server.use(cors({ origin: `${environment.URL_BASE_FRONT}:${environment.FRONT_PORT}`, credentials: true }))
 server.use("/api/docs", serve, setup(specs))
 server.use(compression({
     brotli:{ enabled: true, zlib:{}}
@@ -60,4 +60,4 @@ server.use('/', indexRouter)
 
 //Error and Path handling
 server.use(errorHandler)
-//server.use(pathHandler)
+server.use(pathHandler)

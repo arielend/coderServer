@@ -7,9 +7,15 @@ class UsersController {
 
     async readOne ( request, response, next ) {
         try {
-            const { id } = request.params
-            const one = await readOneService(id)
+            const _id = request.params.id
+            let one = await readOneService(_id)
             if(one){
+                one = one.toObject()
+                one.password && delete one.password
+                one.verifyCode && delete one.verifyCode
+                one.createdAt && delete one.createdAt
+                one.updatedAt && delete one.updatedAt
+                
                 return response.response200(one)
             }
             else{
