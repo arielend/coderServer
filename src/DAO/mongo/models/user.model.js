@@ -12,7 +12,7 @@ const schema = new Schema({
     verified: { type: Boolean, required: true},
     verifyCode: { type: String },
     photo: { type: String },
-    role: { type: String, enum: ['customer', 'admin'], index: true }
+    role: { type: String, enum: ['admin', 'customer', 'prem'], index: true }
 
 },{
     timestamps: true

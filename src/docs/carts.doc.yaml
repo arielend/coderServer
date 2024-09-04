@@ -1,27 +1,39 @@
-components:
+component:
   schemas:
-    Carts:
+    Cart:
       type: object
       properties:
         user_id:
-          type: object
-          description: identifies the user that placed the cart
+          type: objectid
+          format: string
+          description: unique key that identifies the cart owner
         product_id:
-          type: object
-          description: identifies the product added to cart
+          type: objectid
+          format: string
+          description: unique key that identifies the product in cart
         product_quantity:
           type: number
-          description: sets the product quantity added to cart
+          format: int64
+          description: a number that indicates how many items of the prodduct are in the cart
         cart_status:
           type: string
-          description: describes the cart status
+          description: a satring that indicates current cart status
+      required:
+        - user_id
+        - product_id
+        - product_quantity
       example:
-        user_id: abcdef0123456789
-        product_id: abcdef0123456789
+        user_id: 667de9a35216c2438d0ac40d
+        product_id: 66cb95d816be340407217956
         product_quantity: 2
-        cart_status: saved
+        cart_status: "saved"
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: token
   responses:
-    Response200one:
+    Response200One:
       type: object
       properties:
         statusCode:
@@ -30,4 +42,212 @@ components:
           description: HTTP response status code to indicates the action requested was successful
         response:
           type: object
-          description: an object thet represents the required resource
+          description: an object tha represents a cart
+      example:
+        user_id: 667de9a35216c2438d0ac40d
+        product_id: 66cb95d816be340407217956
+        product_quantity: 2
+        cart_status: "saved"
+    Response200many:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: array
+          description: an array of carts
+      example:
+        statusCode: 200
+        response:
+          - user_id: 667de9a35216c2438d0ac40d
+            product_id: 66cb95d816be340407217956
+            product_quantity: 2
+            cart_status: "saved"
+          - user_id: 667de9a35216c2438d0ac40d
+            product_id: 66cb95d816be340407217956
+            product_quantity: 3
+            cart_status: "saved"
+    Message200:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has been successful
+      example:
+        statusCode: 200
+        message: Cart updated!
+    Message201:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested has created a carts successfully
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has created a cart successfully
+      example:
+        statusCode:
+        message: Cart created!
+    Message204:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successfully and not return any other info
+        message:
+          type: string
+          description: Text displaying a message informing that a cart has been deleted
+      example:
+        statusCode:
+        message: Cart deleted!
+    Error400:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested cannot or will not be processed due to an apparent client error. Probably missing or incorrect required data
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation cannot be processed due to an apparent client error
+      example:
+        statusCode: 400
+        message: Bad request!
+    Error401:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to an authentication error
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to an authentication error
+      example:
+        statusCode: 401
+        message: Bad auth!
+    Error403:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to user not having the necessary permissions for a resource
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to user not having the necessary permissions for a resource
+      example:
+        statusCode: 403
+        message: Forbidden!
+    Error404:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the requested resource is not available at the moment
+        message:
+          type: string
+          description: Text displaying a message informing that the requested product is not available at the moment
+      example:
+        statusCode: 404
+        message: Not found!
+    Error500:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates an unexpected internal condition was encountered and no more specific message is suitable
+        message:
+          type: string
+          description: Text displaying a message informing that an unexpected internal condition was encountered
+      example:
+        statusCode: 500
+        message: Fatal error!
+path:
+  /api/carts:
+    get:
+      summary: Route that allows to get the carts of an user
+      tags:
+        - Cart
+      security:
+        cookieAuth: []
+      responses:
+        200:
+          description: Success response to a list of carts request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Response200One'
+        400:
+          description: A response that indicates the request can not be proccesed due to a missing or incorrect data required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        404:
+          description: A response that indicates the request has been proccessed but the searched resource can no be retrieved because it is not available at the moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+        500:
+          description: A response that indicates the request can not be proccesed due to an internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+    post:
+      summary: Route that allows to create a cart for an user
+      tags:
+        - Cart
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        description: Data to create a cart
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'
+      responses:
+        201:
+          description: A response that indicates the request has created a cart for an user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message201'
+        400:
+          description: Request can not be proccessed due to a client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Client error at creating cart attempt because of invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        403:
+          description: Request refused tryng to create a product due to user permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error403'
+        500:
+          description: Request can't be procesed due to an internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+  # /api/carts/{id}:

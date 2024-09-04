@@ -3,6 +3,7 @@ import {
     create,
     destroy,
     paginate,
+    read,
     readOne,
     update,
     readLast
@@ -10,12 +11,12 @@ import {
 
 class ProductsRouter extends CustomRouter {
     init(){
-        this.create('/', ['ADMIN'], create)
-        this.destroy('/:id', ['ADMIN'], destroy)
-        this.paginate('/', ['PUBLIC'], paginate)
+        this.read('/me', ['ADMIN', 'PREM'], read)
         this.readOne('/:id', ['PUBLIC'], readOne)
-        this.update('/:id', ['ADMIN'], update)
-        this.readLast('/', ['PUBLIC'], readLast)
+        this.destroy('/:id', ['ADMIN', 'PREM'], destroy)
+        this.update('/:id', ['ADMIN', 'PREM'], update)
+        this.create('/', ['ADMIN', 'PREM'], create)
+        this.paginate('/', ['PUBLIC'], paginate)
     }
 }
 

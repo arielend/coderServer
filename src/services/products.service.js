@@ -6,6 +6,7 @@ export const {
     createService,
     destroyService,
     paginateService,
+    readService,
     readOneService,
     updateService,
     readLastService

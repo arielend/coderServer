@@ -2,6 +2,7 @@ import {
     createService,
     destroyService,
     paginateService,
+    readService,
     readOneService,
     updateService,
     readLastService
@@ -11,11 +12,13 @@ class ProductsController {
 
     async create ( request, response, next ) {
         try {
-            console.log('Entramos al product create?')
+
             const data = request.body
+            data.supplier_id = request.user._id
             const one = await createService(data)
+
             if(one){
-                return response.message201('Product created!')
+                return response.response201(one)
             }            
         } catch (error) {
             return next(error)
@@ -35,23 +38,55 @@ class ProductsController {
         } catch (error) {
             return next(error)
         }
-    }
+    }   
 
     async paginate ( request, response, next ) {
         try {
-            const options = {}
+
+            let _id = undefined
+            let role = undefined            
+            const user = request.user ? request.user : undefined
+
+            if (user) {
+                _id = user._id
+                role = user.role
+            }
+            
+            let filter = ((_id && role) && (role == 'prem')) ? { supplier_id: { $ne: _id } } : {}
+            let options = {}
+
             request.query.page && (options.page = request.query.page)
             request.query.sort && (options.sort = request.query.sort)
             request.query.limit && (options.limit = request.query.limit)
-            request.query.prevPage && (sortAndPaginate.prevPage = request.query.prevPage)
-            request.query.nextPage && (sortAndPaginate.nextPage = request.query.nextPage )
+            request.query.prevPage && (options.prevPage = request.query.prevPage)
+            request.query.nextPage && (options.nextPage = request.query.nextPage )
             
-            const filter = {}
-            request.query.filter && (filter = JSON.parse(request.query.filter))
+            if (request.query.filter) {
+                const queryFilter = JSON.parse(request.query.filter)
+                filter = { ...filter, ...queryFilter }
+            }
 
             const data = await paginateService(filter, options)
             return response.paginate(data)
             
+        } catch (error) {
+            return next(error)
+        }
+    }
+
+    async read (request, response, next) {
+        try {
+            const filter = {
+                supplier_id: request.user._id
+            }
+            const many = await readService(filter)
+
+            if (many) {
+                return response.response200(many)
+            }
+            else{
+                return response.error404()
+            }            
         } catch (error) {
             return next(error)
         }
@@ -109,6 +144,7 @@ export const {
     create,
     destroy,
     paginate,
+    read,
     readOne,
     update,
     readLast

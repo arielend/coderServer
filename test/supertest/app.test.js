@@ -5,7 +5,7 @@ import dao from '../../src/DAO/dao.factory.js'
 
 const { usersManager , productsManager } = dao
 
-const requester = supertest(`http://localhost:${environment.PORT}/api`)
+const requester = supertest(`${environment.URL_BASE}:${environment.PORT}/api`)
 
 describe(
     'Testing Coderserver App',

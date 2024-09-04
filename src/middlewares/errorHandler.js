@@ -3,6 +3,7 @@ import Winston from '../utils/winston.util.js'
 function errorHandler (error, request, response, next) {
 
     if (response.headersSent) {
+        console.log('El error: ', error)
         return next(error)
     }
 

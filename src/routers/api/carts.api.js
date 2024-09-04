@@ -1,14 +1,15 @@
 import CustomRouter from '../CustomRouter.js'
 import { create, destroy, destroyMany, read, readOne, update } from '../../controllers/carts.controller.js'
+import CheckBuyingRestrictions from '../../middlewares/checkBuyingRestrictions.mid.js'
 
 class CartsRouter extends CustomRouter {
     init(){
-        this.create('/', ['PUBLIC'], create)
-        this.read('/', ['ADMIN', 'CUSTOMER'], read)
-        this.destroy('/:id', ['ADMIN', 'CUSTOMER'], destroy)
-        this.readOne('/:id', ['ADMIN', 'CUSTOMER'], readOne)
-        this.update('/:id', ['ADMIN', 'CUSTOMER'], update)
-        this.destroyMany('/clear', ['ADMIN', 'CUSTOMER'], destroyMany)
+        this.create('/', ['CUSTOMER', 'PREM', 'ADMIN'], CheckBuyingRestrictions, create)
+        this.read('/', ['ADMIN', 'CUSTOMER', 'PREM'], read)
+        this.destroyMany('/clear', ['CUSTOMER', 'PREM'], destroyMany)
+        this.destroy('/:id', ['CUSTOMER', 'PREM'], destroy)
+        this.readOne('/:id', ['ADMIN', 'CUSTOMER', 'PREM'], readOne)
+        this.update('/:id', ['CUSTOMER', 'PREM'], update)
     }
 }
 

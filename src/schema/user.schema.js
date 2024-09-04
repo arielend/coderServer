@@ -20,10 +20,10 @@ const validUsersSchema = Joi.object({
             "string.max":"Username field must be up to 16 characters."
         }),
     bio: Joi.string()
-        .alphanum()
+        .pattern(/^[a-zA-Z0-9\s]+$/)
         .max(250)
         .messages({
-            "string.alphanum": "The bio should only contain alphanumeric characters.",
+            "string.pattern": "The bio should only contain alphanumeric characters and white spaces.",
             "string.max": "Your bio must be up 250 characters."
         }),
     password: Joi.string()        

@@ -34,10 +34,12 @@ switch(persistence){
         const { default: usersManagerMongo } = await import('./mongo/managers/usersManager.js')
         const { default: cartsManagerMongo } = await import('./mongo/managers/cartsManager.js')
         const { default: productsManagerMongo } = await import('./mongo/managers/productsManager.js')
+        const { default: ordersManagerMongo } = await import ('./mongo/managers/ordersManager.js')
         dao = {
             usersManager: usersManagerMongo,
             cartsManager: cartsManagerMongo,
-            productsManager: productsManagerMongo
+            productsManager: productsManagerMongo,
+            ordersManager : ordersManagerMongo
         }
         console.log('Connected to Mongo Database.')        
     break

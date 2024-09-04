@@ -1,0 +1,264 @@
+# components:
+#   schemas:
+#     User:
+#       type: object
+#       properties:
+#         _id:
+#           type: string
+#         email:
+#           type: string
+#         username:
+#           type: string
+#         bio:
+#           type: string
+#         photo:
+#           type: string
+#         role:
+#           type: string
+#         verified:
+#           type: boolean
+#     UserCreate:
+#       type: object
+#       properties:
+#         email:
+#           type: string
+#           example: "user@example.com"
+#         username:
+#           type: string
+#           example: "username"
+#         password:
+#           type: string
+#           example: "password"
+#         role:
+#           type: string
+#           example: "customer"
+#         bio:
+#           type: string
+#           example: "This is a sample bio."
+#         photo:
+#           type: string
+#           example: "https://example.com/photo.jpg"
+#     UserUpdate:
+#       type: object
+#       properties:
+#         username:
+#           type: string
+#         bio:
+#           type: string
+#         photo:
+#           type: string
+#     Login:
+#       type: object
+#       properties:
+#         email:
+#           type: string
+#         password:
+#           type: string
+#     ResetPasswordRequest:
+#       type: object
+#       properties:
+#         email:
+#           type: string
+#     SetPasswordRequest:
+#       type: object
+#       properties:
+#         email:
+#           type: string
+#         verifyCode:
+#           type: string
+#         password:
+#           type: string
+#     VerifyRequest:
+#       type: object
+#       properties:
+#         email:
+#           type: string
+#         verifyCode:
+#           type: string
+# paths:
+#   /users/{id}:
+#     get:
+#       tags:
+#         - Users
+#       summary: Obtener un usuario por ID
+#       description: Retorna un usuario por su ID.
+#       parameters:
+#         - in: path
+#           name: id
+#           required: true
+#           description: ID del usuario a obtener.
+#           schema:
+#             type: string
+#       responses:
+#         200:
+#           description: Usuario encontrado.
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/schemas/User'
+#         404:
+#           description: Usuario no encontrado.
+#     put:
+#       tags:
+#         - Users
+#       summary: Actualizar un usuario
+#       description: Actualiza los datos de un usuario.
+#       parameters:
+#         - in: path
+#           name: id
+#           required: true
+#           description: ID del usuario a actualizar.
+#           schema:
+#             type: string
+#       requestBody:
+#         description: Datos del usuario a actualizar.
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/UserUpdate'
+#       responses:
+#         204:
+#           description: Usuario actualizado.
+#         404:
+#           description: Usuario no encontrado.
+#   /sessions/register:
+#     post:
+#       tags:
+#         - Sessions
+#       summary: Registrar un nuevo usuario
+#       description: Crea un nuevo usuario en la base de datos.
+#       requestBody:
+#         description: Datos del usuario a registrar.
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/UserCreate'
+#       responses:
+#         201:
+#           description: Usuario registrado.
+#         400:
+#           description: Datos inválidos.
+#   /sessions/login:
+#     post:
+#       tags:
+#         - Sessions
+#       summary: Iniciar sesión
+#       description: Autentica a un usuario con su correo y contraseña.
+#       requestBody:
+#         description: Datos de inicio de sesión.
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/Login'
+#       responses:
+#         200:
+#           description: Inicio de sesión exitoso.
+#         401:
+#           description: Credenciales inválidas.
+#   /sessions/google:
+#     get:
+#       tags:
+#         - Sessions
+#       summary: Iniciar sesión con Google
+#       description: Redirige a la autenticación de Google.
+#       responses:
+#         302:
+#           description: Redirección a Google para autenticación.
+#   /sessions/google/callback:
+#     get:
+#       tags:
+#         - Sessions
+#       summary: Callback de Google
+#       description: Callback de Google para manejar la respuesta después de la autenticación.
+#       responses:
+#         200:
+#           description: Autenticación exitosa.
+#         401:
+#           description: Error en la autenticación.
+#   /sessions/password:
+#     post:
+#       tags:
+#         - Sessions
+#       summary: Restablecer contraseña
+#       description: Envia un código de restablecimiento de contraseña al correo del usuario.
+#       requestBody:
+#         description: Email del usuario para restablecer la contraseña.
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/ResetPasswordRequest'
+#       responses:
+#         200:
+#           description: Código de restablecimiento enviado.
+#         404:
+#           description: Usuario no encontrado.
+#     put:
+#       tags:
+#         - Sessions
+#       summary: Establecer nueva contraseña
+#       description: Permite al usuario establecer una nueva contraseña.
+#       requestBody:
+#         description: Datos para establecer una nueva contraseña.
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/SetPasswordRequest'
+#       responses:
+#         204:
+#           description: Contraseña cambiada exitosamente.
+#         401:
+#           description: Código de verificación incorrecto.
+#         404:
+#           description: Usuario no encontrado.
+#   /sessions/signout:
+#     post:
+#       tags:
+#         - Sessions
+#       summary: Cerrar sesión
+#       description: Cierra la sesión del usuario actual.
+#       responses:
+#         200:
+#           description: Sesión cerrada exitosamente.
+#         400:
+#           description: Error al cerrar sesión.
+#   /sessions/verify:
+#     post:
+#       tags:
+#         - Sessions
+#       summary: Verificar cuenta de usuario
+#       description: Verifica la cuenta de un usuario usando un código de verificación enviado al correo.
+#       requestBody:
+#         description: Datos de verificación.
+#         required: true
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/VerifyRequest'
+#       responses:
+#         200:
+#           description: Usuario verificado.
+#         404:
+#           description: Usuario no encontrado.
+#   /sessions/{id}:
+#     delete:
+#       tags:
+#         - Sessions
+#       summary: Eliminar cuenta de usuario
+#       description: Elimina la cuenta de un usuario. Solo un administrador o el propio usuario pueden eliminar la cuenta.
+#       parameters:
+#         - in: path
+#           name: id
+#           required: true
+#           description: ID del usuario a eliminar.
+#           schema:
+#             type: string
+#       responses:
+#         204:
+#           description: Usuario eliminado.
+#         404:
+#           description: Usuario no encontrado.

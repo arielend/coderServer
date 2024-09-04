@@ -40,7 +40,7 @@ passport.use(
                 //Verificamos que el email este disponible
                 const registeredEmail = await readByEmailService(email)
 
-                if(registeredEmail) {
+                if(registeredEmail) {                    
                     const error = CustomError.new(errors.auth)
                     return done(error)
                 }
@@ -49,10 +49,8 @@ passport.use(
                 const hashPassword = createHash(password)
                 request.body.password = hashPassword
 
-                const user = await createService(request.body)
-                console.log('El password hasheado en passport luego de registrar usuario: ', user.password)
-
-                const emailSent = await sendEmail({
+                const user = await createService(request.body)                
+                await sendEmail({
                     email,
                     subject: `Hi, ${user.username.toUpperCase()}. Activate your account!`,
                     verifyCode: user.verifyCode,
@@ -86,8 +84,7 @@ passport.use(
 
                 //Verificamos que el usuario exista
                 const registeredUser = await readByEmailService(email)
-                //console.log('Lo que devuelve registeredUser en readbyemail de passport: ', registeredUser);
-
+                
                 if(!registeredUser) {
                     const error = CustomError.new(errors.auth)
                     return done(error)
@@ -100,7 +97,7 @@ passport.use(
 
                 //Verificamos la contraseña
                 const verify = verifyHash(password, registeredUser.password)
-                //console.log('El verified: ', verify);
+                
                 if(!verify) {
                     const error = CustomError.new(errors.credentials)
                     return done(error)
@@ -111,12 +108,13 @@ passport.use(
                 const data = {
                     email,
                     username: registeredUser.username,
+                    _id: registeredUser._id,
                     role: registeredUser.role,
                     online: true,
                 }
                 const token = createToken(data)
                 const user = data
-                user.token = token                
+                user.token = token
 
                 return done(null, user)
                 
