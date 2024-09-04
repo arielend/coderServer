@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./server.js --port 8080 --env production --pers mongo",
+    "start": "node ./server.js --port 8080 --env production --pers mongo",
     "dev": "nodemon ./server.js --port 8080 --env development --pers mongo",
     "test": "node ./server.js --port 8081 --env testing --pers memory",
     "fs": "node ./server.js --port 8083 --env test --pers fs",
