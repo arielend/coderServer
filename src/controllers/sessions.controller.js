@@ -21,7 +21,7 @@ class SessionsController {
                 signed: true,
                 httpOnly: true,
                 secure: true,
-                sameSite: 'None',
+                sameSite: 'Lax',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
                 }
             )
@@ -37,7 +37,7 @@ class SessionsController {
             response.cookie('user', JSON.stringify(user),{
                 httpOnly: false,
                 secure: true,
-                sameSite: 'None',
+                sameSite: 'Lax',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
             })
 
