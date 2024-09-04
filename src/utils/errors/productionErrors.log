@@ -1,0 +1,951 @@
+[33mERROR[39m: Verb: GET - URL: /api/products - Message: Operation `products.countDocuments()` buffering timed out after 10000ms - Date: 20/8/2024, 16:36:21.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 20/8/2024, 16:38:54.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 20/8/2024, 16:39:02.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Bad auth! - Date: 20/8/2024, 16:39:13.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: User not verified! - Date: 20/8/2024, 16:39:50.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 20/8/2024, 16:40:41.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 20/8/2024, 16:40:53.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 20/8/2024, 16:41:01.
+[33mERROR[39m: Verb: GET - URL: /api/products - Message: Operation `products.countDocuments()` buffering timed out after 10000ms - Date: 21/8/2024, 15:41:57.
+[33mERROR[39m: Verb: GET - URL: /api/products - Message: Operation `products.countDocuments()` buffering timed out after 10000ms - Date: 21/8/2024, 15:43:02.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Operation `products.countDocuments()` buffering timed out after 10000ms - Date: 21/8/2024, 16:37:18.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Operation `products.countDocuments()` buffering timed out after 10000ms - Date: 21/8/2024, 16:37:32.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 21/8/2024, 16:56:50.
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 16:57:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 16:59:38 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:00:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:00:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:00:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:01:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:01:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:01:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:01:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:02:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:02:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:02:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:02:27 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:02:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:02:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:02:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:03:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:03:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:03:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:03:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:03:52 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:03:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:04:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:04:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:04:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:04:36 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:04:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:04:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:04:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:05:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:05:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:05:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:05:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:05:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:05:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:07:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:07:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:08:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:08:29 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:09:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:09:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:09:13 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:09:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:09:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:09:48 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:09:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:29 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:34 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:52 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:10:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:13 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:15 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:11:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:12:36 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:12:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:12:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:13:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:13:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:13:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:13:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:13:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:14:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:14:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:14:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:15:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:15:27 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:21 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:45 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:16:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:17:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:17:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:17:27 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:17:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:17:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:17:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:18:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:18:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:18:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:18:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:18:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:19:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:19:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:19:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 17:19:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:25:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:25:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:26:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:26:36 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:26:38 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:26:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:26:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:26:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:26:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:27:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:27:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:27:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:27:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:27:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:27:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:27:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:28:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:28:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:28:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:28:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:28:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:31:48 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:31:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:32:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:32:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:32:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:32:48 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:32:52 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:32:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:33:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:33:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:33:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:33:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:33:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:34:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:21 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:35:48 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:38:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:38:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:38:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:38:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:44:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:44:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:44:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:44:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:44:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:44:50 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:44:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:45:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:45:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:45:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:45:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:36 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:45 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:46:48 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:47:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:47:15 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:47:29 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:47:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:47:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:47:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:47:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:49:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:49:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:50:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:50:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:50:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:50:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:50:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:50:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:51:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:52:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:52:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:52:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /?filter=%7B%7D - Date: 21/8/2024, 20:52:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 22/8/2024, 0:07:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 22/8/2024, 0:08:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: supplier_id: Cast to ObjectId failed for value "a0b1c2d3e4f56789" (type string) at path "supplier_id" because of "BSONError" - Date: 22/8/2024, 0:08:46.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: supplier_id: Cast to ObjectId failed for value "a0b1c2d3e4f56789" (type string) at path "supplier_id" because of "BSONError" - Date: 22/8/2024, 0:12:09.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: supplier_id: Cast to ObjectId failed for value "a0b1c2d3e4f56789" (type string) at path "supplier_id" because of "BSONError" - Date: 22/8/2024, 0:15:51.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: supplier_id: Cast to ObjectId failed for value "a0b1c2d3e4f56789" (type string) at path "supplier_id" because of "BSONError" - Date: 22/8/2024, 0:16:31.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: supplier_id: Cast to ObjectId failed for value "a0b1c2d3e4f56789" (type string) at path "supplier_id" because of "BSONError" - Date: 22/8/2024, 0:18:19.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 22/8/2024, 1:06:27.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 22/8/2024, 1:06:27.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 22/8/2024, 1:06:28.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 22/8/2024, 1:06:28.
+[33mERROR[39m: Verb: GET - URL: /api/users - Message: user is not defined - Date: 22/8/2024, 21:12:39.
+[33mERROR[39m: Verb: GET - URL: / - Date: 23/8/2024, 1:27:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 23/8/2024, 1:28:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 23/8/2024, 1:28:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 24/8/2024, 1:31:45.
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:31:57 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:32:00 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:19 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:22 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:23 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:30 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:31 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:32 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:38 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:39 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:43 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:51 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:33:53 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: / - Date: 24/8/2024, 1:35:26 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: GET - URL: /api/users - Message: Cannot destructure property '_id' of 'request.user' as it is undefined. - Date: 24/8/2024, 1:35:57.
+[33mERROR[39m: Verb: GET - URL: /api/users - Message: Cannot destructure property '_id' of 'request.user' as it is undefined. - Date: 24/8/2024, 1:36:47.
+[33mERROR[39m: Verb: GET - URL: /api/users - Message: Cannot destructure property '_id' of 'request.user' as it is undefined. - Date: 24/8/2024, 1:36:50.
+[33mERROR[39m: Verb: GET - URL: /api/users - Message: Cannot destructure property '_id' of 'request.user' as it is undefined. - Date: 24/8/2024, 1:37:05.
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Date: 24/8/2024, 15:37:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Date: 24/8/2024, 15:40:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Date: 24/8/2024, 15:42:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:43:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:43:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:43:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:43:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:43:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:44:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:44:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:45:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:45:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:45:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:46:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:46:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:47:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:47:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Date: 24/8/2024, 15:47:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Date: 24/8/2024, 15:48:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=2&filter=%7B%7D - Date: 24/8/2024, 15:48:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Date: 24/8/2024, 15:51:29 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?page=1&limit=10&prevPage=null&nextPage=2&filter=%7B%7D - Date: 24/8/2024, 15:51:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:36 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:52:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:55:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:55:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:58:34 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:59:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:59:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 15:59:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:04:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:05:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:05:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:10:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:11:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:11:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:11:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:12:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:12:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:13:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:14:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:14:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:14:50 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:15:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:27:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:27:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:27:52 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:27:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:28:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:28:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:28:27 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:28:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:28:36 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:28:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:28:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:29:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:29:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:29:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:29:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:29:45 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:30:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:30:29 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:30:38 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:29 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:31:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:32:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:32:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:33:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:39:45 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:42:45 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:43:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:46:52 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me?filter=%7B%7D - Date: 24/8/2024, 16:49:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.repository.read is not a function - Date: 24/8/2024, 17:03:22.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 24/8/2024, 17:05:23.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 24/8/2024, 17:13:55.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 24/8/2024, 17:15:46.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 24/8/2024, 17:16:58.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 24/8/2024, 17:17:26.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 24/8/2024, 17:20:02.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 24/8/2024, 17:20:37.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 25/8/2024, 16:15:45.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: this.model.read is not a function - Date: 25/8/2024, 16:43:57.
+[33mERROR[39m: Verb: GET - URL: /me - Date: 25/8/2024, 17:23:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /me - Date: 25/8/2024, 17:23:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /api/products/66cb95d816be3404072178959 - Message: Cast to ObjectId failed for value "66cb95d816be3404072178959" (type string) at path "_id" for model "products" - Date: 25/8/2024, 17:52:47.
+[33mERROR[39m: Verb: GET - URL: /api/products/66cb95d816be3404072178959 - Message: Cast to ObjectId failed for value "66cb95d816be3404072178959" (type string) at path "_id" for model "products" - Date: 25/8/2024, 17:52:47.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: request.getCookie is not a function - Date: 25/8/2024, 23:59:15.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: request.getCookie is not a function - Date: 26/8/2024, 0:01:00.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: request.signedCookie is not a function - Date: 26/8/2024, 0:03:09.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: request.signedCookies is not a function - Date: 26/8/2024, 0:03:24.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot read properties of undefined (reading 'user') - Date: 26/8/2024, 0:05:39.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: _id is not defined - Date: 26/8/2024, 0:13:09.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: _id is not defined - Date: 26/8/2024, 0:13:34.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: _id is not defined - Date: 26/8/2024, 0:15:04.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: user is not defined - Date: 26/8/2024, 23:42:22.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: user is not defined - Date: 26/8/2024, 23:42:25.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: request.getCookie is not a function - Date: 26/8/2024, 23:49:43.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot read properties of undefined (reading 'token') - Date: 26/8/2024, 23:50:42.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot read properties of undefined (reading 'role') - Date: 26/8/2024, 23:57:23.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: role is not defined - Date: 27/8/2024, 0:06:20.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: user_id is not defined - Date: 27/8/2024, 0:07:58.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot destructure property '_id' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined. - Date: 27/8/2024, 0:15:31.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot destructure property '_id' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined. - Date: 27/8/2024, 0:15:32.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot destructure property '_id' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined. - Date: 27/8/2024, 15:47:39.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot destructure property '_id' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined. - Date: 27/8/2024, 15:47:46.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot destructure property '_id' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined. - Date: 27/8/2024, 15:49:29.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot destructure property 'role' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined. - Date: 27/8/2024, 15:50:11.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Cannot destructure property 'role' of '(intermediate value)(intermediate value)(intermediate value)' as it is undefined. - Date: 27/8/2024, 15:50:15.
+[33mERROR[39m: Verb: GET - URL: /api/products?page=1&limit=10&prevPage=null&nextPage=null&filter=%7B%7D - Message: Assignment to constant variable. - Date: 27/8/2024, 15:56:18.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 28/8/2024, 16:14:21.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 28/8/2024, 16:15:38.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 28/8/2024, 16:15:40.
+[33mERROR[39m: Verb: POST - URL: /api/products - Message: products validation failed: title: Path `title` is required., category: Path `category` is required. - Date: 28/8/2024, 16:15:47.
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 16:59:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 16:59:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 16:59:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 16:59:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 16:59:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 17:00:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 17:00:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 21:03:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 28/8/2024, 23:30:50 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /api/carts/clear - Message: Cast to ObjectId failed for value "clear" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:15:02.
+[33mERROR[39m: Verb: DELETE - URL: /api/carts/clear - Message: Cast to ObjectId failed for value "clear" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:15:44.
+[33mERROR[39m: Verb: DELETE - URL: /api/carts/clear - Message: Cast to ObjectId failed for value "clear" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:16:33.
+[33mERROR[39m: Verb: DELETE - URL: /api/carts/clear - Message: Cast to ObjectId failed for value "clear" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:18:05.
+[33mERROR[39m: Verb: DELETE - URL: /api/carts/:66cfe59a928c9a4398732c00 - Message: Cast to ObjectId failed for value ":66cfe59a928c9a4398732c00" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:21:38.
+[33mERROR[39m: Verb: DELETE - URL: /api/carts/clear - Message: Cast to ObjectId failed for value "clear" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:24:01.
+[33mERROR[39m: Verb: DELETE - URL: /api/carts/clear - Message: Cast to ObjectId failed for value "clear" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:24:04.
+[33mERROR[39m: Verb: DELETE - URL: /api/clearCarts/clear - Message: Cast to ObjectId failed for value "clear" (type string) at path "_id" for model "carts" - Date: 29/8/2024, 0:28:08.
+[33mERROR[39m: Verb: GET - URL: / - Date: 29/8/2024, 0:31:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 29/8/2024, 0:31:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 0:55:29 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 0:57:51 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 0:58:14 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 0:58:26 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 0:58:42 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 0:59:01 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 0:59:37 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:00:05 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:06:33 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:13:33 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:16:19 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:16:28 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:16:37 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:16:46 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:16:50 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:17:12 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:17:18 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:17:26 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:17:30 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:17:59 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 29/8/2024, 1:19:57 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: / - Date: 29/8/2024, 1:53:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 29/8/2024, 1:54:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 30/8/2024, 21:16:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Bad auth! - Date: 30/8/2024, 21:18:47.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 30/8/2024, 21:19:12.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Cast to ObjectId failed for value "{ user_id: new ObjectId('667de9a35216c2438d0ac40d') }" (type Object) at path "user_id" for model "carts" - Date: 30/8/2024, 21:19:41.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: The `line_items` parameter is required in payment mode. - Date: 30/8/2024, 21:20:13.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Assignment to constant variable. - Date: 30/8/2024, 21:23:56.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: productsToCheckout is not defined - Date: 30/8/2024, 21:24:16.
+[33mERROR[39m: Verb: GET - URL: / - Date: 30/8/2024, 23:39:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 30/8/2024, 23:39:21 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:18:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:19:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:19:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:08 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:13 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:27 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:45 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:48 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:20:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:21:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:22:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:06 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:15 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:42 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:23:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 0:24:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:04:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:04:48 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:04:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:04:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:05:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:05:10 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:05:13 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:05:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:06:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:06:38 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:06:52 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:06:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:07:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:07:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:07:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: / - Date: 31/8/2024, 1:07:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:10:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:12:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:15:14 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:16:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:20:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:20:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:21:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:22:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:22:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:22:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:22:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:22:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:22:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:22:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 1:24:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: The `line_items` parameter is required in payment mode. - Date: 31/8/2024, 1:49:58.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/. - Date: 31/8/2024, 18:56:37.
+[33mERROR[39m: Verb: POST - URL: /api/orders - Message: orders validation failed: order_status: Path `order_status` is required. - Date: 31/8/2024, 19:03:16.
+[33mERROR[39m: Verb: POST - URL: /api/orders - Message: orders validation failed: order_status: Path `order_status` is required. - Date: 31/8/2024, 19:05:04.
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:05:04 - Message: 404: Not found!
+[33mERROR[39m: Verb: POST - URL: /api/orders - Message: orders validation failed: order_status: Path `order_status` is required. - Date: 31/8/2024, 19:05:14.
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:05:14 - Message: 404: Not found!
+[33mERROR[39m: Verb: POST - URL: /api/orders - Message: orders validation failed: order_status: Path `order_status` is required. - Date: 31/8/2024, 19:05:16.
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:05:16 - Message: 404: Not found!
+[33mERROR[39m: Verb: POST - URL: /api/orders - Message: orders validation failed: order_status: Path `order_status` is required. - Date: 31/8/2024, 19:05:20.
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:05:20 - Message: 404: Not found!
+[33mERROR[39m: Verb: POST - URL: /api/orders - Message: orders validation failed: order_status: Path `order_status` is required. - Date: 31/8/2024, 19:05:29.
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:05:29 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:09:00 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:35:52 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:40:55 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1bUz9KhRKYShPsUNuBCWjmestD85wxzaduNj69aS41oL7pSMJGOTeJ1MY - Date: 31/8/2024, 19:40:56 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:41:13 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1bUz9KhRKYShPsUNuBCWjmestD85wxzaduNj69aS41oL7pSMJGOTeJ1MY - Date: 31/8/2024, 19:41:21 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1KWsayRK2ZYW7qXaYuUbJKETt2UQYzcKPAZ8DDi689VNAZQAeBjOJYR6S - Date: 31/8/2024, 19:46:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1KWsayRK2ZYW7qXaYuUbJKETt2UQYzcKPAZ8DDi689VNAZQAeBjOJYR6S - Date: 31/8/2024, 19:47:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1KWsayRK2ZYW7qXaYuUbJKETt2UQYzcKPAZ8DDi689VNAZQAeBjOJYR6S - Date: 31/8/2024, 19:48:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1KWsayRK2ZYW7qXaYuUbJKETt2UQYzcKPAZ8DDi689VNAZQAeBjOJYR6S - Date: 31/8/2024, 19:48:53 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Email and password fields are required (mid validation)! - Date: 31/8/2024, 19:49:07.
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1jSBghlntHMz7dQrtHhTNEro17P3pcmfB4KBlA9PvsoguxQ1syprlAIVU - Date: 31/8/2024, 19:50:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:50:46 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:50:49 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 19:51:00 - Message: 404: Not found!
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Invalid integer: 1998.9999999999998 - Date: 31/8/2024, 19:51:37.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Invalid integer: 1998.9999999999998 - Date: 31/8/2024, 19:52:22.
+[33mERROR[39m: Verb: GET - URL: /api/orders/cs_test_a1GpKKAixoIIXtVMduJg3WVXb0bdk6HzesvruUJmTv6VJzHyfnna8GEtb3 - Message: Cast to ObjectId failed for value "cs_test_a1GpKKAixoIIXtVMduJg3WVXb0bdk6HzesvruUJmTv6VJzHyfnna8GEtb3" (type string) at path "_id" for model "orders" - Date: 31/8/2024, 19:55:20.
+[33mERROR[39m: Verb: GET - URL: /api/orders/cs_test_a1GpKKAixoIIXtVMduJg3WVXb0bdk6HzesvruUJmTv6VJzHyfnna8GEtb3 - Message: Cast to ObjectId failed for value "{
+  session_id: 'cs_test_a1GpKKAixoIIXtVMduJg3WVXb0bdk6HzesvruUJmTv6VJzHyfnna8GEtb3'
+}" (type Object) at path "_id" for model "orders" - Date: 31/8/2024, 19:57:40.
+[33mERROR[39m: Verb: GET - URL: /api/orders/cs_test_a1GpKKAixoIIXtVMduJg3WVXb0bdk6HzesvruUJmTv6VJzHyfnna8GEtb3 - Message: Cast to ObjectId failed for value "{
+  session_id: 'cs_test_a1GpKKAixoIIXtVMduJg3WVXb0bdk6HzesvruUJmTv6VJzHyfnna8GEtb3'
+}" (type Object) at path "_id" for model "orders" - Date: 31/8/2024, 19:58:33.
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 20:45:54 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 20:45:57 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 20:45:58 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 20:46:03 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 20:47:32 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /api/payment/cs_test_a18mkfuFbEv19HRznebbrAKFu4oEYMic8NpVHkHOXAOrwXkkmLFKu7oTJZ - Message: Stripe: Argument "session" must be a string, but got: undefined (on API request to `GET /v1/checkout/sessions/{session}`) - Date: 31/8/2024, 20:47:34.
+[33mERROR[39m: Verb: GET - URL: /api/payment/cs_test_a1sw2OuA4wEBCkt5lUEgCq32bY3fGdXRfkpZgrknSQHaJ9mhdnn3K8ySmY - Message: Stripe: Argument "session" must be a string, but got: undefined (on API request to `GET /v1/checkout/sessions/{session}`) - Date: 31/8/2024, 20:50:01.
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:01:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:01:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:01:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:01:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:01:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:01:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:01:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:01:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:01:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:01:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:01:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:01:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:02:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:02:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:02:50 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:02:50 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:02:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:02:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:02:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:02:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:03:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:03:00 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:03:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:03:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:03:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:03:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:03:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:03:11 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:03:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:03:17 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:03:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:03:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:03:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:03:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:04:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:04:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:04:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:04:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:04:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:04:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:04:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:04:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:05:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:05:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:05:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:05:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:05:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:05:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:05:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:05:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:05:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:05:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:18 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:26 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:33 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:37 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:41 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:06:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:06:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:07:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:07:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:07:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:07:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:07:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:07:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:07:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:07:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:07:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:07:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:44 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:08:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:08:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:31 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:34 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:34 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:09:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:09:57 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1sw2OuA4wEBCkt5lUEgCq32bY3fGdXRfkpZgrknSQHaJ9mhdnn3K8ySmY - Date: 31/8/2024, 21:10:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:10:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:10:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1sw2OuA4wEBCkt5lUEgCq32bY3fGdXRfkpZgrknSQHaJ9mhdnn3K8ySmY - Date: 31/8/2024, 21:10:12 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:10:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:10:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1sw2OuA4wEBCkt5lUEgCq32bY3fGdXRfkpZgrknSQHaJ9mhdnn3K8ySmY - Date: 31/8/2024, 21:10:27 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:10:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:10:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:01 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:04 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1sw2OuA4wEBCkt5lUEgCq32bY3fGdXRfkpZgrknSQHaJ9mhdnn3K8ySmY - Date: 31/8/2024, 21:11:07 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:22 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:23 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:28 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:30 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:34 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:34 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:38 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:38 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:49 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:11:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:11:58 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:12:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:12:02 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:12:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:12:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1sw2OuA4wEBCkt5lUEgCq32bY3fGdXRfkpZgrknSQHaJ9mhdnn3K8ySmY - Date: 31/8/2024, 21:12:09 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:12:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 31/8/2024, 21:12:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /cs_test_a1sw2OuA4wEBCkt5lUEgCq32bY3fGdXRfkpZgrknSQHaJ9mhdnn3K8ySmY - Date: 31/8/2024, 21:12:24 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:14:05 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:14:11 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:14:15 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:14:20 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:14:24 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:09 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:14 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:26 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:28 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:34 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:46 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:53 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:15:56 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:11 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:16 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:20 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:23 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:25 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:28 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:30 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:41 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:42 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:16:53 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:17:10 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:17:19 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:17:31 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:17:48 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:17:54 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:18:52 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:18:54 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:19:01 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:19:02 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:19:05 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:19:07 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:19:09 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:19:20 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:20:27 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:22:57 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:23:02 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:23:10 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:23:18 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:23:42 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:23:58 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:24:15 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:25:01 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:25:05 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:25:07 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:25:11 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:25:33 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:26:35 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:32:53 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:32:59 - Message: 404: Not found!
+[33mERROR[39m: Verb: DELETE - URL: /clear - Date: 31/8/2024, 21:33:11 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be34040721795e - Date: 1/9/2024, 2:23:13 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:24:24 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:24:38 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:24:42 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:24:49 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:24:50 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:24:52 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:24:57 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:05 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:11 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:19 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:25 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:27 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:28 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:35 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:38 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:43 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:47 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /65cb95d816be340407217972 - Date: 1/9/2024, 2:25:58 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /66cb95d816be34040a217958 - Date: 1/9/2024, 2:26:20 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /66cb95d816be34040a217958 - Date: 1/9/2024, 2:26:46 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /66cb95d816be34040a217958 - Date: 1/9/2024, 2:26:49 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /66cb95d816be34040a217958 - Date: 1/9/2024, 2:26:58 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /66cb95d816be34040a217958 - Date: 1/9/2024, 2:27:00 - Message: 404: Not found!
+[33mERROR[39m: Verb: GET - URL: /66cb95d816be34040a217958 - Date: 1/9/2024, 2:27:10 - Message: 404: Not found!
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Invalid integer: 1998.9999999999998 - Date: 1/9/2024, 17:34:05.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Invalid integer: 1998.9999999999998 - Date: 1/9/2024, 17:34:48.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Invalid integer: 1998.9999999999998 - Date: 1/9/2024, 17:36:09.
+[33mERROR[39m: Verb: POST - URL: /api/payment - Message: Invalid integer: 1998.9999999999998 - Date: 1/9/2024, 17:36:21.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:40:39.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:41:12.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: "email" is not allowed to be empty - Date: 1/9/2024, 18:42:30.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:43:02.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:43:33.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:45:00.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:46:27.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:46:40.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 1/9/2024, 18:46:42.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 1/9/2024, 19:04:56.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('667cd8663f6f0931d6c3223e'),
+    data: { verifyCode: 'ded71f698fd4d458188218f1' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:06:24.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: '6550db5718a7db8f96324a3e' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:09:18.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: 'a30cad239a08b5c1a1fb003b' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:11:54.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: 'cc7696a781fe7736eb560865' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:15:20.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{ _id: '[object Object]' }" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:16:19.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{ _id: '[object Object]' }" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:18:19.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  id: new ObjectId('66d4e0fc24686787b5c229f9'),
+  data: { verifyCode: '6aa9c56ca98af8acc0cc6c9e' }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:19:49.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: '2301fc5e8c0354903ad49e67' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:20:48.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: '98173fdac0feaa051233b8ce' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:22:42.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: 'fb70849b97a1085ed73a02fb' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:22:57.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: '126112815bae9c328278f260' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:23:43.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: 'a32a25e9cf193d6135819554' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:26:21.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: '6599a6c21ed6a8962e149bb3' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:29:41.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: '66d4e0fc24686787b5c229f9',
+    data: { verifyCode: '7769041feb2a498a2028da3f' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:50:55.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: 'fb2988db2a549a3f108480d6' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:51:44.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: { verifyCode: '6b25e56befe2d8d8b5b1d3f9' }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 19:56:15.
+[33mERROR[39m: Verb: PUT - URL: /api/sessions/password - Message: Cast to ObjectId failed for value "{
+  _id: {
+    id: new ObjectId('66d4e0fc24686787b5c229f9'),
+    data: {
+      password: '$2a$10$L9sOLOVsArXhDVRGTinrAeWrN/0QBc2/a98jUvN9QG8qzk8LJb2eC'
+    }
+  }
+}" (type Object) at path "_id" for model "users" - Date: 1/9/2024, 20:04:16.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: User not verified! - Date: 1/9/2024, 20:08:15.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: User not verified! - Date: 1/9/2024, 20:10:33.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Bad auth! - Date: 1/9/2024, 20:37:28.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Bad auth! - Date: 1/9/2024, 20:38:04.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Username field must be up to 16 characters. - Date: 1/9/2024, 20:44:04.
+[33mERROR[39m: Verb: PUT - URL: /password - Date: 1/9/2024, 20:48:42 - Message: 404: Not found!
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 1/9/2024, 21:08:37.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 1/9/2024, 21:09:45.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 1/9/2024, 21:09:47.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Unexpected token " in JSON at position 0 - Date: 1/9/2024, 23:31:27.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 1/9/2024, 23:36:10.
+[33mERROR[39m: Verb: PUT - URL: /66cb95d816be340407217956 - Date: 2/9/2024, 0:02:10 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: POST - URL: /api/sessions/verify - Message: Operation `users.findOne()` buffering timed out after 10000ms - Date: 2/9/2024, 16:05:56.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 17:14:29.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 19:09:09.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 19:09:25.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 19:09:41.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 19:11:37.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 19:12:23.
+[33mERROR[39m: Verb: GET - URL: /667de9a35216c2438d0ac40d - Date: 2/9/2024, 19:29:40 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 2/9/2024, 19:44:34 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: POST - URL: / - Date: 2/9/2024, 19:45:23 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 19:46:16.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: The bio should only contain alphanumeric characters. - Date: 2/9/2024, 19:55:00.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: The bio should only contain alphanumeric characters. - Date: 2/9/2024, 19:57:44.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 2/9/2024, 20:02:33.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 2/9/2024, 20:06:13.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Email field is required. - Date: 2/9/2024, 20:18:03.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: It looks like something is wrong with the email format. - Date: 2/9/2024, 20:18:29.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/register - Message: Bad auth! - Date: 2/9/2024, 20:18:54.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Email and password fields are required (mid validation)! - Date: 2/9/2024, 20:20:07.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 20:20:20.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 20:21:08.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 20:22:32.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 20:22:55.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Unexpected token } in JSON at position 34 - Date: 2/9/2024, 20:23:11.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Email and password fields are required (mid validation)! - Date: 2/9/2024, 20:23:23.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: Invalid credentials! - Date: 2/9/2024, 20:25:26.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 2/9/2024, 20:30:23.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 2/9/2024, 20:34:31.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 2/9/2024, 20:34:44.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 2/9/2024, 20:35:22.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/signout - Message: Cannot read properties of undefined (reading 'online') - Date: 2/9/2024, 20:37:09.
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 20:37:58 - Message: 403: Forbidden!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 20:41:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 20:42:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 20:48:50 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:00:47 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:01:32 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:03:46 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:06:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:23:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:26:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /66d4e0fc24686787b5c229f9 - Date: 2/9/2024, 21:26:55 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /66d4e0fc24686787b5c229f9 - Date: 2/9/2024, 21:27:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:27:15 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:27:43 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:29:16 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:33:59 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:34:19 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /667de9a35216c2438d0ac40d - Date: 2/9/2024, 21:34:51 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:35:03 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:36:25 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: /signout - Date: 2/9/2024, 21:37:54 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /664e4bd607b003768f90c855 - Date: 2/9/2024, 21:39:05 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /664e4bd607b003768f90c855 - Date: 2/9/2024, 21:57:35 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /667cd8663f6f0931d6c3223e - Date: 2/9/2024, 22:01:20 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /667cd8663f6f0931d6c3223f - Date: 2/9/2024, 22:01:39 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /667cd8663f6f0731d6c3223f - Date: 2/9/2024, 22:02:15 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /667cd8663f6f0731d6c3223f - Date: 2/9/2024, 22:47:13 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: POST - URL: / - Date: 3/9/2024, 16:21:45 - Message: 401: Bad auth!
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: Cast to ObjectId failed for value "me" (type string) at path "_id" for model "products" - Date: 3/9/2024, 16:24:26.
+[33mERROR[39m: Verb: POST - URL: /api/sessions/login - Message: connect ETIMEDOUT 54.94.85.116:27017 - Date: 3/9/2024, 18:48:37.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: Cast to ObjectId failed for value "me" (type string) at path "_id" for model "products" - Date: 3/9/2024, 21:37:54.
+[33mERROR[39m: Verb: GET - URL: /api/products/me - Message: Cast to ObjectId failed for value "me" (type string) at path "_id" for model "products" - Date: 3/9/2024, 21:40:50.

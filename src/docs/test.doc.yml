@@ -1,0 +1,81 @@
+# component:
+#   schemas:
+#     Product:
+#       type: object
+#       properties:
+#         property1:
+#           type:
+#           format:
+#           description:
+#         property1:
+#           type:
+#           format:
+#           description:
+#       required:
+#         - property1
+#       example:
+#         property1:
+#         property2:
+#   responses:
+#     Response1:
+#       type: object
+#       properties:
+#         statusCode:
+#           type:
+#           format:
+#           description:
+#         response:
+#           type: object
+#           description:
+#       example:
+#         statusCode: 200
+#         response:
+#           property1:
+#           property2:
+#     Message1:
+#       type: object
+#       properties:
+#         statusCode:
+#           type:
+#           format:
+#           description:
+#         message:
+#           type: string
+#           description:
+#       example:
+#         statusCode: 200
+#         message:
+#   securitySchemes:
+#     cookieAuth:
+#       type: apiKey
+#       in: cookie
+#       name: token
+# path:
+#   /api/products/create:
+#     post:
+#       summary:
+#       tags:
+#         - User
+#       parameters:
+#         - name:
+#           in:
+#           required:
+#           description:
+#           schema:
+#             type:
+#       requestBody:
+#         required: true
+#         description:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: '#/components/schemas/Product'
+#       security:
+#         - cookieAuth: []
+#       responses:
+#         200:
+#           description:
+#           content:
+#             application/json:
+#               schema:
+#                 $ref: '#/components/responses/Message1'

@@ -1,0 +1,505 @@
+components:
+  schemas: 
+    RegisterUser:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        username:
+          type: string
+          description: name or account alias
+        bio:
+          type: string
+          description: user optional biography
+        password:
+          type: string
+          description: account access password
+        photo:
+          type: string
+          description: profile picture or avatar url
+      required:
+        - email
+        - password    
+      example:
+        email: ariel@gmail.com
+        username: Ariel End
+        bio: I am an ordinary user
+        password: Hola1234
+        photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/users%2Fariel.webp?alt=media&token=b4e1965c-f26b-4883-9ff8-c67e13140a68
+    VerifyUser:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        verifyCode:
+          type: string
+          description: account verification code
+      required:
+        - email
+        - verifyCode
+      example:
+        email: test.updatepass@mail.com
+        verifyCode: d6e047f16a7a18e0a9babf9f
+    LoginUser:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        password:
+          type: string
+          description: account access password        
+      required:
+        - email
+        - password
+      example:
+        email: ariel@mail.com
+        password: Hola1234
+    PasswordResetUser:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+      required:
+        - email
+      example:
+        email: ariel@mail.com
+    PasswordSaveUser:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user register email
+        verifyCode:
+          type: string
+          description: account verification code
+        password:
+          type: string
+          description: account access password        
+      required:
+        - email
+        - verifyCode
+        - password
+      example:
+        email: test.updatepass@mail.com
+        verifyCode: d6e047f16a7a18e0a9babf9f
+        password: Hola1234
+  responses:
+    Response200one:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: object
+          description: An object that represents an user
+      example:
+        statusCode: 200
+        response:
+          email: ariel@mail.com
+          username: Ariel End
+          bio: I am not an ordinary user
+          password: Hola1234
+          verified: true
+          verifyCode: 53afb8700bed3a055b734b94
+          photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/users%2Fariel.webp?alt=media&token=b4e1965c-f26b-4883-9ff8-c67e13140a68
+          role: admin
+    Response200many:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        response:
+          type: array
+          description: An array of users
+      example:
+        statusCode: 200
+        response:
+          - email: ariel@mail.com
+            username: Ariel End
+            bio: I am not an ordinary user            
+            photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/users%2Fariel.webp?alt=media&token=b4e1965c-f26b-4883-9ff8-c67e13140a68
+            role: customer
+          - email: guille@mail.com
+            username: Guillermo Rauch
+            bio: I am not an ordinary user            
+            photo: https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/users%2FGuille.webp?alt=media&token=339c8e23-3427-445e-9e68-f5ecbe51ba9e
+            role: admin 
+    Message200:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successful
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has been successful
+      example:
+        statusCode: 200
+        message: Verified user!    
+    Message201:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested has created a resource successfully
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has created a resource successfully
+      example:
+        statusCode: 201
+        message: User registered!
+    Message204:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested was successfully and not return any other info
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation has been successful
+      example:
+        statusCode: 204
+        message: Password updated. Please login!
+    Error400:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested cannot or will not be processed due to an apparent client error
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation cannot be processed due to an apparent client error
+      example:
+        statusCode: 400
+        message: Bad request!
+    Error401:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to an authentication error
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to an authentication error
+      example:
+        statusCode: 401
+        message: Bad auth!
+    Error403:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the action requested will not be processed due to user not having the necessary permissions for a resource
+        message:
+          type: string
+          description: Text displaying a message informing that the requested operation will not be processed due to user not having the necessary permissions for a resource
+      example:
+        statusCode: 403
+        message: Forbidden!
+    Error404:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates the requested resource is not available at the moment
+        message:
+          type: string
+          description: Text displaying a message informing that the requested resource is not available at the moment
+      example:
+        statusCode: 404
+        message: Not found!
+    Error500:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: HTTP response status code to indicates an unexpected internal condition was encountered and no more specific message is suitable
+        message:
+          type: string
+          description: Text displaying a message informing that an unexpected internal condition was encountered
+      example:
+        statusCode: 500
+        message: Fatal error!
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: token    
+paths:
+  /api/sessions/register:
+    post:
+      summary: Route that allow to create an user with role customer
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Data to create a new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUser'
+      responses:
+        201:
+          description: Success at user creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message201'
+        400:
+          description: Client error at register attempt because a missing or incorrect required data 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Client error at register attempt because of invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        500:
+          description: Server error at register attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+  /api/sessions/login:
+    post:
+      summary: Route that allow an user to login
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Data to login
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUser'
+      responses:
+        200:
+          description: Success at login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message200'
+        400:
+          description: Client error at login attempt because a missing or incorrect required data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Client error at login attempt because of invalid or missing credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        403:
+          description: Client error at login attempt because the user lacks the necessary permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error403'
+        404:
+          description: Client error at login because is trying to access an user that is not available at the moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+        500:
+          description: Server error at login attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'        
+  /api/sessions/signout:
+    post:
+      summary: Route that allow an user to signout
+      tags:
+        - User
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          description: Success at signout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message200'
+        401:
+          description: Client error at signout attempt because of missing or incorrect credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        500:
+          description: Server error at signout attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+  /api/sessions/password:
+    post:
+      summary: Route to request a password reset code
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Data to reset user password
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetUser'
+      responses:
+        200:
+          description: Reset code sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message200'
+        404:
+          description: Email not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+    put:
+      summary: Route to update the user password
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Data to update user account password
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPasswordSave'
+      responses:
+        204:
+          description: Password updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message204'
+        400:
+          description: Client error at password update attempt because a missing or incorrect required data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Client error at password update attempt because of invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        404:
+          description: Email not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+  /api/sessions/verify:
+    post:
+      summary: Route that allows a user to verify his account
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Data to verify an account
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyUser'
+      responses:
+        200:
+          description: Success at verifing account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message200'
+        400:
+          description: Client error at verify attempt because a missing or incorrect required data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Client error at verify attempt because of invalid or missing credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        500:
+          description: Server error at verifing attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
+  /api/users/{id}:
+    get:
+      summary: Route that allows to get user profile information
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique user identifier
+          schema:
+            type: string
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          description: Success at retrieve user data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Response200one'
+        400:
+          description: Client error at retrieve user profile information because a missing or incorrect required data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        401:
+          description: Client error at retrieve user profile information because of invalid or missing credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error401'
+        403:
+          description: Client error at retrieve user profile information because the user lacks the necessary permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error403'
+        404:
+          description: Client error at retrieve user profile information because is trying to access an user that is not available at the moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error404'
+        500:
+          description: Server error at retrieve user profile information attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
