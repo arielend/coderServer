@@ -20,8 +20,8 @@ class SessionsController {
             response.cookie('token', request.user.token, {
                 signed: true,
                 httpOnly: true,
-                secure: false,
-                sameSite: 'strict',
+                secure: true,
+                sameSite: 'none',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
                 }
             )
@@ -36,8 +36,8 @@ class SessionsController {
 
             response.cookie('user', JSON.stringify(user),{
                 httpOnly: false,
-                secure: false,
-                sameSite: 'strict',
+                secure: true,
+                sameSite: 'none',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
             })
 
