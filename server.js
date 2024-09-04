@@ -50,7 +50,6 @@ server.use(express.json())
 server.use(express.static(__dirname + '/public'))
 server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(Winston)
-// server.use(cors({ origin: allowedOrigin, credentials: true }))
 server.use(cors({ origin: 'https://coderserverfront.onrender.com', credentials: true }))
 server.use("/api/docs", serve, setup(specs))
 server.use(compression({
