@@ -22,7 +22,7 @@ class SessionsController {
                 signed: true,
                 httpOnly: true,
                 secure: true,
-                sameSite: 'Lax',
+                sameSite: 'None',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
                 }
             )
@@ -40,7 +40,7 @@ class SessionsController {
             response.cookie('user', user,{
                 httpOnly: false,
                 secure: true,
-                sameSite: 'Lax',
+                sameSite: 'None',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
             })
             response.setHeader('Set-Cookie', response.get('Set-Cookie'))
