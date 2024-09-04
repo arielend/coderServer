@@ -23,7 +23,7 @@ class SessionsController {
                 httpOnly: true,
                 domain: '.onrender.com',
                 secure: true,
-                sameSite: 'None',
+                sameSite: 'Lax',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
                 }
             )
@@ -42,10 +42,10 @@ class SessionsController {
                 httpOnly: false,
                 domain: '.onrender.com',
                 secure: true,
-                sameSite: 'None',
+                sameSite: 'Lax',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
             })
-            
+
             return response.message200('You are loggedd in!')
         } catch (error) {
             return next(error)
