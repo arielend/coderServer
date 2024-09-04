@@ -1,4 +1,4 @@
-import Service from './Service.js'
+import Service from './service.js'
 import productsRepository from '../repositories/products.repository.js'
 
 const productsService = new Service(productsRepository)
