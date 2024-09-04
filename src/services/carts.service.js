@@ -1,4 +1,4 @@
-import Service from './Service.js'
+import Service from './service.js'
 import cartsRepository from '../repositories/carts.repository.js'
 
 const cartsService = new Service(cartsRepository)
