@@ -34,7 +34,5 @@ const environment = {
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     URL_BASE: process.env.URL_BASE,
     URL_BASE_FRONT: process.env.URL_BASE_FRONT,
-    FRONT_PORT: process.env.FRONT_PORT
-}
 
 export default environment

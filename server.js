@@ -42,6 +42,7 @@ else {
 }
 
 const specs = swaggerJSDoc(swaggerOptions)
+const allowedOrigin = environment.URL_BASE_FRONT || '*'
 
 // Middlewares
 server.use(express.urlencoded({ extended: true }))
@@ -49,7 +50,7 @@ server.use(express.json())
 server.use(express.static(__dirname + '/public'))
 server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(Winston)
-server.use(cors({ origin: `${environment.URL_BASE_FRONT}:${environment.FRONT_PORT}`, credentials: true }))
+server.use(cors({ origin: allowedOrigin, credentials: true }))
 server.use("/api/docs", serve, setup(specs))
 server.use(compression({
     brotli:{ enabled: true, zlib:{}}
