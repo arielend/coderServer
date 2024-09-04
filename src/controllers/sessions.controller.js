@@ -21,7 +21,7 @@ class SessionsController {
             response.cookie('token', token, {
                 signed: true,
                 httpOnly: true,
-                domain: 'onrender.com',
+                domain: '.onrender.com',
                 secure: true,
                 sameSite: 'None',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
@@ -40,13 +40,12 @@ class SessionsController {
 
             response.cookie('user', user,{
                 httpOnly: false,
-                domain: 'onrender.com',
+                domain: '.onrender.com',
                 secure: true,
                 sameSite: 'None',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
             })
-            response.setHeader('Set-Cookie', response.get('Set-Cookie'))
-
+            
             return response.message200('You are loggedd in!')
         } catch (error) {
             return next(error)

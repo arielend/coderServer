@@ -37,7 +37,7 @@ if(cluster.isPrimary){
     }
 }
 else {
-    console.log(`Worker proccess: ${process.pid}.`)
+    //console.log(`Worker proccess: ${process.pid}.`)
     server.listen(port, ready)
 }
 
