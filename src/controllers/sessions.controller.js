@@ -21,7 +21,6 @@ class SessionsController {
             response.cookie('token', token, {
                 signed: true,
                 httpOnly: true,
-                domain: '.onrender.com',
                 secure: true,
                 sameSite: 'Lax',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
@@ -40,7 +39,6 @@ class SessionsController {
 
             response.cookie('user', user,{
                 httpOnly: false,
-                domain: '.onrender.com',
                 secure: true,
                 sameSite: 'Lax',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
