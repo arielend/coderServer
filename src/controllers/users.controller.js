@@ -7,7 +7,8 @@ class UsersController {
 
     async readOne ( request, response, next ) {
         try {
-            const _id = request.params.id
+            //const _id = request.params.id
+            const _id = request.user.id
             let one = await readOneService(_id)
             if(one){
                 one = one.toObject()
