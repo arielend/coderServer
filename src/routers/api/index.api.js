@@ -10,6 +10,8 @@ import testsApi from './tests.api.js'
 import ticketsApi from './tickets.api.js'
 import usersApi from './users.api.js'
 
+import cookiesApi from './cookies.api.js'
+
 class ApiRouter extends CustomRouter {
     init() {
         this.use('/carts', cartsApi)
@@ -22,6 +24,8 @@ class ApiRouter extends CustomRouter {
         this.use('/test', testsApi)
         this.use('/tickets', ticketsApi)
         this.use('/users', usersApi)
+        
+        this.use('/cookies', cookiesApi)
     }
 }
 
