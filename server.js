@@ -48,9 +48,15 @@ const allowedOrigin = environment.URL_BASE_FRONT || '*'
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.static(__dirname + '/public'))
-server.use(cookieParser(environment.SECRET_COOKIE))
+// server.use(cookieParser(environment.SECRET_COOKIE))
+server.use(cookieParser("theSecretCookieKey"))
 server.use(Winston)
-server.use(cors({ origin: 'https://coderserverfront.onrender.com', credentials: true }))
+server.use(
+    cors({
+        origin: "https://coderserverfront.onrender.com",
+        credentials: true
+    })
+)
 server.use("/api/docs", serve, setup(specs))
 server.use(compression({
     brotli:{ enabled: true, zlib:{}}
