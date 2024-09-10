@@ -15,7 +15,7 @@ switch(env) {
         path = './.env'
     break
     default:
-        path = './.env.dev'
+        path = './.env'
 }
 
 config({ path })
