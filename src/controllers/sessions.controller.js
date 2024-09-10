@@ -40,7 +40,10 @@ class SessionsController {
                 }
             )
 
-            response.cookie('usuario', "Soy un usuario")
+            response.cookie('usuario', "Soy un usuario",{
+                samesite: 'strict',
+                secure: false
+            })
 
             
             response.cookie('user', user,{
