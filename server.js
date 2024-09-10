@@ -48,11 +48,11 @@ const corsOptions = {
 }
 
 // Middlewares
-server.use(express.urlencoded({ extended: true }))
 server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
 server.use(express.static(__dirname + '/public'))
-server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(Winston)
+server.use(cookieParser(environment.SECRET_COOKIE))
 server.use(cors(corsOptions))
 server.use("/api/docs", serve, setup(specs))
 server.use(compression({

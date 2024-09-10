@@ -18,14 +18,7 @@ class SessionsController {
             const userData = request.user
             const token = request.user.token
 
-            response.cookie('token', token, {
-                signed: true,
-                httpOnly: true,
-                secure: true,
-                sameSite: 'None',
-                maxAge: 60 * 60 * 1000 // 1 hora de vida
-                }
-            )
+            
 
             let user = {
                 email: userData.email,
@@ -37,14 +30,19 @@ class SessionsController {
 
             user = JSON.stringify(user)
 
-            response.cookie('user', user,{
+            return response.cookie("token", token, {
+                signed: true,
+                httpOnly: true,
+                secure: true,
+                sameSite: "None",
+                maxAge: 60 * 60 * 1000 // 1 hora de vida
+                }
+            ).cookie('user', user,{
                 httpOnly: false,
                 secure: true,
                 sameSite: 'None',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
-            })
-
-            return response.message200('You are loggedd in!')
+            }).message200('You are loggedd in!')
         } catch (error) {
             return next(error)
         }
