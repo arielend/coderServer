@@ -2,6 +2,7 @@ import crypto from 'crypto'
 import { readByEmailService, updateService, destroyService } from '../services/users.service.js'
 import sendEmail from '../utils/mailing.util.js'
 import { createHash } from '../utils/hash.util.js'
+import { Cookie } from 'express-session'
 
 class SessionsController {
 
@@ -30,19 +31,26 @@ class SessionsController {
 
             user = JSON.stringify(user)
 
-            return response.cookie("token", token, {
+            response.cookie("token", token, {
                 signed: true,
                 httpOnly: true,
                 secure: true,
-                sameSite: "None",
+                sameSite: "none",
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
                 }
-            ).cookie('user', user,{
+            )
+
+            response.cookie('usuario', "Soy un usuario")
+
+            
+            response.cookie('user', user,{
                 httpOnly: false,
                 secure: true,
-                sameSite: 'None',
+                sameSite: 'none',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
-            }).message200('You are loggedd in!')
+            })
+            
+            return response.message200('You are loggedd in!')
         } catch (error) {
             return next(error)
         }

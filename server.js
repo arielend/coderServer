@@ -43,7 +43,7 @@ else {
 
 const specs = swaggerJSDoc(swaggerOptions)
 const corsOptions = {
-    origin: true,
+    origin: "https://coderserverfront.onrender.com",
     credentials: true
 }
 
