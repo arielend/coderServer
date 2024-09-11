@@ -22,7 +22,7 @@ import swaggerOptions from './src/utils/swagger.js'
 
 //Configuración del Server
 const server = express()
-const port = environment.PORT || argsUtil.port
+const port = process.env.PORT || argsUtil.port
 const url_base = environment.URL_BASE
 const ready = async () => { 
     console.log(`Server ready on ${url_base}:${port}/`)
