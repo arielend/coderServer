@@ -39,7 +39,7 @@ class SessionsController {
             )
 
             response.cookie('user', user,{
-                secure: false,
+                secure: true,
                 sameSite: 'None',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
             })
