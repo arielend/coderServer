@@ -17,9 +17,7 @@ class SessionsController {
     async login ( request, response, next ) {
         try {
             const userData = request.user
-            const token = request.user.token
-
-            
+            const token = request.user.token            
 
             let user = {
                 email: userData.email,
@@ -40,25 +38,12 @@ class SessionsController {
                 }
             )
 
-            response.cookie('usuario', "Soy un usuario",{
-                samesite: 'strict',
-                secure: false
-            })
-
-            
             response.cookie('user', user,{
-                httpOnly: false,
-                secure: true,
-                sameSite: 'None',
-                maxAge: 60 * 60 * 1000 // 1 hora de vida
-            })
-
-            response.cookie('user2', user,{
                 secure: false,
                 sameSite: 'strict',
                 maxAge: 60 * 60 * 1000 // 1 hora de vida
             })
-            
+
             return response.message200('You are loggedd in!')
         } catch (error) {
             return next(error)
